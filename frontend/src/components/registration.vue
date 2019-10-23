@@ -86,7 +86,7 @@
                 </b-col>
                 <div class="col-xs-3 col-md-6 button_Wrap">
                   <div class="col-12">
-                    <b-button @click.prevent="newTab" class="nextBtn w-100" type="button">Next</b-button>
+                    <b-button class="nextBtn w-100" type="button">Save</b-button>
                   </div>
                 </div>
 
@@ -155,12 +155,9 @@
                       </b-tabs>
                     </b-card>
                     <b-row class="button_Wrap">
-                      <b-col cols="5" size="lg" class="pull-left">
-                        <b-button @click.prevent="closeTab">Previous</b-button>
-                      </b-col>
-                      <b-col cols="2"></b-col>
-                      <b-col cols="5" size="lg" class="pull-right">
-                        <b-button>Next</b-button>
+                      <b-col cols="6"></b-col>
+                      <b-col cols="6" size="lg" class="pull-right">
+                        <b-button type="submit" class="col-12">Save</b-button>
                       </b-col>
                     </b-row>
                   </b-col>
@@ -254,46 +251,6 @@ export default {
 }
 
 /* Form */
-.stepwizard-step p {
-    margin-top: 10px;
-}
-.stepwizard-row {
-    display: table-row;
-}
-.stepwizard {
-    display: table;
-    width: 100%;
-    position: relative;
-}
-.stepwizard-step button[disabled] {
-    opacity: 1 !important;
-    filter: alpha(opacity=100) !important;
-}
-.stepwizard-row:before {
-    top: 14px;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    /* z-order: 0; */
-}
-.stepwizard-step {
-    display: table-cell;
-    text-align: center;
-    position: relative;
-}
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-}
-
 /* .step */
 .step-1-1, .step-1-2 {
     padding-top: 2rem;
