@@ -10,6 +10,8 @@ import Login from '@/components/login.vue';
 import RegionTravel from '@/components/regionTravel.vue';
 import MoodTravel from '@/components/moodTravel.vue';
 import Registration from '@/components/registration.vue';
+import GotgamDetail from '@/components/gotgamDetail.vue';
+import About from '@/components/about.vue';
 
 export default new Router({
 //  mode: 'history',
@@ -51,5 +53,15 @@ export default new Router({
       name: 'Registration',
       component: Registration
     },
+    {
+      path: '/gotgamdetail',
+      name: 'GotgamDetail',
+      component: GotgamDetail
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    }
   ]
 })

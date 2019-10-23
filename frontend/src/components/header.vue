@@ -15,7 +15,7 @@
                     </ul>
                 </li>
 				<li><router-link :to="registration.link">Registration</router-link></li>
-                <li><a>About</a></li>
+                <li><router-link :to="about.link">About</router-link></li>
 				<li>
 					<div class="login_bar">
 						<router-link :to="login.link">Login</router-link>
@@ -37,6 +37,9 @@ export default {
 			  },
 			  registration: {
 				  link: "/registration"
+			  },
+			  about: {
+				  link: '/about'
 			  },
 			  regiontravel: {
 				  link: "/regiontravel"
