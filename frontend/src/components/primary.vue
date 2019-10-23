@@ -25,99 +25,7 @@
                     placerat pharetra.</p>
 
                 <!-- accordion -->
-                <div class="accordion" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link accordion_title" type="button" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Day1
-                                </button>
-                            </h2>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="schedule_box">
-                                    <h2>1일차</h2>
-                                    <p class="desc">수원 가볍게 둘러보기!</p>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <div class="thumb">
-                                                    <img src="../assets/suwon_img1.jpeg">
-                                                    <div class="border"></div>
-                                                </div>
-
-                                                <div class="info">
-                                                    <strong class="info_title">수원화성</strong>
-                                                    <p>서울을 지키는 버팀목이자 수원의 상징</p>
-                                                </div>
-                                            </a>
-
-                                            <!-- accordion_info_detail -->
-                                            <accordion-info-detail></accordion-info-detail>
-                                        </li>
-
-                                        <li>
-                                            <a href="#">
-                                                <div class="thumb">
-                                                    <img src="../assets/suwon_img1.jpeg">
-                                                    <div class="border"></div>
-                                                </div>
-
-                                                <div class="info">
-                                                    <strong class="info_title">행궁동 벽화마을</strong>
-                                                    <p>수원의 숨겨진 명소</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed accordion_title" type="button"
-                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                    aria-controls="collapseTwo">
-                                    Day2
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="schedule_box">
-                                    <h2>2일차</h2>
-                                    <p class="desc">수원 가볍게 둘러보기!</p>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <div class="thumb">
-                                                    <img src="../assets/suwon_img1.jpeg">
-                                                    <div class="border"></div>
-                                                </div>
-
-                                                <div class="info">
-                                                    <strong class="info_title">수원화성</strong>
-                                                    <p>서울을 지키는 버팀목이자 수원의 상징</p>
-                                                </div>
-                                            </a>
-
-                                            <!-- accordion_info_detail -->
-                                            <accordion-info-detail></accordion-info-detail>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <accordion-wrap></accordion-wrap>
             </div>
         </div>
     </div>
@@ -125,12 +33,12 @@
 
 <script>
     import carousel from 'vue-owl-carousel';
-    import AccordionInfoDetail from './accordionInfoDetail.vue';
+    import AccordionWrap from './accordionWrap.vue';
+    
     export default {
         components: {
             carousel,
-            AccordionInfoDetail,
-
+            AccordionWrap,
         }
 
     }
