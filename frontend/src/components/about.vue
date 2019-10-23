@@ -1,13 +1,13 @@
 <template>
   <div>
-    <section class="intro">
+    <div class="intro">
       <div class="container6">
         <h1 style="color: aliceblue">곶 감</h1>
         <p style="margin: 20px; color: aliceblue">나 의 발 자 취</p>
       </div>
-    </section>
+    </div>
 
-    <section class="timeline">
+    <div class="timeline">
       <h1 style="text-align: center; margin-top: 30px;">ABOUT US</h1>
       <ul>
         <li>
@@ -38,10 +38,10 @@
           </div>
         </li>
       </ul>
-    </section>
+    </div>
 
     <h1 style="text-align: center; margin-top: 100px; margin-bottom: -150px;">CONTACT</h1>
-    <section class="cont" style="margin-bottom: -200px">
+    <div class="cont" style="margin-bottom: -200px">
       <b-container class="contentWrap_about">
         <b-card>
           <div class="content">
@@ -71,7 +71,7 @@
           </div>
         </b-card>
       </b-container>
-    </section>
+    </div>
   </div>
 </template>
 
