@@ -7,6 +7,9 @@ Vue.use(Router)
 // import Show from '../components/ShowPage'
 import MainPage from '../components/container.vue';
 import Login from '@/components/login.vue';
+import RegionTravel from '@/components/regionTravel.vue';
+import MoodTravel from '@/components/moodTravel.vue';
+import Registration from '@/components/registration.vue';
 
 export default new Router({
 //  mode: 'history',
@@ -32,6 +35,21 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/regiontravel',
+      name: 'RegionTravel',
+      component: RegionTravel
+    },
+    {
+      path: '/moodtravel',
+      name: 'MoodTravel',
+      component: MoodTravel
+    },
+    {
+      path: '/registration',
+      name: 'Registration',
+      component: Registration
     },
   ]
 })
