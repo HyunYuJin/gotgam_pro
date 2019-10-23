@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="header">
         <div class="wrap">
             <div id="hamburger" v-on:click="display_menu()">
                 <span></span>
@@ -110,7 +110,7 @@ export default {
 	
 	body {&.display_menu{overflow-y: hidden;}}
 	
-	header {
+	.header {
 		display: flex;
 		z-index: 3;
 		padding: 10px 0;
@@ -123,7 +123,7 @@ export default {
 		transition: 0.33s;
 	}
 	
-	header .wrap {
+	.header .wrap {
 		padding: 0 2%;
 		width: 100%;
 		display: flex;
@@ -131,16 +131,16 @@ export default {
 		justify-content: space-between;
 	}
 	
-	header img {
+	.header img {
 		width: 100px;
 	}
 	
-	header #menu {
+	.header #menu {
 		display: flex;
 		flex-direction: row;
 	}
 	
-	header #menu li {
+	.header #menu li {
 		position: relative;
 		user-select: none;
 		margin: 0 30px;
@@ -166,7 +166,7 @@ export default {
 		}
 	}
 
-	header .drop_menu {
+	.header .drop_menu {
 		position: absolute;
 		display: block;
 		top: 149%;
@@ -189,7 +189,7 @@ export default {
 		}
 	}
 
-	header .drop_menu.display {
+	.header .drop_menu.display {
 		transform: scaleY(1);
 		
 		a {
@@ -197,7 +197,7 @@ export default {
 		}
 	}
 
-	header #hamburger {
+	.header #hamburger {
 		cursor: pointer;
 		border-radius: 50%;
 		position: absolute;
@@ -207,7 +207,7 @@ export default {
 		transform: translateY(-50%);
 	}
 
-	header #hamburger span {
+	.header #hamburger span {
 		height: 2px;
 		margin-top: 5px;
 		margin-bottom: 5px;
@@ -219,7 +219,7 @@ export default {
 		&:nth-child(3) {width: 12px;}
 	}
 
-	.display_menu header #hamburger {
+	.display_menu .header #hamburger {
 		span:nth-child(1) {transform: rotate(45deg) translate(2px, 1px);}
 		span:nth-child(2) {transform: rotate(-45deg);}
 		span:nth-child(3) {transform: rotate(45deg) translate(6px, -9px);}
@@ -241,20 +241,20 @@ export default {
 	@media screen and (max-width: 660px) {
 		body {padding-top: 70px;}
 		
-		header .wrap {
+		.header .wrap {
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
 			padding: 0;
 		}
 		
-		header img {width: 50px;}
+		.header img {width: 50px;}
 		
-		header #hamburger {
+		.header #hamburger {
 			display: block;
 		}
 		
-		header #menu {
+		.header #menu {
 			width: 100%;
 			display: block;
 			height: 0;
@@ -263,7 +263,7 @@ export default {
 			flex-direction: column;
 		}
 		
-		.display_menu header #menu {
+		.display_menu .header #menu {
 			height: calc(100vh - 64px);
 			
 			li {
@@ -275,7 +275,7 @@ export default {
 			}
 		}
 
-		header #menu li {
+		.header #menu li {
 			height: 0;
 			opacity: 0;
 			margin-left: 0;
@@ -305,7 +305,7 @@ export default {
 			}
 		}
 
-		header .drop_menu {
+		.header .drop_menu {
 			top: @body_height_8;
 			box-shadow: none;
 			left: 0;
@@ -326,24 +326,24 @@ export default {
 	}
 
 	@media screen and(max-width: 660px) and(max-height: 500px) {
-		.display_menu header  {
+		.display_menu .header  {
 			max-height: 100vh;
 			overflow-y: scroll;
 		}
 
-		.display_menu header #menu {
+		.display_menu .header #menu {
 			li {
 				height: @body_height_4;
 			}
 		}
 
-		header #menu li {
+		.header #menu li {
 			a {
 				line-height: @body_height_4;
 			}
 		}
 
-		header .drop_menu {
+		.header .drop_menu {
 			top: @body_height_4;
 		}
 

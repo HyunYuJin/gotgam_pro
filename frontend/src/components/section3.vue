@@ -25,27 +25,7 @@
                             </div>
                         </div>
                         <div class="modal_button">
-                            <button type="button" class="btn modal-btn" data-toggle="modal" data-target="#modal1">곶감 보기</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal1 -->
-                <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modal1">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <modal-btn></modal-btn>
                         </div>
                     </div>
                 </div>
@@ -66,27 +46,7 @@
                             </div>
                         </div>
                         <div class="modal_button">
-                            <button type="button" class="btn modal-btn" data-toggle="modal" data-target="#modal2">곶감 보기</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal2 -->
-                <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modal2">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <modal-btn></modal-btn>
                         </div>
                     </div>
                 </div>
@@ -107,27 +67,7 @@
                             </div>
                         </div>
                         <div class="modal_button">
-                            <button type="button" class="btn modal-btn" data-toggle="modal" data-target="#modal3">곶감 보기</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal3 -->
-                <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modal3" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modal3">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <modal-btn></modal-btn>
                         </div>
                     </div>
                 </div>
@@ -138,8 +78,21 @@
 </template>
 
 <script>
-export default {
+import ModalBtn from './modal.vue';
 
+export default {
+    components: {
+        ModalBtn
+    },
+
+    methods: {
+      showModal() {
+        this.$refs['my-modal'].show()
+      },
+      hideModal() {
+        this.$refs['my-modal'].hide()
+      },
+    }
 }
 </script>
 
@@ -251,11 +204,6 @@ export default {
     font-weight: 700;
     font-size: 1.2rem;
     line-height: 1.7rem;
-    color: #fff;
-}
-
-.modal-btn {
-    background: rgb(248, 113, 64);
     color: #fff;
 }
 </style>
