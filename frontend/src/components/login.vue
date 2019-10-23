@@ -1,90 +1,194 @@
 <template>
-  <section class="container">
+<div class="wrap4">
+  <b-container class="login_inner_wrap">
     <article class="half">
       <h1>곶감</h1>
-      <div class="tabs">
-        <span class="tab signin active"><a href="#signin">Sign in</a></span>
-        <span class="tab signup"><a href="#signup">Sign up</a></span>
-      </div>
       <div class="content">
-        <div class="signin-cont cont">
-          <form action="#" method="post" enctype="multipart/form-data">
-            <input type="id" name="id" id="id" class="inpt" required="required" placeholder="Your Id">
-            <label for="id">Your Id</label>
-            <input type="password" name="password" id="password" class="inpt" required="required"
-              placeholder="Your password">
-            <label for="password">Your password</label>
-            <input type="checkbox" id="remember" class="checkbox" checked>
-            <label for="remember">Remember me</label>
-            <div class="submit-wrap">
-              <input type="submit" value="Sign in" class="submit">
-              <a href="#" class="more">Forgot your password?</a>
-            </div>
-          </form>
-        </div>
-        <div class="signup-cont cont">
-          <form action="#" method="post" enctype="multipart/form-data">
-            <input type="text" name="name" id="name" class="inpt" required="required" placeholder="Your name">
-            <label for="name">Your name</label>
-            <input type="email" name="email" id="email" class="inpt" required="required" placeholder="Your email">
-            <label for="email">Your email</label>
-            <input type="text" name="id" id="id" class="inpt" required="required" placeholder="Your id">
-            <label for="id">Your id</label>
-            <input type="password" name="password" id="password" class="inpt" required="required"
-              placeholder="Your password">
-            <label for="password">Your password</label>
-            <div class="submit-wrap">
-              <input type="submit" value="Sign up" class="submit">
-              <a href="#" class="more">Terms and conditions</a>
-            </div>
-          </form>
-        </div>
+          <b-tabs fill>
+            <b-tab title="tab signin" active>
+              <div class="signin-cont cont">
+                <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                  <b-form-group
+                    id="input-group-1"
+                    label="Email address:"
+                    label-for="input-1"
+                    description="We'll never share your email with anyone else."
+                  >
+                    <b-form-input
+                      id="input-1"
+                      v-model="form.email"
+                      type="email"
+                      required
+                      placeholder="Enter email"
+                    ></b-form-input>
+                  </b-form-group>
+
+                  <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+                    <b-form-input
+                      id="input-2"
+                      v-model="form.name"
+                      required
+                      placeholder="Enter name"
+                    ></b-form-input>
+                  </b-form-group>
+
+                  <b-form-group id="input-group-3" label="Food:" label-for="input-3">
+                    <b-form-select
+                      id="input-3"
+                      v-model="form.food"
+                      :options="foods"
+                      required
+                    ></b-form-select>
+                  </b-form-group>
+
+                  <b-form-group id="input-group-4">
+                    <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+                      <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                    </b-form-checkbox-group>
+                  </b-form-group>
+
+                  <b-button type="submit" variant="primary">Submit</b-button>
+                  <b-button type="reset" variant="danger">Reset</b-button>
+                </b-form>
+              </div>
+            </b-tab>
+            <b-tab title="tab signup">
+              <div class="signup-cont cont">
+                <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+                  <b-form-group
+                    id="input-group-1"
+                    label="Email address:"
+                    label-for="input-1"
+                    description="We'll never share your email with anyone else."
+                  >
+                    <b-form-input
+                      id="input-1"
+                      v-model="form.email"
+                      type="email"
+                      required
+                      placeholder="Enter email"
+                    ></b-form-input>
+                  </b-form-group>
+
+                  <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+                    <b-form-input
+                      id="input-2"
+                      v-model="form.name"
+                      required
+                      placeholder="Enter name"
+                    ></b-form-input>
+                  </b-form-group>
+
+                  <b-form-group id="input-group-3" label="Food:" label-for="input-3">
+                    <b-form-select
+                      id="input-3"
+                      v-model="form.food"
+                      :options="foods"
+                      required
+                    ></b-form-select>
+                  </b-form-group>
+
+                  <b-form-group id="input-group-4">
+                    <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+                      <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                    </b-form-checkbox-group>
+                  </b-form-group>
+
+                  <b-button type="submit" variant="primary">Submit</b-button>
+                  <b-button type="reset" variant="danger">Reset</b-button>
+                </b-form>
+              </div>
+            </b-tab>
+          </b-tabs>
       </div>
     </article>
-    <div class="half bg"></div>
-  </section>
-
+    <div class="half bg">
+      <img src="../assets/back.jpg" />
+    </div>
+  </b-container>
+</div>
 </template>
 
 <script>
-  export default {
-
+export default {
+    data() {
+      return {
+        form: {
+          email: '',
+          name: '',
+          food: null,
+          checked: []
+        },
+        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+        show: true
+      }
+    },
+    methods: {
+      onSubmit(evt) {
+        evt.preventDefault()
+        alert(JSON.stringify(this.form))
+      },
+      onReset(evt) {
+        evt.preventDefault()
+        // Reset our form values
+        this.form.email = ''
+        this.form.name = ''
+        this.form.food = null
+        this.form.checked = []
+        // Trick to reset/clear native browser form validation state
+        this.show = false
+        this.$nextTick(() => {
+          this.show = true
+        })
+      }
+    }
   }
 </script>
 
 <style>
-  * {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
+  .wrap4 {
+    /* max-width: 800px; */
+    width: 100%;
+    margin: 0 auto;
+    padding: 3.4rem 0;
     box-sizing: border-box;
-  }
-
-  .container {
     position: relative;
-    overflow: hidden;
-    width: 700px;
-    height: 500px;
-    margin: 80px auto 0;
-    background-color: #ffffff;
-    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+  }
+
+  .login_inner_wrap {
+    height: 35rem;
+    position: relative;
+    background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
+    padding: 0;
   }
 
-  .container .half {
-    float: left;
-    width: 50%;
+  .login_inner_wrap::after { 
+    content: ''; 
+    display: table; 
+    clear: both; 
+  }
+
+  .login_inner_wrap .half {
+    width: 60%;
     height: 100%;
-    padding: 58px 40px 0;
+    padding: 4rem 7rem;
+    float: left;
   }
 
-  .container .half.bg {
-    background-image: url("../assets/back.jpg");
-    background-size: 400px;
-    background-repeat: no-repeat;
+  .login_inner_wrap .half.bg {
+    width: 40%;
+    padding: 0;
+    float: left;
+  }
+  
+  .login_inner_wrap .half.bg img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
   }
 
-  .container h1 {
+  .login_inner_wrap h1 {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 23px;
@@ -95,27 +199,24 @@
     color: #263238;
   }
 
-  .container .tabs {
+  .login_inner_wrap .tabs {
     width: 100%;
     margin-bottom: 29px;
     border-bottom: 1px solid #d9d9d9;
   }
 
-  .container .tabs .tab {
+  .login_inner_wrap .tabs .tab {
     display: inline-block;
     margin-bottom: -1px;
     padding: 20px 15px 10px;
     cursor: pointer;
     letter-spacing: 0;
     border-bottom: 1px solid #d9d9d9;
-    -moz-user-select: -moz-none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
     user-select: none;
     transition: all 0.1s ease-in-out;
   }
 
-  .container .tabs .tab a {
+  .login_inner_wrap .tabs .tab a {
     font-size: 11px;
     text-decoration: none;
     text-transform: uppercase;
@@ -123,202 +224,41 @@
     transition: all 0.1s ease-in-out;
   }
 
-  .container .tabs .tab.active a,
-  .container .tabs .tab:hover a {
+  .login_inner_wrap .tabs .tab.active a,
+  .login_inner_wrap .tabs .tab:hover a {
     color: #263238;
   }
 
-  .container .tabs .tab.active {
+  .login_inner_wrap .tabs .tab.active {
     border-bottom: 1px solid #263238;
   }
 
-  .container .content form {
+  .login_inner_wrap .content form {
     position: relative;
-    height: 287px;
   }
 
-  .container .content label:first-of-type,
-  .container .content input:first-of-type,
-  .container .content .more:first-of-type {
-    -moz-animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
-    -webkit-animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
+  .login_inner_wrap .content label:first-of-type,
+  .login_inner_wrap .content input:first-of-type,
+  .login_inner_wrap .content .more:first-of-type {
     animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
-  .container .content label:nth-of-type(2),
-  .container .content input:nth-of-type(2),
-  .container .content .more:nth-of-type(2) {
-    -moz-animation: slideIn 0.5s cubic-bezier(0.37, 0.82, 0.2, 1);
-    -webkit-animation: slideIn 0.5s cubic-bezier(0.37, 0.82, 0.2, 1);
+  .login_inner_wrap .content label:nth-of-type(2),
+  .login_inner_wrap .content input:nth-of-type(2),
+  .login_inner_wrap .content .more:nth-of-type(2) {
     animation: slideIn 0.5s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
-  .container .content label:nth-of-type(3),
-  .container .content input:nth-of-type(3),
-  .container .content .more:nth-of-type(3) {
-    -moz-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
-    -webkit-animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
+  .login_inner_wrap .content label:nth-of-type(3),
+  .login_inner_wrap .content input:nth-of-type(3),
+  .login_inner_wrap .content .more:nth-of-type(3) {
     animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
-  .container .content label:nth-of-type(4),
-  .container .content input:nth-of-type(4),
-  .container .content .more:nth-of-type(3) {
-    -moz-animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
-    -webkit-animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
+  .login_inner_wrap .content label:nth-of-type(4),
+  .login_inner_wrap .content input:nth-of-type(4),
+  .login_inner_wrap .content .more:nth-of-type(3) {
     animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
-  }
-
-  .container .content label {
-    font-size: 12px;
-    color: #263238;
-    -moz-user-select: -moz-none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  .container .content label:not([for='remember']) {
-    display: none;
-  }
-
-  .container .content input.inpt {
-    font-size: 14px;
-    display: block;
-    width: 100%;
-    height: 42px;
-    margin-bottom: 12px;
-    padding: 16px 13px;
-    color: #999999;
-    border: 1px solid #d9d9d9;
-    background: transparent;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-  }
-
-  .container .content input.inpt::-webkit-input-placeholder {
-    font-size: 14px;
-    color: #999999;
-    font-family: 'Lato', sans-serif;
-  }
-
-  .container .content input.inpt:-moz-placeholder {
-    font-size: 14px;
-    color: #999999;
-    font-family: 'Lato', sans-serif;
-  }
-
-  .container .content input.inpt::-moz-placeholder {
-    font-size: 14px;
-    color: #999999;
-    font-family: 'Lato', sans-serif;
-  }
-
-  .container .content input.inpt:-ms-input-placeholder {
-    font-size: 14px;
-    color: #999999;
-    font-family: 'Lato', sans-serif;
-  }
-
-  .container .content input.inpt:focus {
-    border-color: #999999;
-  }
-
-  .container .content input.submit {
-    font-size: 12px;
-    line-height: 42px;
-    display: block;
-    width: 100%;
-    height: 42px;
-    cursor: pointer;
-    /* vertical-align: middle; */
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #263238;
-    border: 1px solid #263238;
-    background: transparent;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-  }
-
-  .container .content input.submit:hover {
-    background-color: #263238;
-    color: #ffffff;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-  }
-
-  .container .content input:focus {
-    outline: none;
-  }
-
-  .container .content .checkbox {
-    margin-top: 4px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    width: 0;
-    height: 0;
-    margin: 17px -1px;
-    padding: 0;
-    border: 0;
-  }
-
-  .container .content .checkbox+label {
-    vertical-align: middle;
-    display: inline-block;
-    width: 50%;
-  }
-
-  .container .content .checkbox+label:before {
-    content: "\A";
-    color: #999999;
-    font-family: Verdana;
-    font-weight: bold;
-    font-size: 8px;
-    line-height: 10px;
-    text-align: center;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    background: transparent;
-    border: 1px solid #d9d9d9;
-    width: 11px;
-    height: 11px;
-    margin: -2px 8px 0 0;
-  }
-
-  .container .content .checkbox:checked+label:before {
-    content: "✓";
-  }
-
-  .container .content .submit-wrap {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-
-  .container .content .submit-wrap a {
-    font-size: 12px;
-    display: block;
-    margin-top: 20px;
-    text-align: center;
-    text-decoration: none;
-    color: #999999;
-  }
-
-  .container .content .submit-wrap a:hover {
-    text-decoration: underline;
-  }
-
-  .container .content .signup-cont {
-    display: none;
   }
 
   @keyframes slideIn {

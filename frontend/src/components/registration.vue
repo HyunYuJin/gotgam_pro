@@ -217,11 +217,13 @@ export default {
 
             selected: null,
             options: [
-                { value: null, text: 'Please select an option' },
-                { value: 'a', text: 'This is First option' },
-                { value: 'b', text: 'Selected Option' },
-                { value: { C: '3PO' }, text: 'This is an option with object value' },
-                { value: 'd', text: 'This one is disabled', disabled: true }
+                { value: null, text: '날씨를 선택해주세요.', disabled: true },
+                { value: 'sunny', text: '맑음' },
+                { value: 'rainy', text: '비' },
+                { value: 'cloud', text: '흐림' },
+                { value: 'wind', text: '바람', },
+                { value: 'cold', text: '추움', },
+                { value: 'hot', text: '더움', }
             ]
         }
     },
