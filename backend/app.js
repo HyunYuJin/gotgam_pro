@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/movies', movies);
-app.use(require('connect-history-api-fallback')())
+// app.use(require('connect-history-api-fallback')())
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
