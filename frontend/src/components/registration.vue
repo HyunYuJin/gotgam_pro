@@ -2,7 +2,7 @@
   <div class="registration_wrap">
       <div class="registration_inner_wrap">
           <!-- .container -->
-          <div class="container">
+          <b-container>
             <!-- .stepwizard -->
             <div class="stepwizard col-md-offset-3">
                 <div class="stepwizard-row setup-panel">
@@ -177,7 +177,7 @@
                 </div>
             </form>
             
-            </div>
+            </b-container>
       </div>
   </div>
 </template>
