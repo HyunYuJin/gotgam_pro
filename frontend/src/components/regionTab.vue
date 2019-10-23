@@ -106,10 +106,10 @@ button {
   box-sizing: border-box;
 }
 
-.tabs {
+/* .tabs {
   position: relative;
   margin: 0 auto;
-}
+} */
 
 .tabs__item {
   display: inline-block;

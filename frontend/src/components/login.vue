@@ -3,10 +3,10 @@
   <b-container class="login_inner_wrap">
     <div class="half">
       <h4>곶감</h4>
-      <div class="content">
+      <div class="content2">
           <b-tabs fill>
             <b-tab title="Sign In" active>
-              <div class="cont">
+              <div class="cont2">
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                   <b-form-group
                     id="input-group-1"
@@ -44,7 +44,7 @@
             </b-tab>
 
             <b-tab title="Sign Up">
-              <div class="cont">
+              <div class="cont2">
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                   <b-form-group
                     id="input-group-1"
@@ -154,7 +154,7 @@ export default {
     position: relative;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
-    padding: 0;
+    padding: 0 !important;
   }
 
   .login_inner_wrap::after { 
@@ -169,7 +169,7 @@ export default {
     float: left;
   }
 
-  .content {
+  .content2 {
     padding: 2rem 7rem 1.5rem;
   }
 
@@ -202,31 +202,31 @@ export default {
     transition: all 0.1s ease-in-out;
   }
 
-  .cont {
+  .cont2 {
     padding-top: 3rem;
   }
 
-  .login_inner_wrap .content form {
+  .login_inner_wrap .content2 form {
     position: relative;
   }
 
-  .login_inner_wrap .content label:first-of-type,
-  .login_inner_wrap .content input:first-of-type{
+  .login_inner_wrap .content2 label:first-of-type,
+  .login_inner_wrap .content2 input:first-of-type{
     animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
-  .login_inner_wrap .content label:nth-of-type(2),
-  .login_inner_wrap .content input:nth-of-type(2){
+  .login_inner_wrap .content2 label:nth-of-type(2),
+  .login_inner_wrap .content2 input:nth-of-type(2){
     animation: slideIn 0.5s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
-  .login_inner_wrap .content label:nth-of-type(3),
-  .login_inner_wrap .content input:nth-of-type(3) {
+  .login_inner_wrap .content2 label:nth-of-type(3),
+  .login_inner_wrap .content2 input:nth-of-type(3) {
     animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
-  .login_inner_wrap .content label:nth-of-type(4),
-  .login_inner_wrap .content input:nth-of-type(4) {
+  .login_inner_wrap .content2 label:nth-of-type(4),
+  .login_inner_wrap .content2 input:nth-of-type(4) {
     animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 

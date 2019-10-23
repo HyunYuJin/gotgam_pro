@@ -12,19 +12,19 @@
                 <div class="body_card">
                     <div class="card-background1"></div>
                     <div class="overlay">&nbsp;</div>
-                    <div class="card_text_wrap">
-                        <div class="card_text">
+                    <div class="card_text_wrap row">
+                        <div class="card_text col-8">
                             <div class="card_author">
                                 <p>
                                     <i>Suncheon, Korea</i>
                                     | Jeong Ji Hyurk
                                 </p>
                             </div>
-                            <div class="card_title">
-                                <h4>순천 성벽의 매력</h4>
+                            <div class="card_title2">
+                                <h4 class="ct">순천 성벽의 매력</h4>
                             </div>
                         </div>
-                        <div class="modal_button">
+                        <div class="modal_button col-4">
                             <modal-btn></modal-btn>
                         </div>
                     </div>
@@ -33,19 +33,19 @@
                 <div class="body_card">
                     <div class="card-background2"></div>
                     <div class="overlay">&nbsp;</div>
-                    <div class="card_text_wrap">
-                        <div class="card_text">
+                    <div class="card_text_wrap row">
+                        <div class="card_text col-8">
                             <div class="card_author">
                                 <p>
                                     <i>Busan, Korea</i>
                                     | Hyeon Yj Jin
                                 </p>
                             </div>
-                            <div class="card_title">
-                                <h4>부산의 색깔!</h4>
+                            <div class="card_title2">
+                                <h4 class="ct">부산의 색깔!</h4>
                             </div>
                         </div>
-                        <div class="modal_button">
+                        <div class="modal_button col-4">
                             <modal-btn></modal-btn>
                         </div>
                     </div>
@@ -54,19 +54,19 @@
                 <div class="body_card">
                     <div class="card-background3"></div>
                     <div class="overlay">&nbsp;</div>
-                    <div class="card_text_wrap">
-                        <div class="card_text">
+                    <div class="card_text_wrap row">
+                        <div class="card_text col-8">
                             <div class="card_author">
                                 <p>
                                     <i>Seoul, Korea</i>
                                     | Lee Da Bin
                                 </p>
                             </div>
-                            <div class="card_title">
-                                <h4>Urban Compositions</h4>
+                            <div class="card_title2">
+                                <h4 class="ct">Urban Compositions</h4>
                             </div>
                         </div>
-                        <div class="modal_button">
+                        <div class="modal_button col-4">
                             <modal-btn></modal-btn>
                         </div>
                     </div>
@@ -173,11 +173,11 @@ export default {
     display: flex;
     width: 100%;
     position: absolute;
-    padding: 0 1.2rem;
+    padding: 0 !important;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
     bottom: 1.2rem;
+    margin-left: 0 !important;
 }
 
 .card_author {
@@ -195,12 +195,12 @@ export default {
     color: #ff4401;
 }
 
-.card_title {
+.card_title2 {
     display: flex;
     cursor: pointer;
 }
 
-.card_title h4 {
+.card_title2 .ct {
     font-weight: 700;
     font-size: 1.2rem;
     line-height: 1.7rem;

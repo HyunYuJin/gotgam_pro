@@ -13,7 +13,7 @@
                             <div class="card_image1"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
-                                <div class="card_text_wrap">
+                                <div class="card_text_wrap2">
                                     <div class="card_text_subtitle">
                                         <p>현유진</p>
                                     </div>
@@ -32,7 +32,7 @@
                             <div class="card_image2"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
-                                <div class="card_text_wrap">
+                                <div class="card_text_wrap2">
                                     <div class="card_text_subtitle">
                                         <p>현유진</p>
                                     </div>
@@ -54,7 +54,7 @@
                             <div class="card_image3"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
-                                <div class="card_text_wrap">
+                                <div class="card_text_wrap2">
                                     <div class="card_text_subtitle">
                                         <p>현유진</p>
                                     </div>
@@ -73,7 +73,7 @@
                             <div class="card_image4"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
-                                <div class="card_text_wrap">
+                                <div class="card_text_wrap2">
                                     <div class="card_text_subtitle">
                                         <p>현유진</p>
                                     </div>
@@ -94,7 +94,7 @@
                             <div class="card_image5"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
-                                <div class="card_text_wrap">
+                                <div class="card_text_wrap2">
                                     <div class="card_text_subtitle">
                                         <p>현유진</p>
                                     </div>
@@ -113,7 +113,7 @@
                             <div class="card_image6"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
-                                <div class="card_text_wrap">
+                                <div class="card_text_wrap2">
                                     <div class="card_text_subtitle">
                                         <p>현유진</p>
                                     </div>

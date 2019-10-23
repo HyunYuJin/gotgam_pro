@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button id="show-btn" @click="showModal">곶감보기</b-button>
+    <b-button class="w-100" id="show-btn" @click="showModal">곶감보기</b-button>
 
     <b-modal ref="my-modal" hide-footer title="Using Component Methods">
       <div class="d-block text-center">

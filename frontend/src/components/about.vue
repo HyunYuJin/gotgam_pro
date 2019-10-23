@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="intro">
-      <div class="container2">
+      <div class="container6">
         <h1 style="color: aliceblue">곶 감</h1>
         <p style="margin: 20px; color: aliceblue">나 의 발 자 취</p>
       </div>
@@ -91,7 +91,7 @@ export default {
   padding: 100px 0;
 }
 
-.container2 {
+.container6 {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
