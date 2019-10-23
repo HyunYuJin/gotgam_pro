@@ -1,18 +1,17 @@
 <template>
 <div class="wrap4">
   <b-container class="login_inner_wrap">
-    <article class="half">
-      <h1>곶감</h1>
+    <div class="half">
+      <h4>곶감</h4>
       <div class="content">
           <b-tabs fill>
-            <b-tab title="tab signin" active>
-              <div class="signin-cont cont">
+            <b-tab title="Sign In" active>
+              <div class="cont">
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                   <b-form-group
                     id="input-group-1"
                     label="Email address:"
                     label-for="input-1"
-                    description="We'll never share your email with anyone else."
                   >
                     <b-form-input
                       id="input-1"
@@ -23,43 +22,34 @@
                     ></b-form-input>
                   </b-form-group>
 
-                  <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+                  <b-form-group id="input-group-2" label="Your password:" label-for="input-2">
                     <b-form-input
                       id="input-2"
-                      v-model="form.name"
+                      v-model="form.password"
                       required
-                      placeholder="Enter name"
+                      placeholder="Enter Password"
                     ></b-form-input>
-                  </b-form-group>
-
-                  <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                    <b-form-select
-                      id="input-3"
-                      v-model="form.food"
-                      :options="foods"
-                      required
-                    ></b-form-select>
                   </b-form-group>
 
                   <b-form-group id="input-group-4">
                     <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                      <b-form-checkbox value="me">Check me out</b-form-checkbox>
+                      <b-form-checkbox value="me">Remember me</b-form-checkbox>
                     </b-form-checkbox-group>
                   </b-form-group>
 
-                  <b-button type="submit" variant="primary">Submit</b-button>
+                  <b-button type="submit" variant="primary">Sign In</b-button>
                   <b-button type="reset" variant="danger">Reset</b-button>
                 </b-form>
               </div>
             </b-tab>
-            <b-tab title="tab signup">
-              <div class="signup-cont cont">
+
+            <b-tab title="Sign Up">
+              <div class="cont">
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                   <b-form-group
                     id="input-group-1"
                     label="Email address:"
                     label-for="input-1"
-                    description="We'll never share your email with anyone else."
                   >
                     <b-form-input
                       id="input-1"
@@ -79,29 +69,32 @@
                     ></b-form-input>
                   </b-form-group>
 
-                  <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-                    <b-form-select
+                  <b-form-group id="input-group-2" label="Your password:" label-for="input-3">
+                    <b-form-input
                       id="input-3"
-                      v-model="form.food"
-                      :options="foods"
+                      v-model="form.password"
                       required
-                    ></b-form-select>
+                      placeholder="Enter Password"
+                    ></b-form-input>
                   </b-form-group>
 
-                  <b-form-group id="input-group-4">
-                    <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                      <b-form-checkbox value="me">Check me out</b-form-checkbox>
-                    </b-form-checkbox-group>
+                  <b-form-group id="input-group-2" label="Your password check:" label-for="input-4">
+                    <b-form-input
+                      id="input-4"
+                      v-model="form.passwordchk"
+                      required
+                      placeholder="Password check"
+                    ></b-form-input>
                   </b-form-group>
 
-                  <b-button type="submit" variant="primary">Submit</b-button>
+                  <b-button type="submit" variant="primary">Sign Up</b-button>
                   <b-button type="reset" variant="danger">Reset</b-button>
                 </b-form>
               </div>
             </b-tab>
           </b-tabs>
       </div>
-    </article>
+    </div>
     <div class="half bg">
       <img src="../assets/back.jpg" />
     </div>
@@ -116,10 +109,11 @@ export default {
         form: {
           email: '',
           name: '',
-          food: null,
+          password: '',
+          passwordchk: '',
           checked: []
         },
-        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+
         show: true
       }
     },
@@ -156,7 +150,7 @@ export default {
   }
 
   .login_inner_wrap {
-    height: 35rem;
+    height: 40rem;
     position: relative;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
@@ -172,8 +166,11 @@ export default {
   .login_inner_wrap .half {
     width: 60%;
     height: 100%;
-    padding: 4rem 7rem;
     float: left;
+  }
+
+  .content {
+    padding: 2rem 7rem 1.5rem;
   }
 
   .login_inner_wrap .half.bg {
@@ -188,21 +185,11 @@ export default {
     height: 100%;
   }
 
-  .login_inner_wrap h1 {
-    font-size: 18px;
+  .login_inner_wrap h4 {
     font-weight: 700;
-    margin-bottom: 23px;
+    padding-top: 2rem;
     text-align: center;
-    text-indent: 6px;
-    letter-spacing: 7px;
-    text-transform: uppercase;
     color: #263238;
-  }
-
-  .login_inner_wrap .tabs {
-    width: 100%;
-    margin-bottom: 29px;
-    border-bottom: 1px solid #d9d9d9;
   }
 
   .login_inner_wrap .tabs .tab {
@@ -212,25 +199,11 @@ export default {
     cursor: pointer;
     letter-spacing: 0;
     border-bottom: 1px solid #d9d9d9;
-    user-select: none;
     transition: all 0.1s ease-in-out;
   }
 
-  .login_inner_wrap .tabs .tab a {
-    font-size: 11px;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #d9d9d9;
-    transition: all 0.1s ease-in-out;
-  }
-
-  .login_inner_wrap .tabs .tab.active a,
-  .login_inner_wrap .tabs .tab:hover a {
-    color: #263238;
-  }
-
-  .login_inner_wrap .tabs .tab.active {
-    border-bottom: 1px solid #263238;
+  .cont {
+    padding-top: 3rem;
   }
 
   .login_inner_wrap .content form {
@@ -238,26 +211,22 @@ export default {
   }
 
   .login_inner_wrap .content label:first-of-type,
-  .login_inner_wrap .content input:first-of-type,
-  .login_inner_wrap .content .more:first-of-type {
+  .login_inner_wrap .content input:first-of-type{
     animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
   .login_inner_wrap .content label:nth-of-type(2),
-  .login_inner_wrap .content input:nth-of-type(2),
-  .login_inner_wrap .content .more:nth-of-type(2) {
+  .login_inner_wrap .content input:nth-of-type(2){
     animation: slideIn 0.5s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
   .login_inner_wrap .content label:nth-of-type(3),
-  .login_inner_wrap .content input:nth-of-type(3),
-  .login_inner_wrap .content .more:nth-of-type(3) {
+  .login_inner_wrap .content input:nth-of-type(3) {
     animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
   .login_inner_wrap .content label:nth-of-type(4),
-  .login_inner_wrap .content input:nth-of-type(4),
-  .login_inner_wrap .content .more:nth-of-type(3) {
+  .login_inner_wrap .content input:nth-of-type(4) {
     animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
   }
 
@@ -287,23 +256,5 @@ export default {
       opacity: 1;
       margin-left: 0px;
     }
-  }
-
-  .credits {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    color: #999999;
-    font-size: 14px;
-    margin: 0 10px 10px 0;
-  }
-
-  .credits a {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-    opacity: 0.8;
-    color: inherit;
-    font-weight: 700;
-    text-decoration: none;
   }
 </style>
