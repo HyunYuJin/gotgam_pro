@@ -10,8 +10,8 @@
       @onClick="handleClick"
     />
 
-    <!-- .content -->
-    <div class="content">
+    <!-- .content7 -->
+    <div class="content7">
       <!-- tab1 -->
       <div v-if="currentTab === 'tab1'">
 
@@ -49,7 +49,7 @@
       <!-- tab4 end -->
     </div>
 
-    <!-- .content end -->
+    <!-- .content7 end -->
   </div>
 </template>
 
@@ -159,9 +159,9 @@ button {
   transition: transform 0.4s ease, width 0.4s ease;
 }
 
-/* content */
+/* content7 */
 
-.content {
+.content7 {
   padding-top: 50px;
 }
 
