@@ -220,7 +220,7 @@ export default {
     z-index: 2;
 }
 
-h1 {
+.in h1 {
     display: block;
     line-height: 1;
     font-size: 5rem;
