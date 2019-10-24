@@ -55,7 +55,8 @@ export default new Router({
       component: Registration
     },
     {
-      path: '/gotgamdetail',
+      path: '/regiontravel:id',
+      // path: '/gotgamdetail',
       name: 'GotgamDetail',
       component: GotgamDetail
     },

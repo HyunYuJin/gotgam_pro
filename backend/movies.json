@@ -9,37 +9,42 @@
     },
     {
         "id": 2,
-        "name": "컨택트",
-        "year": 2017,
-        "director": "드니 빌뇌브",
-        "poster": "http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79437/79437_185.jpg"
+        "name": "서울의 구석구석 4박 5일",
+        "year": "2019.10.14",
+        "director": "이다빈",
+        "site": "서울시 종로구",
+        "poster": "paju.jpg"
     },
     {
         "id": 3,
-        "name": "더킹",
-        "year": 2017,
-        "director": "한재림",
-        "poster": "http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79423/79423_185.jpg"
+        "name": "경복궁",
+        "year": "2019.10.14",
+        "director": "정지혁",
+        "site": "서울시 종로구",
+        "poster": "paju.jpg"
     },
     {
         "id": 4,
-        "name": "모아나",
-        "year": 2017,
-        "director": "론 클레멘츠, 존 머스커",
-        "poster": "http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79316/79316_185.jpg"
+        "name": "천천히 산책하기 2박3일",
+        "year": "2019.10.14",
+        "director": "현혜진",
+        "site": "서울시 종로구",
+        "poster": "paju.jpg"
     },
     {
         "id": 5,
-        "name": "라이언",
-        "year": 2017,
-        "director": "가스 데이비스",
-        "poster": "http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79396/79396_185.jpg"
+        "name": "국립중앙박물관",
+        "year": "2019.10.17",
+        "director": "이제찬",
+        "site": "서울시 용산구",
+        "poster": "paju.jpg"
     },
     {
         "id": 6,
-        "name": "너의 이름은",
-        "year": 2017,
-        "director": "신카이 마코토",
-        "poster": "http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79313/79313_1000.jpg"
+        "name": "N서울타워",
+        "year": "2019.10.20",
+        "director": "이지연",
+        "site": "서울시 용산구",
+        "poster": "paju.jpg"
     }
 ]

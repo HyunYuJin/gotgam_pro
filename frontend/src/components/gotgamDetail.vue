@@ -9,10 +9,7 @@
         <div class="gotgam_info_background">
           <div class="item-img"></div>
           <div class="item-desc item-desc-single-over">
-            <div class="post-categ">
-              <a>경기도 > 수원시 > 영통구 > 광교동</a>
-            </div>
-            <h1>아름다움이 숨쉬는 광교호수공원</h1>
+            <h1>{{movie.name}}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
@@ -53,6 +50,18 @@
       Primary,
       Secondary
     },
+    created: function () {
+      var id = this.$route.params.id
+      this.$http.get(`/api/movies/${id}`)
+      .then((response) => {
+        this.movie = response.data
+      })
+    },
+    data: function () {
+      return {
+        movie: {}
+      }
+    }
   }
 </script>
 
@@ -105,27 +114,6 @@
     right: 0;
     transform: translateY(-50%);
     text-align: center;
-  }
-
-  .post-categ {
-    font-size: 14px;
-  }
-
-  .post-categ a {
-    margin-right: 8px;
-    position: relative;
-    color: #fff;
-  }
-
-  .post-categ a:after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: #ff4401;
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    opacity: 1;
   }
 
   .gotgam_info_background h1 {

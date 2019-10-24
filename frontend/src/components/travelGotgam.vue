@@ -13,7 +13,7 @@
           <div class="travel_gotgam_inner" v-for="movie in movies" v-bind:key="movie.id">
 
               <!-- travel_gotgam_list -->
-              <router-link :to="{ name: 'show', params: { id: movie.id }}">
+              <router-link :to="{ name: 'GotgamDetail', params: { id: movie.id }}">
                 <div class="travel_gotgam_list">
                     <!-- travel_gotgam_list_inner -->
                     <div class="travel_gotgam_list_inner">
@@ -38,48 +38,6 @@
                                 <p><span>위치: </span> {{movie.site}}</p>
                                 <p><span>작성자: </span> {{movie.director}}</p>
                                 <p><span>작성일: </span> {{movie.year}}</p>
-                            </div>
-                            <!-- list_content_info end -->
-                        </div>
-                        <!-- travel_gotgam_list_content end -->
-
-                        <!-- my_gotgam_btn -->
-                        <div class="my_gotgam_wrap">
-                            <div class="my_gotgam_btn"></div>
-                            <p>관심 곶감 등록</p>
-                        </div>
-                        <!-- my_gotgam_btn end -->
-
-                    </div>
-                    <!-- travel_gotgam_list_inner end -->
-                </div>
-              </router-link>
-              <!-- travel_gotgam_list end -->
-
-              <!-- travel_gotgam_list -->
-              <router-link :to="gotgamdetail.link">
-                <div class="travel_gotgam_list">
-                    <!-- travel_gotgam_list_inner -->
-                    <div class="travel_gotgam_list_inner">
-
-                        <!-- travel_gotgam_img -->
-                        <div class="travel_gotgam_list_img">
-                            <div class="travel_gotgam_img"></div>
-                        </div>
-                        
-                        <!-- travel_gotgam_list_content -->
-                        <div class="travel_gotgam_list_content">
-                            <!-- list_content_title -->
-                            <div class="list_content_title">
-                                <p>아름다움이 숨쉬는 광교호수공원</p>
-                            </div>
-                            <!-- list_content_title end -->
-
-                            <!-- list_content_info -->
-                            <div class="list_content_info">
-                                <p><span>위치: </span> 영통구 광교동</p>
-                                <p><span>작성자: </span> 현유진</p>
-                                <p><span>작성일: </span> 2019.09.04</p>
                             </div>
                             <!-- list_content_info end -->
                         </div>
