@@ -120,41 +120,54 @@
                     <b-col md="12">
                     <h3> Step 2 </h3>
                     <b-card no-body>
-                        <b-tabs card>
-                            <!-- Render Tabs, supply a unique `key` to each tab -->
-                            <b-tab v-for="i in tabs" :key="'dyn-tab-' + i" :title="'DAY ' + i">
-                                <p class="text-center">
-                                    DAY {{ i }}
-                                </p>
-                                <b-col cols="12" class="pt-2">
-                                    <div class="form-group p-0 form-inline justify-content-between col-12">
-                                        <label class="font-weight-bold" for="day1">제목</label>
-                                        <input type="text" name="day1" id="" class="form-control col-8">
-                                        <button class="btn btn-danger"> 등록완료 </button>
-                                    </div>
-                                    <b-row>
-                                        <b-col cols="12" lg="6" class="border text-center py-4 my-3 bg-secondary">img</b-col>
-                                        <b-col cols="12" lg="6">
-                                            <textarea class="form-control mb-3 text-xsmall" name="" id="" rows="6" placeholder="이날의 곶감을 기록해주세요."></textarea>
-                                        </b-col>
-                                    </b-row>
-                                    <hr>
-                                    <b-row>
-                                        <b-col cols="12" lg="6" class="form-group form-inline" id="display-traffic">
-                                            <label class="control-label font-weight-bold" for="traffic">교통</label>
-                                            <textarea class="form-control col-10 mx-auto " rows="3" name="" id="traffic"></textarea>
-                                        </b-col>
-                                        <b-col cols="12" lg="6" class="p-0 form-group form-inline" id="display-restaurant">
-                                            <label class="control-label font-weight-bold" for="restaurant">맛집</label>
-                                            <textarea class="form-control col-10 mx-auto " rows="3" name="" id="restaurant"></textarea>
-                                        </b-col>
-                                        <b-col cols="12" lg="6" class="p-0 form-group form-inline" id="display-location">
-                                            <label class="control-label font-weight-bold" for="location">지도</label>
-                                            <textarea class="form-control col-10 mx-auto " rows="3" name="" id="location"></textarea>
-                                        </b-col>
-                                    </b-row>
-                                </b-col>
-                            </b-tab>
+                      <b-tabs card>
+                        <!-- Render Tabs, supply a unique `key` to each tab -->
+                        <b-tab v-for="i in tabs" :key="'dyn-tab-' + i" :title="'DAY ' + i">
+                          <p class="text-center">
+                            DAY {{ i }}
+                          </p>
+                          <b-col cols="12" class="pt-2">
+                            <div class="form-group p-0 form-inline justify-content-between col-12">
+                              <label class="font-weight-bold" for="day1">제목</label>
+                              <input type="text" name="day1" id="" class="form-control col-8">
+                              <button class="btn btn-danger"> 등록완료 </button>
+                            </div>
+                            <b-row>
+                              <b-col cols="12" lg="6">
+                                <div class="img_uploader_wrap">
+                                  <label for="fileInput" slot="upload-label">
+                                    <span class="upload-caption">{{ hasImage ? "Replace" : "Click to upload" }}</span>
+                                  </label>
+                                  <image-uploader :preview="true" :className="['fileinput', { 'fileinput--loaded': hasImage }]"
+                                    capture="environment" :debug="1" doNotResize="gif" :autoRotate="true" outputFormat="verbose"
+                                    @input="setImage">
+                                  </image-uploader>
+                                </div>
+                              </b-col>
+                              <b-col cols="12" lg="6">
+                                <textarea class="form-control mb-3 text-xsmall" name="" id="" rows="6"
+                                  placeholder="이날의 곶감을 기록해주세요."></textarea>
+                              </b-col>
+                            </b-row>
+                            <hr>
+                            <b-row>
+                              <b-col cols="12" lg="6" class="form-group form-inline" id="display-traffic">
+                                <label class="control-label font-weight-bold" for="traffic">교통</label>
+                                <textarea class="form-control col-10 mx-auto " rows="3" name="" id="traffic"></textarea>
+                              </b-col>
+                              <b-col cols="12" lg="6" class="p-0 form-group form-inline" id="display-restaurant">
+                                <label class="control-label font-weight-bold" for="restaurant">맛집</label>
+                                <textarea class="form-control col-10 mx-auto " rows="3" name=""
+                                  id="restaurant"></textarea>
+                              </b-col>
+                              <b-col cols="12" lg="6" class="p-0 form-group form-inline" id="display-location">
+                                <label class="control-label font-weight-bold" for="location">지도</label>
+                                <textarea class="form-control col-10 mx-auto " rows="3" name=""
+                                  id="location"></textarea>
+                              </b-col>
+                            </b-row>
+                          </b-col>
+                        </b-tab>
 
                             <!-- New Tab Button (Using tabs-end slot) -->
                             <template v-slot:tabs-start>
@@ -182,20 +195,12 @@
                     </b-row>
                     </b-col>
                 </b-col>
-                </b-row>
-                <b-row class="setup-content" id="step-3">
-                <b-col cols="12" offset-md="12">
-                    <b-col md="12">
-                        <h3> Step 3</h3>
-                        <b-button class="pull-left">Previous</b-button>
-                        <b-button class="pull-right" type="submit">Submit</b-button>
-                    </b-col>
-                </b-col>
-                </b-row>
+              </b-row>
             </form>
-            
-            </b-container>
-      </div>
+          </b-tab>
+        </b-tabs>
+      </b-container>
+    </div>
   </div>
 </template>
 

@@ -3,8 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-// import Index from '../components/IndexPage'
-// import Show from '../components/ShowPage'
+import Index from '../components/IndexPage'
+import Show from '../components/ShowPage'
 import MainPage from '../components/container.vue';
 import Login from '@/components/login.vue';
 import RegionTravel from '@/components/regionTravel.vue';
@@ -16,16 +16,17 @@ import About from '@/components/about.vue';
 export default new Router({
 //  mode: 'history',
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'index',
-    //   component: Index
-    // },
-    // {
-    //   path: '/:id',
-    //   name: 'show',
-    //   component: Show
-    // },
+    {
+      path: '/index',
+      name: 'index',
+      component: Index
+    },
+    {
+      // path: '/:id',
+      path: '/show',
+      name: 'show',
+      component: Show
+    },
 
     {
       path: '/',

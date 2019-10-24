@@ -24,8 +24,8 @@
                                 <h4>순천 성벽의 매력</h4>
                             </div>
                         </div>
-                        <div class="modal_button">
-                            <modal-btn></modal-btn>
+                        <div class="modal_button col-4">
+                            <modal-btn1></modal-btn1>
                         </div>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
                                 <h4>부산의 색깔!</h4>
                             </div>
                         </div>
-                        <div class="modal_button">
-                            <modal-btn></modal-btn>
+                        <div class="modal_button col-4">
+                            <modal-btn2></modal-btn2>
                         </div>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                                 <h4>Urban Compositions</h4>
                             </div>
                         </div>
-                        <div class="modal_button">
-                            <modal-btn></modal-btn>
+                        <div class="modal_button col-4">
+                            <modal-btn3></modal-btn3>
                         </div>
                     </div>
                 </div>
@@ -78,11 +78,15 @@
 </template>
 
 <script>
-import ModalBtn from './modal.vue';
+import ModalBtn1 from './modal1.vue';
+import ModalBtn2 from './modal2.vue';
+import ModalBtn3 from './modal3.vue';
 
 export default {
     components: {
-        ModalBtn
+        ModalBtn1,
+        ModalBtn2,
+        ModalBtn3
     },
 
     methods: {

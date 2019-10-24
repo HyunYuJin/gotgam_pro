@@ -8,9 +8,12 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import ImageUploader from 'vue-image-upload-resize'
+import vueCountryRegionSelect from 'vue-country-region-select'
+
 
 Vue.use(BootstrapVue)
 Vue.use(ImageUploader)
+Vue.use(vueCountryRegionSelect)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
