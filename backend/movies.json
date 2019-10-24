@@ -1,10 +1,11 @@
 [
     {
         "id": 1,
-        "name": "공조",
-        "year": 2017,
-        "director": "김성훈",
-        "poster": "http://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79416/79416_185.jpg"
+        "name": "아름다움이 숨쉬는 광교호수공원",
+        "year": "2019.10.10",
+        "director": "현유진",
+        "site": "영통구 광교동",
+        "poster": "paju.jpg"
     },
     {
         "id": 2,

@@ -8,34 +8,36 @@
       <!-- travel_gotgam_title end -->
 
       <!-- travel_gotgam_body -->
-      <div class="travel_gotgam_body">
+      <div class="movies travel_gotgam_body">
           <!-- travel_gotgam_inner -->
-          <div class="travel_gotgam_inner">
+          <div class="travel_gotgam_inner" v-for="movie in movies" v-bind:key="movie.id">
 
               <!-- travel_gotgam_list -->
-              <router-link :to="gotgamdetail.link">
+              <router-link :to="{ name: 'show', params: { id: movie.id }}">
                 <div class="travel_gotgam_list">
                     <!-- travel_gotgam_list_inner -->
                     <div class="travel_gotgam_list_inner">
 
                         <!-- travel_gotgam_img -->
                         <div class="travel_gotgam_list_img">
-                            <div class="travel_gotgam_img"></div>
+                            <div class="travel_gotgam_img">
+                                <img v-bind:src="movie.poster" class="travel_gotgam_img">
+                            </div>
                         </div>
                         
                         <!-- travel_gotgam_list_content -->
                         <div class="travel_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <p>아름다움이 숨쉬는 광교호수공원</p>
+                                <p>{{movie.name}}</p>
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <p><span>위치: </span> 영통구 광교동</p>
-                                <p><span>작성자: </span> 현유진</p>
-                                <p><span>작성일: </span> 2019.09.04</p>
+                                <p><span>위치: </span> {{movie.site}}</p>
+                                <p><span>작성자: </span> {{movie.director}}</p>
+                                <p><span>작성일: </span> {{movie.year}}</p>
                             </div>
                             <!-- list_content_info end -->
                         </div>
@@ -106,13 +108,20 @@
 
 <script>
 export default {
-    data() {
-    	return {
-			gotgamdetail: {
-        		link: "/gotgamdetail"
-			}
-		};
-	},
+  created () {
+    this.$http.get('/api/movies')
+    .then((response) => {
+      this.movies = response.data
+    })
+  },
+  data () {
+    return {
+        movies: [],
+        gotgamdetail: {
+            link: "/gotgamdetail"
+        }
+    }
+  }
 }
 </script>
 

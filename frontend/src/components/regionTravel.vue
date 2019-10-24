@@ -1,6 +1,5 @@
 <template>
   <div class="wrap2">
-      <select-wrap></select-wrap>
       <visual-wrap></visual-wrap>
       <div class="container2">
         <region-tab></region-tab>
@@ -9,13 +8,11 @@
 </template>
 
 <script>
-import SelectWrap from './selectWrap.vue';
 import VisualWrap from './visualWrap.vue';
 import RegionTab from './regionTab.vue';
 
 export default {
     components: {
-        SelectWrap,
         VisualWrap,
         RegionTab
     }

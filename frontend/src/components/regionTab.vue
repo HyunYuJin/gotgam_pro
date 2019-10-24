@@ -18,7 +18,9 @@
         <!-- carousel -->
         <carousel :auto="3000" :watch-items="list">
           <carousel-item v-for="(item, index) in list" :key="item.name">
-            <p>CarouselItem{{index}}, URL is {{item.url}}</p>
+            <p>
+              {{index + 1}} {{item.url}}
+            </p>
           </carousel-item>
         </carousel>
         <!-- carousel end -->
@@ -86,7 +88,7 @@ export default {
 
       auto: 3000,
 
-      list: [{ url: "url1" }, { url: "url2" }, { url: "url3" }]
+      list: [{ url: "남산타워" }, { url: "광화문" }, { url: "url3" }]
     };
   },
 
@@ -170,14 +172,43 @@ button {
 .v-carousel {
   width: 100%;
   height: 15rem;
-  background: pink;
   overflow: hidden;
   position: relative;
   margin-bottom: 3.4rem;
 }
 
 .v-carousel-items {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+}
+
+.v-carousel-item {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+.v-carousel-item:nth-of-type(1) {
+  background: url('../assets/seoul1.jpg') center center;
+  background-size: cover;
+}
+
+.v-carousel-item:nth-of-type(2) {
+  background: url('../assets/seoul2.jpg') center center;
+  background-size: cover;
+}
+
+.v-carousel-item:nth-of-type(3) {
+  background: url('../assets/seoul3.jpg') center center;
+  background-size: cover;
+}
+
+.v-carousel-item p {
+  text-align: center;
+  line-height: 15rem;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .v-carousel-dots {
@@ -195,11 +226,11 @@ button {
   height: 10px;
   margin: 0 5px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .v-carousel-dot.active {
-  background: #000;
+  background: #ff4401;
   cursor: default;
 }
 
@@ -207,9 +238,9 @@ button {
   cursor: pointer;
   position: absolute;
   line-height: 30px;
-  color: #fff;
+  color: #ff4401;
   padding: 0 5px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(225, 225, 225, 0.5);
   top: 50%;
   margin-top: -15px;
 }

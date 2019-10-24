@@ -1,39 +1,60 @@
 <template>
+<div>
+  <div class="selectbox_wrap">
+    <div class="selectbox_inner_wrap">
+      <div class="selectbox_title">
+        <span>여행 지역</span>
+      </div>
+      <div class="selectbox">
+        <div class="regionSelectWrap">
+          <country-select v-model="country" :country="country" topCountry="Korea, Republic of" :countryName="true" />
+        </div>
+        <div class="citySelectWrap">
+          <region-select v-model="region" :country="country" :region="region" :countryName="true" :regionName="true" />
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
   <div class="visualWrap">
-          <span class="cover"></span>
-          <div class="in">
-              <h1>수원</h1>
-              <div class="city_time">
-                  <span class="time">{{ setTime() }}</span>
-                  <ul>
-                      <li class="local_time_wrap">
-                        <svg></svg>
-                        <span class="localTimeArea">
-                            <span class="time"></span>
-                        </span>
-                      </li>
-                  </ul>
-              </div>
+    <span class="cover">
+        <img :key="region.photo">
+    </span>
+    <div class="in">
+      <h1>{{"" + region}}</h1>
+      <div class="city_time">
+        <span class="time">{{ setTime() }}</span>
+        <ul>
+          <li class="local_time_wrap">
+            <svg></svg>
+            <span class="localTimeArea">
+              <span class="time"></span>
+            </span>
+          </li>
+        </ul>
+      </div>
 
-              <div class="key_info">
-                  <span class="cover"></span>
-                  <ul>
-                      <li class="weather">
-                          <span class="icon">
-                              <span class="fas" :class="setPhase()"></span>
-                          </span>
-                          <strong>날씨</strong>
-							<p>
-								<span class="weather-value di">{{ temp }}</span>&deg;
-                                <span class="weather-format di">{{ format }}</span>
-							</p>
-                      </li>
-                      <li class="hotspot">
-                          <span class="icon">
-                              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="fill: #fff" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <path d="M510.241,188.829L415.802,63.361c-1.655-2.198-4.246-3.492-6.997-3.492H103.197c-2.751,0-5.343,1.293-6.997,3.492
+      <div class="key_info">
+        <span class="cover">{{region.photo}}</span>
+        <ul>
+          <li class="weather">
+            <span class="icon">
+              <span class="fas" :class="setPhase()"></span>
+            </span>
+            <strong>날씨</strong>
+            <p>
+              <span class="weather-value di">{{ temp }}</span>&deg;
+              <span class="weather-format di">{{ format }}</span>
+            </p>
+          </li>
+          <li class="hotspot">
+            <span class="icon">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001"
+                style="fill: #fff" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M510.241,188.829L415.802,63.361c-1.655-2.198-4.246-3.492-6.997-3.492H103.197c-2.751,0-5.343,1.293-6.997,3.492
                                             L1.761,188.829c-2.617,3.477-2.285,8.345,0.779,11.435l54.211,54.657c3.406,3.433,8.952,3.455,12.387,0.05
                                             c3.434-3.406,3.457-8.952,0.05-12.387l-39.407-39.73h92.426l99.948,193.957L93.617,267.216c-3.408-3.436-8.953-3.457-12.387-0.051
                                             c-3.434,3.406-3.457,8.952-0.05,12.387l168.602,169.991c1.644,1.657,3.883,2.59,6.218,2.59s4.574-0.933,6.218-2.59
@@ -43,22 +64,25 @@
                                             l98.195,95.912H264.76V89.425z M289.848,396.811l66.306-128.675c2.216-4.3,0.527-9.582-3.773-11.798
                                             c-4.299-2.216-9.582-0.527-11.798,3.773l-75.825,147.146V202.854h105.33l-10.369,20.122c-2.215,4.3-0.526,9.582,3.773,11.798
                                             c4.301,2.215,9.582,0.527,11.798-3.773l14.503-28.147h92.425L289.848,396.811z M395.077,185.337L413.65,89.63l72.038,95.707
-                                            H395.077z"/>
-                                    </g>
-                                </g>
-                              </svg>
-                          </span>
-                          <strong>명소</strong>
-                          <p>
-                            수원 화성
-                          </p>
-                      </li>
-                      <li class="special">
-                          <span class="icon">
-                              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="fill: #fff;" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <path d="M500.033,264.883c-3.503-7.098-78.448-130.636-80.347-133.721c-13.99-22.704-38.24-36.258-64.869-36.258
+                                            H395.077z" />
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <strong>명소</strong>
+            <p>
+              수원 화성
+            </p>
+          </li>
+          <li class="special">
+            <span class="icon">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.001 512.001"
+                style="fill: #fff;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path
+                      d="M500.033,264.883c-3.503-7.098-78.448-130.636-80.347-133.721c-13.99-22.704-38.24-36.258-64.869-36.258
                                             c-3.799,0-7.53,0.288-11.182,0.828c-0.003-0.007-0.013-0.022-0.016-0.026c-6.453-10.457-17.622-16.701-29.876-16.701
                                             c-19.348,0-35.09,15.741-35.09,35.09v61.312h-45.306v-61.312c0-19.348-15.741-35.09-35.09-35.09
                                             c-12.232,0-23.38,6.221-29.89,16.727c-3.651-0.54-7.384-0.828-11.184-0.828c-26.629,0-50.879,13.555-64.87,36.26
@@ -76,54 +100,67 @@
                                             c-11.731,4.873-21.99,12.593-29.908,22.298V114.095z M295.79,171.072v-0.005c0-32.548,26.479-59.026,59.026-59.026
                                             c20.638,0,39.433,10.51,50.279,28.111c1.028,1.669,22.444,37.584,43.048,72.152c-15.868-8.09-33.819-12.658-52.818-12.658
                                             c-42.069,0-79.006,22.384-99.536,55.864V171.072z M395.327,415.857c-54.885,0-99.536-44.652-99.536-99.537
-                                            s44.652-99.537,99.536-99.537c54.885,0,99.537,44.652,99.537,99.537S450.211,415.857,395.327,415.857z"/>
-                                    </g>
-                                </g>
-                                <g>
-                                    <g>
-                                        <path d="M470.448,289.32c-1.602-4.452-6.508-6.765-10.962-5.164c-4.452,1.601-6.765,6.509-5.164,10.962
+                                            s44.652-99.537,99.536-99.537c54.885,0,99.537,44.652,99.537,99.537S450.211,415.857,395.327,415.857z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M470.448,289.32c-1.602-4.452-6.508-6.765-10.962-5.164c-4.452,1.601-6.765,6.509-5.164,10.962
                                             c2.438,6.783,3.675,13.917,3.675,21.203c0,34.557-28.113,62.671-62.671,62.671c-34.557,0-62.671-28.114-62.671-62.671
                                             s28.114-62.671,62.671-62.671c17.343,0,34.069,7.286,45.891,19.989c3.224,3.464,8.645,3.659,12.111,0.435
                                             c3.464-3.224,3.659-8.645,0.435-12.111c-15.051-16.174-36.351-25.451-58.437-25.451c-44.007,0-79.808,35.801-79.808,79.808
-                                            s35.801,79.808,79.808,79.808s79.808-35.801,79.808-79.808C475.135,307.054,473.558,297.969,470.448,289.32z"/>
-                                    </g>
-                                </g>
-                                <g>
-                                    <g>
-                                        <path d="M116.674,236.514c-44.007,0-79.808,35.801-79.808,79.808s35.801,79.808,79.808,79.808
+                                            s35.801,79.808,79.808,79.808s79.808-35.801,79.808-79.808C475.135,307.054,473.558,297.969,470.448,289.32z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M116.674,236.514c-44.007,0-79.808,35.801-79.808,79.808s35.801,79.808,79.808,79.808
                                             c44.007,0,79.808-35.801,79.808-79.808S160.68,236.514,116.674,236.514z M116.674,378.992c-34.557,0-62.671-28.113-62.671-62.671
-                                            c0-34.557,28.113-62.671,62.671-62.671s62.671,28.113,62.671,62.671C179.345,350.879,151.23,378.992,116.674,378.992z"/>
-                                    </g>
-                                </g>
-                            </svg>
-                          </span>
-                          <strong>특산물</strong>
-                          <p>
-                            갈비
-                          </p>
-                      </li>
-                      <li class="graph">
-                          <span class="icon">
-                              <svg></svg>
-                          </span>
-                          <strong>기분그래프</strong>
-                          <div class="graph_wrap"></div>
-                      </li>
-                  </ul>
-                  <span class="shadow"></span>
-              </div>
-          </div>
+                                            c0-34.557,28.113-62.671,62.671-62.671s62.671,28.113,62.671,62.671C179.345,350.879,151.23,378.992,116.674,378.992z" />
+                  </g>
+                </g>
+              </svg>
+            </span>
+            <strong>특산물</strong>
+            <p>
+              갈비
+            </p>
+          </li>
+          <li class="graph">
+            <span class="icon">
+              <svg></svg>
+            </span>
+            <strong>기분그래프</strong>
+            <div class="graph_wrap"></div>
+          </li>
+        </ul>
+        <span class="shadow"></span>
       </div>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
+import CountrySelect from '@/components/country-select'
+import RegionSelect from '@/components/region-select'
+
 export default {
+    components: {
+        CountrySelect,
+        RegionSelect
+    },
+
     data() {
         return {
             temp: 0,
             format: 'C',
             time: new Date(),
-            phase: 'fa-adjust'                  
+            phase: 'fa-adjust',
+            country: 'Korea, Republic of',
+            region: '서울특별시'
         }
     },
     
@@ -186,11 +223,44 @@ export default {
     box-sizing: border-box;
 }
 
+.selectbox_wrap {
+  padding: 1rem 4rem;
+}
+
+.selectbox_inner_wrap {
+  display: flex;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+.selectbox_title {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.selectbox_title span {
+  font-size: 2rem;
+}
+
+.selectbox {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.regionSelectWrap, .citySelectWrap {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .visualWrap {
     position: relative;
     width: 100%;
     height: 506px;
-    background: url(../assets/suwon2.jpg) center center no-repeat;
+    background: url(../assets/seoulKey.jpg) center center no-repeat;
     overflow: hidden;
     margin: 3rem 0;
 }

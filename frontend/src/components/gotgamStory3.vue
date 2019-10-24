@@ -11,16 +11,11 @@
       </svg>
       <div class="s4_contents">
         <p class="s4_normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Aenean euismod bibendum laoreet.
-          Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
-          Proin sodales pulvinar sic tempor.
-          Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc
-          accuan eget.
+          Q. 곶감의 훌륭한 점과 더불어 더 추가했으면 하는 점 <br> <br>
+          기분에 따라 상이하게 변하는 여행지 추천 목록은 무척이나 특색있고 재밌는 부분이다. 누군가는 그 지역에 갔을 때 우울한 채로 다녀왔다 후기를 작성했으며 또 누군가는 같은 지역이지만 밝은 기분으로 다녀왔다 후기를 작성했다는 것 역시 의미가 깊다고 생각한다. 조금씩 다른 부분은 있었지만 통계로 나오는 기분 수치로 인해 망설임 없이 여행지 선택에 대해 신뢰할 수 있었다.
         </p>
         <p class="s4_bold">
-          Yu Jin In Suwon
+          Da Bin In Incheon
         </p>
       </div>
     </div>

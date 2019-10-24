@@ -113,7 +113,17 @@
                               <button class="btn btn-danger"> 등록완료 </button>
                             </div>
                             <b-row>
-                              <b-col cols="12" lg="6" class="border text-center py-4 my-3 bg-secondary">img</b-col>
+                              <b-col cols="12" lg="6">
+                                <div class="img_uploader_wrap">
+                                  <label for="fileInput" slot="upload-label">
+                                    <span class="upload-caption">{{ hasImage ? "Replace" : "Click to upload" }}</span>
+                                  </label>
+                                  <image-uploader :preview="true" :className="['fileinput', { 'fileinput--loaded': hasImage }]"
+                                    capture="environment" :debug="1" doNotResize="gif" :autoRotate="true" outputFormat="verbose"
+                                    @input="setImage">
+                                  </image-uploader>
+                                </div>
+                              </b-col>
                               <b-col cols="12" lg="6">
                                 <textarea class="form-control mb-3 text-xsmall" name="" id="" rows="6"
                                   placeholder="이날의 곶감을 기록해주세요."></textarea>
@@ -160,19 +170,6 @@
                         <b-button type="submit" class="col-12">Save</b-button>
                       </b-col>
                     </b-row>
-                  </b-col>
-                </b-col>
-              </b-row>
-            </form>
-          </b-tab>
-          <b-tab title="Step 3">
-            <form action="">
-              <b-row class="setup-content" id="step-3">
-                <b-col cols="12" offset-md="12">
-                  <b-col md="12">
-                    <h3> Step 3</h3>
-                    <b-button class="pull-left">Previous</b-button>
-                    <b-button class="pull-right" type="submit">Submit</b-button>
                   </b-col>
                 </b-col>
               </b-row>

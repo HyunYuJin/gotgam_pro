@@ -11,10 +11,11 @@
       </svg>
       <div class="s4_contents">
         <p class="s4_normal">
-          용인 에버랜드 댕겨왔슈
+          Q. 곶감을 이용해 여행중 극복한 점? <br> <br>
+          위로 역시 받았지만 그 와중에도 여행지를 찾아 떠나는 계획에 큰 시간이 들지 않아 무척이나 좋았던 것 같다. 여행 중 잦은 소비가 걱정이었다면 곶감에 따른 여행지 선택 및 사용후기를 본 결과 좀 더 현명하게 소비를 할 수 있었다. 또한 현지인의 추천대로 여행을 가보는 것도 무척 훌륭한 선택이었다고 생각한다. 
         </p>
         <p class="s4_bold">
-          Jeong Ji Hyurk In Yongin
+          Ji Hyurk In Yongin
         </p>
       </div>
     </div>
