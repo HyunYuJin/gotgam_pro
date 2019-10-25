@@ -4,25 +4,14 @@
             <div class="content-wrapper">
                 <div class="calousel_wrapper">
                     <carousel :autoplay="true" :nav="false">
-                        <img src="https://placeimg.com/200/200/any?1">
-                        <img src="https://placeimg.com/200/200/any?2">
-                        <img src="https://placeimg.com/200/200/any?3">
-                        <img src="https://placeimg.com/200/200/any?4">
-                        <img src="https://placeimg.com/200/200/any?4">
+                        <img v-bind:src="movie.photo1">
+                        <img v-bind:src="movie.photo2">
+                        <img v-bind:src="movie.photo3">
+                        <img v-bind:src="movie.photo4">
                     </carousel>
                 </div>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat augue et urna laoreet, et
-                    mattis leo commodo. Aenean egestas, velit in ultricies elementum, sapien augue rutrum nisl, nec
-                    condimentum nisl lectus ut tortor.</p>
-                <p>Sed tempus placerat iaculis. Proin porttitor turpis fermentum, gravida nisl vitae, maximus est.
-                    Vivamus eget nulla at tortor hendrerit pellentesque. Vivamus dictum leo eu augue suscipit tincidunt.
-                    Phasellus vel luctus ipsum. Phasellus maximus venenatis lorem ac facilisis. Cum sociis natoque
-                    penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                <p>Phasellus ac mi consectetur justo laoreet rhoncus. Etiam varius eget velit et hendrerit. Duis feugiat
-                    at orci in hendrerit. Nulla nunc metus, euismod et pretium sed, scelerisque vitae lacus. Aenean
-                    mattis
-                    placerat pharetra.</p>
+                <p>{{movie.content}}</p>
 
                 <!-- accordion -->
                 <accordion-wrap></accordion-wrap>
@@ -39,6 +28,18 @@
         components: {
             carousel,
             AccordionWrap,
+        },
+        created() {
+            var id = this.$route.params.id;
+            this.$http.get(`/api/movies/${id}`)
+                .then((response) => {
+                    this.movie = response.data[0]
+            })
+        },
+        data() {
+            return {
+                movie: {}
+            }
         }
 
     }
