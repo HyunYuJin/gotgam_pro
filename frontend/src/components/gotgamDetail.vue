@@ -9,7 +9,7 @@
         <div class="gotgam_info_background">
           <div class="item-img"></div>
           <div class="item-desc item-desc-single-over">
-            <h1>{{movie.name}}</h1>
+            <h1>{{movie}}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>

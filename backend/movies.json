@@ -1,50 +1,50 @@
 [
     {
         "id": 1,
-        "name": "아름다움이 숨쉬는 광교호수공원",
+        "name": "서울 도서관",
         "year": "2019.10.10",
         "director": "현유진",
-        "site": "영통구 광교동",
-        "poster": "paju.jpg"
+        "site": "서울특별시 중구",
+        "poster": "https://ifh.cc/g/uFlNZ.jpg"
     },
     {
         "id": 2,
-        "name": "서울의 구석구석 4박 5일",
+        "name": "경복궁",
         "year": "2019.10.14",
         "director": "이다빈",
-        "site": "서울시 종로구",
-        "poster": "paju.jpg"
+        "site": "서울특별시 종로구",
+        "poster": "https://ifh.cc/g/H7zmH.jpg"
     },
     {
         "id": 3,
-        "name": "경복궁",
+        "name": "여의도 한강공원의 야경",
         "year": "2019.10.14",
         "director": "정지혁",
-        "site": "서울시 종로구",
-        "poster": "paju.jpg"
+        "site": "서울특별시 영등포구",
+        "poster": "https://ifh.cc/g/j05gL.jpg"
     },
     {
         "id": 4,
         "name": "천천히 산책하기 2박3일",
         "year": "2019.10.14",
         "director": "현혜진",
-        "site": "서울시 종로구",
-        "poster": "paju.jpg"
+        "site": "서울특별시 종로구",
+        "poster": "https://ifh.cc/g/42DWK.jpg"
     },
     {
         "id": 5,
-        "name": "국립중앙박물관",
+        "name": "광장시장",
         "year": "2019.10.17",
-        "director": "이제찬",
-        "site": "서울시 용산구",
-        "poster": "paju.jpg"
+        "director": "이지연",
+        "site": "서울특별시 종로구",
+        "poster": "https://ifh.cc/g/I2Tzk.jpg"
     },
     {
         "id": 6,
-        "name": "N서울타워",
+        "name": "반포 밤도깨비 야시장",
         "year": "2019.10.20",
-        "director": "이지연",
-        "site": "서울시 용산구",
-        "poster": "paju.jpg"
+        "director": "이제찬",
+        "site": "서울특별시 서초구",
+        "poster": "https://ifh.cc/g/FE02L.jpg"
     }
 ]

@@ -43,13 +43,6 @@
                         </div>
                         <!-- travel_gotgam_list_content end -->
 
-                        <!-- my_gotgam_btn -->
-                        <div class="my_gotgam_wrap">
-                            <div class="my_gotgam_btn"></div>
-                            <p>관심 곶감 등록</p>
-                        </div>
-                        <!-- my_gotgam_btn end -->
-
                     </div>
                     <!-- travel_gotgam_list_inner end -->
                 </div>
@@ -137,7 +130,7 @@ a:hover {
 .travel_gotgam_img {
     width: 100%;
     height: 100%;
-    background: url(../assets/section3_img2.jpg) no-repeat;
+    /* background: url(../assets/section3_img2.jpg) no-repeat; */
     background-size: cover;
 }
 

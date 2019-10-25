@@ -54,7 +54,8 @@ export default [
         },
         {
           "name": "서울특별시",
-          "shortCode": "11"
+          "shortCode": "11",
+          "poster": "https://ifh.cc/g/u2cS0.jpg"
         },
         {
           "name": "세종특별자치시",
