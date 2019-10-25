@@ -17,9 +17,7 @@
     <hr>
   </div>
   <div class="visualWrap">
-    <span class="cover">
-        <img :key="region.photo">
-    </span>
+    <span class="cover"></span>
     <div class="in">
       <h1>{{"" + region}}</h1>
       <div class="city_time">

@@ -8,7 +8,7 @@
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
           <div class="item-img"></div>
-          <div class="item-desc item-desc-single-over">
+          <div class="item-desc item-desc-single-over" v-bind:key="movie.id">
             <h1>{{movie}}</h1>
             <ul class="post-meta">
               <li class="meta-author">
@@ -45,6 +45,7 @@
 <script>
   import Primary from './primary.vue';
   import Secondary from './secondary.vue'; 
+
   export default {
     components: {
       Primary,
@@ -59,7 +60,7 @@
     },
     data: function () {
       return {
-        movie: {}
+        movie: {},
       }
     }
   }
