@@ -1,105 +1,19 @@
 <template>
-<div class="wrap4">
-  <b-container class="login_inner_wrap">
-    <div class="half">
-      <h4>곶감</h4>
-      <div class="content2">
-          <b-tabs fill>
-            <b-tab title="Sign In" active>
-              <div class="cont2">
-                <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                  <b-form-group
-                    id="input-group-1"
-                    label="Email address:"
-                    label-for="input-1"
-                  >
-                    <b-form-input
-                      id="input-1"
-                      v-model="form.email"
-                      type="email"
-                      required
-                      placeholder="Enter email"
-                    ></b-form-input>
-                  </b-form-group>
-
-                  <b-form-group id="input-group-2" label="Your password:" label-for="input-2">
-                    <b-form-input
-                      id="input-2"
-                      v-model="form.password"
-                      required
-                      placeholder="Enter Password"
-                    ></b-form-input>
-                  </b-form-group>
-
-                  <b-form-group id="input-group-4">
-                    <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                      <b-form-checkbox value="me">Remember me</b-form-checkbox>
-                    </b-form-checkbox-group>
-                  </b-form-group>
-
-                  <b-button type="submit" variant="primary">Sign In</b-button>
-                  <b-button type="reset" variant="danger">Reset</b-button>
-                </b-form>
-              </div>
-            </b-tab>
-
-            <b-tab title="Sign Up">
-              <div class="cont2">
-                <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                  <b-form-group
-                    id="input-group-1"
-                    label="Email address:"
-                    label-for="input-1"
-                  >
-                    <b-form-input
-                      id="input-1"
-                      v-model="form.email"
-                      type="email"
-                      required
-                      placeholder="Enter email"
-                    ></b-form-input>
-                  </b-form-group>
-
-                  <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-                    <b-form-input
-                      id="input-2"
-                      v-model="form.name"
-                      required
-                      placeholder="Enter name"
-                    ></b-form-input>
-                  </b-form-group>
-
-                  <b-form-group id="input-group-2" label="Your password:" label-for="input-3">
-                    <b-form-input
-                      id="input-3"
-                      v-model="form.password"
-                      required
-                      placeholder="Enter Password"
-                    ></b-form-input>
-                  </b-form-group>
-
-                  <b-form-group id="input-group-2" label="Your password check:" label-for="input-4">
-                    <b-form-input
-                      id="input-4"
-                      v-model="form.passwordchk"
-                      required
-                      placeholder="Password check"
-                    ></b-form-input>
-                  </b-form-group>
-
-                  <b-button type="submit" variant="primary">Sign Up</b-button>
-                  <b-button type="reset" variant="danger">Reset</b-button>
-                </b-form>
-              </div>
-            </b-tab>
-          </b-tabs>
-      </div>
-    </div>
-    <div class="half bg">
-      <img src="../assets/back.jpg" />
-    </div>
-  </b-container>
-</div>
+<form name="user" method="post" action="/regist">
+  <div class="input-row">
+    <label for="userid">아이디</label>
+    <input id="userid" name="userid" type="text">
+  </div>
+  <div class="input-row">
+    <label for="name">이름</label>
+    <input id="name" name="name" type="text">
+  </div>
+  <div class="input-row">
+    <label for="address">주소</label>
+    <input id="address" name="address" type="text">
+  </div>
+  <button type="submit">전송</button>
+</form>
 </template>
 
 <script>
