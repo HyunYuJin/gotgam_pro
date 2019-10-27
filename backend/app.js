@@ -14,7 +14,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var movies = require('./routes/movies');
-var test = require('./routes/test');
 
 var mysql = require('mysql');
 // Connection 객체 생성 
@@ -55,7 +54,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/movies', movies);
-app.use('/regist', test);
 // app.use(require('connect-history-api-fallback')())
 
 // 에러 처리
