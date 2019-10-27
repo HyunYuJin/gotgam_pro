@@ -8,7 +8,7 @@ router.post('/regist', function (req, res) {
       'name': req.body.name,
       'address': req.body.address
     };
-    connection.query('insert into users set ?', user, function (err, result) {
+    var query = connection.query('insert into users set ?', user, function (err, result) {
       if (err) {
         console.error(err);
         throw err;

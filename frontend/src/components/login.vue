@@ -1,56 +1,50 @@
 <template>
-<form name="user" method="post" action="/regist">
-  <div class="input-row">
-    <label for="userid">아이디</label>
-    <input id="userid" name="userid" type="text">
+  <div>
+    <div class="input_row">
+      <label for="id">아이디</label>
+      <input type="text" id="id" v-model="user.userid">
+    </div>
+    <div class="input_row">
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" v-model="user.password">
+    </div>
+    <button v-on:click="login">로그인</button>
+    <router-link :to="signUp.link">가입하기</router-link>
   </div>
-  <div class="input-row">
-    <label for="name">이름</label>
-    <input id="name" name="name" type="text">
-  </div>
-  <div class="input-row">
-    <label for="address">주소</label>
-    <input id="address" name="address" type="text">
-  </div>
-  <button type="submit">전송</button>
-</form>
 </template>
 
 <script>
 export default {
-    data() {
-      return {
-        form: {
-          email: '',
-          name: '',
-          password: '',
-          passwordchk: '',
-          checked: []
-        },
-
-        show: true
-      }
-    },
-    methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
+  data: function () {
+    return {
+      signUp: {
+        link: "/signUp"
       },
-      onReset(evt) {
-        evt.preventDefault()
-        // Reset our form values
-        this.form.email = ''
-        this.form.name = ''
-        this.form.food = null
-        this.form.checked = []
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
+      user: {
+        userid: '',
+        password: ''
       }
     }
+  },
+  
+  methods: {
+    login: function (event) {
+      this.$http.post('/api/users/login', {
+        user: this.user
+      })
+      .then(
+        (res) => {  //로그인 성공
+          alert(res.data.message);
+        },
+        (err) => { // error 를 보여줌
+          alert('Login failed! please check your id or password');
+      })
+      .catch(err => {
+        alert(err);
+      })
+    }
   }
+}
 </script>
 
 <style>
