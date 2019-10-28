@@ -67,7 +67,7 @@ export default new Router({
       component: About
     },
     {
-      path: '/signup',
+      path: '/signUp',
       name: 'SignUp',
       component: SignUp
     }

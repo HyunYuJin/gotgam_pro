@@ -8,6 +8,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 // routes에 있는 파일을 가져온다.
 // routes는 express.Router()로 등록한 라우터 파일을 가지고 있는 디렉터리, 라우터 관리 담당
@@ -47,6 +48,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 요청한 파일 호출
