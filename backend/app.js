@@ -55,7 +55,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 요청한 파일 호출
 // method와 URL로 라우팅되어 처리
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+app.use('/users', usersRouter); // 이건 404 error
+// app.use('/api/users', usersRouter); // 이건 500 error
+
 app.use('/api/movies', movies);
 // app.use(require('connect-history-api-fallback')())
 
