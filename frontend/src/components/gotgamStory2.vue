@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="s4_contnets_photo">
-      <div class="s4_background"></div>
+      <div class="s4_background2"></div>
     </div>
   </div>
 </template>
@@ -72,8 +72,8 @@ export default {
     display: flex;
 }
 
-.s4_background {
-    background: url(../assets/suwon.jpg) no-repeat;
+.s4_background2 {
+    background: url(../assets/story2.jpg) no-repeat;
     padding-top: 60%;
     background-size: cover;
     background-position: 50%;

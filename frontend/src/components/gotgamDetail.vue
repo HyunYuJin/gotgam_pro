@@ -7,18 +7,17 @@
       <div class="gotgam_info_header">
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
-          <div class="item-img"></div>
-          <div class="item-desc item-desc-single-over">
-            <div class="post-categ">
-              <a>경기도 > 수원시 > 영통구 > 광교동</a>
-            </div>
-            <h1>아름다움이 숨쉬는 광교호수공원</h1>
+          <div class="item-img">
+            <img v-bind:src="movie.poster" >
+          </div>
+          <div class="item-desc item-desc-single-over" v-bind:key="movie.id">
+            <h1>{{movie.name}}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                Hyeon Yu Jin
+                {{movie.director}}
               </li>
-              <li class="meta-date">2019.10.10</li>
+              <li class="meta-date">{{movie.year}}</li>
             </ul>
           </div>
         </div>
@@ -48,11 +47,24 @@
 <script>
   import Primary from './primary.vue';
   import Secondary from './secondary.vue'; 
+
   export default {
     components: {
       Primary,
       Secondary
     },
+    created() {
+      var id = this.$route.params.id;
+      this.$http.get(`/api/movies/${id}`)
+          .then((response) => {
+            this.movie = response.data[0]
+          })
+    },
+    data() {
+      return {
+        movie: {}
+      }
+    }
   }
 </script>
 
@@ -77,7 +89,7 @@
   .item-img {
     width: 100%;
     height: 100%;
-    background: url(../assets/suwon_park.jpg) no-repeat;
+    /* background: url(../assets/suwon_park.jpg) no-repeat; */
     background-position: center center;
     background-size: cover;
     display: block;
@@ -105,27 +117,6 @@
     right: 0;
     transform: translateY(-50%);
     text-align: center;
-  }
-
-  .post-categ {
-    font-size: 14px;
-  }
-
-  .post-categ a {
-    margin-right: 8px;
-    position: relative;
-    color: #fff;
-  }
-
-  .post-categ a:after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: #ff4401;
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    opacity: 1;
   }
 
   .gotgam_info_background h1 {

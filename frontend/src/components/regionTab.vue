@@ -84,7 +84,7 @@ export default {
         { title: "지도 보기", value: "tab3" },
         { title: "곶감 여행기", value: "tab4" }
       ],
-      currentTab: "tab1",
+      currentTab: "tab4",
 
       auto: 3000,
 
