@@ -16,25 +16,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var movies = require('./routes/movies');
 
-var mysql = require('mysql');
-// Connection 객체 생성 
-var connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'root',   
-  password: 'root1234',
-  database: 'test_crud'  
-}); 
-
-// Connect
-connection.connect(function (err) {   
-  if (err) {     
-    console.error('mysql connection error');     
-    console.error(err);     
-    throw err;   
-  } 
-});
-
 // 미들웨어를 등록할 app 변수
 var app = express();
 
@@ -56,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // method와 URL로 라우팅되어 처리
 app.use('/', indexRouter);
 
-app.use('/users', usersRouter); // 이건 404 error
+app.use('/api/users', usersRouter); // 이건 404 error
 // app.use('/api/users', usersRouter); // 이건 500 error
 
 app.use('/api/movies', movies);

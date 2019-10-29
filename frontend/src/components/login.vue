@@ -29,16 +29,15 @@ export default {
   
   methods: {
     login: function (event) {
-      this.$http.post('/api/users/login', {
-        user: this.user
-      })
+      this.$http.post('/api/users/login1',
+        this.user
+      )
       .then(
-        (res) => {  //로그인 성공
-          alert(res.data.message);
+        (res) => { //no error
+          if(res.data.success){console.log(res.data.name);}
+          console.log(res.data.message)
         },
-        (err) => { // error 를 보여줌
-          alert('Login failed! please check your id or password');
-      })
+        )
       .catch(err => {
         alert(err);
       })

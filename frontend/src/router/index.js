@@ -15,7 +15,7 @@ import About from '@/components/about.vue';
 import SignUp from '@/components/SignUp.vue';
 
 export default new Router({
-//  mode: 'history',
+ mode: 'history',
   routes: [
     {
       path: '/index',

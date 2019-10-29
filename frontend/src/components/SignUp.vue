@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    data() {
+    data: function() {
         return {
             // component의 data에 user라는 객체를 준비한다.
             // user 객체 안에는 아이디, 이름, 비밀번호를 저장할 수 있는 속성이 있다.
@@ -33,9 +33,9 @@ export default {
     // axios로 /api/users/signUp을 호출하여 입력 받은 데이터(this.user)를 user 객체에 저장한다. 
     methods: {
         signUp: function (event) {
-            this.$http.post('/api/users/signUp', { 
-                user: this.user
-            })
+            this.$http.post('/api/users/signUp1',
+                this.user
+            )
             .then((res) => {
                 // 성공시, /login 페이지로 이동
                 if (res.data.success == true) {
@@ -43,12 +43,12 @@ export default {
                     this.$router.push('/login') 
                 }
                 // 실패시, error 메세지
-                if (res.data.success == false) {
+                else if (res.data.success == false) {
                     alert(res.data.message);
                 }
             })
             .catch(function (error) {
-                alert('error')
+                alert(error)
             })
         }
     }
