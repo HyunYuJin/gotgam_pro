@@ -1,6 +1,6 @@
 <template>
-  <div class="section4_contents">
-    <div class="s4_contents_wrap">
+  <div class="section4_contents row">
+    <div class="s4_contents_wrap col-12 col-md-6">
       <svg data-v-9004fbdc="" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 50 50"
         data-v-701be175="">
         <g fill="#ff4401">
@@ -19,7 +19,7 @@
         </p>
       </div>
     </div>
-    <div class="s4_contnets_photo">
+    <div class="s4_contnets_photo col-12 col-md-6">
       <div class="s4_background3"></div>
     </div>
   </div>
@@ -35,41 +35,6 @@ export default {
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
-}
-
-.section4_contents {
-    display: flex;
-    animation: fadeIn 0.5s;
-}
-
-.s4_contents_wrap {
-    flex: 1;
-    display: flex;
-}
-
-.s4_contents {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1.2rem 2.2rem 0 0;
-}
-
-.s4_contents .s4_normal {
-    margin-bottom: 1rem;
-    font-weight: 400;
-    font-size: .9rem;
-    line-height: 1.4rem;
-}
-
-.s4_contents .s4_bold {
-    font-weight: 700;
-    font-size: .9rem;
-    line-height: 1.4rem;
-}
-
-.s4_contnets_photo {
-    flex: 1;
-    display: flex;
 }
 
 .s4_background3 {

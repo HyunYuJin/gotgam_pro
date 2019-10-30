@@ -8,7 +8,7 @@
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
           <div class="item-img">
-            <img v-bind:src="movie.poster" >
+            <img v-bind:src="movie.poster">
           </div>
           <div class="item-desc item-desc-single-over" v-bind:key="movie.id">
             <h1>{{movie.name}}</h1>
@@ -27,7 +27,7 @@
       <!-- gotgam_info_header end -->
 
       <!-- gotgam_info_body -->
-      <div class="gotgam_info_body container">
+      <div class="gotgam_info_body container-fluid">
         <div class="row">
           <!-- primary -->
           <Primary></Primary>
@@ -46,7 +46,7 @@
 
 <script>
   import Primary from './primary.vue';
-  import Secondary from './secondary.vue'; 
+  import Secondary from './secondary.vue';
 
   export default {
     components: {
@@ -56,9 +56,9 @@
     created() {
       var id = this.$route.params.id;
       this.$http.get(`/api/movies/${id}`)
-          .then((response) => {
-            this.movie = response.data[0]
-          })
+        .then((response) => {
+          this.movie = response.data[0]
+        })
     },
     data() {
       return {
@@ -67,6 +67,9 @@
     }
   }
 </script>
+
+
+
 
 <style>
   .gotgam_detail_wrapper {

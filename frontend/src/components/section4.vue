@@ -5,7 +5,7 @@
             <h2>Gotgam's Stories</h2>
         </div>
         <div class="section4_body">
-            <div class="content">
+            <div class="content" >
                 <div v-if="activetab === 1" class="tabcontent">
                     <gotgam-story1></gotgam-story1>
                 </div>
@@ -97,7 +97,6 @@ export default {
 
 .content {
     width: 100%;
-    height: 310px;
 }
 
 .section4_person {
