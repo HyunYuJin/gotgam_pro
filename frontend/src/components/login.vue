@@ -34,8 +34,13 @@ export default {
       )
       .then(
         (res) => { //no error
-          if(res.data.success){console.log(res.data.name);}
-          console.log(res.data.message)
+          if(res.data.success){
+            alert(res.data.name + " 님 " + res.data.message)
+            this.$router.push('/') 
+          }
+          else{
+            alert(res.data.message);
+          }
         },
         )
       .catch(err => {
@@ -47,121 +52,4 @@ export default {
 </script>
 
 <style>
-  .wrap4 {
-    /* max-width: 800px; */
-    width: 100%;
-    margin: 0 auto;
-    padding: 3.4rem 0;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .login_inner_wrap {
-    height: 40rem;
-    position: relative;
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
-    padding: 0;
-  }
-
-  .login_inner_wrap::after { 
-    content: ''; 
-    display: table; 
-    clear: both; 
-  }
-
-  .login_inner_wrap .half {
-    width: 60%;
-    height: 100%;
-    float: left;
-  }
-
-  .content {
-    padding: 2rem 7rem 1.5rem;
-  }
-
-  .login_inner_wrap .half.bg {
-    width: 40%;
-    padding: 0;
-    float: left;
-  }
-  
-  .login_inner_wrap .half.bg img {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .login_inner_wrap h4 {
-    font-weight: 700;
-    padding-top: 2rem;
-    text-align: center;
-    color: #263238;
-  }
-
-  .login_inner_wrap .tabs .tab {
-    display: inline-block;
-    margin-bottom: -1px;
-    padding: 20px 15px 10px;
-    cursor: pointer;
-    letter-spacing: 0;
-    border-bottom: 1px solid #d9d9d9;
-    transition: all 0.1s ease-in-out;
-  }
-
-  .cont {
-    padding-top: 3rem;
-  }
-
-  .login_inner_wrap .content form {
-    position: relative;
-  }
-
-  .login_inner_wrap .content label:first-of-type,
-  .login_inner_wrap .content input:first-of-type{
-    animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
-  }
-
-  .login_inner_wrap .content label:nth-of-type(2),
-  .login_inner_wrap .content input:nth-of-type(2){
-    animation: slideIn 0.5s cubic-bezier(0.37, 0.82, 0.2, 1);
-  }
-
-  .login_inner_wrap .content label:nth-of-type(3),
-  .login_inner_wrap .content input:nth-of-type(3) {
-    animation: slideIn 0.6s cubic-bezier(0.37, 0.82, 0.2, 1);
-  }
-
-  .login_inner_wrap .content label:nth-of-type(4),
-  .login_inner_wrap .content input:nth-of-type(4) {
-    animation: slideIn 0.7s cubic-bezier(0.37, 0.82, 0.2, 1);
-  }
-
-  @keyframes slideIn {
-    0% {
-      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-      opacity: 0;
-      margin-left: -320px;
-    }
-
-    100% {
-      filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-      opacity: 1;
-      margin-left: 0px;
-    }
-  }
-
-  @-webkit-keyframes slideIn {
-    0% {
-      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-      opacity: 0;
-      margin-left: -320px;
-    }
-
-    100% {
-      filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-      opacity: 1;
-      margin-left: 0px;
-    }
-  }
 </style>
