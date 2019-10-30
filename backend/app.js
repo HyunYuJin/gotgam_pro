@@ -18,6 +18,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var movies = require('./routes/movies');
 var regist = require('./routes/regist');
+var region = require('./routes/region');
 
 // 미들웨어를 등록할 app 변수
 var app = express();
@@ -54,13 +55,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 // 요청한 파일 호출
 // method와 URL로 라우팅되어 처리
 app.use('/', indexRouter);
-
-app.use('/api/users', usersRouter); // 이건 404 error
-// app.use('/api/users', usersRouter); // 이건 500 error
-
+app.use('/api/users', usersRouter);
 app.use('/api/movies', movies);
-
 app.use('/api/regist', regist);
+app.use('/api/region', region);
 // app.use(require('connect-history-api-fallback')())
 
 // 에러 처리
