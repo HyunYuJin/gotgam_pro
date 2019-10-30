@@ -9,6 +9,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
 
 // routes에 있는 파일을 가져온다.
 // routes는 express.Router()로 등록한 라우터 파일을 가지고 있는 디렉터리, 라우터 관리 담당
@@ -31,8 +33,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: '9772dbwls!',
+  resave: false,
+  saveUninitialized: true,
+  store: new MySQLStore({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'root1234',
+    database: 'test_crud'
+  })
+}));
+
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 // 요청한 파일 호출
 // method와 URL로 라우팅되어 처리

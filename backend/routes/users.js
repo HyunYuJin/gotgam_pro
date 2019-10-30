@@ -62,10 +62,16 @@ router.post('/login1', function (req, res) {
         message: '아이디가 없어요!'
       })
     } else if (row[0].password == user.password) {
-      res.json({ // 로그인 성공 
-        name:row[0].name,
-        success: true,
-        message: '곶감에 로그인 되었습니다!'
+      req.session.userid = user.userid;
+      console.log(req.session.userid)
+      req.session.save(() =>{
+        res.json({ // 로그인 성공 
+          // name: row[0].name,
+          name: req.session.userid,
+          success: true,
+          message: '곶감에 로그인 되었습니다!'
+        })
+        // res.redirect('/')
       })
     } else {
       res.json({ // 매칭되는 아이디는 있으나, 비밀번호가 틀린 경우 
@@ -76,5 +82,12 @@ router.post('/login1', function (req, res) {
   })
 
 });
+
+router.get('/logout', function(req, res) {
+  delete req.session.userid;
+  req.session.save(() => {
+    res.redirect('/');
+  })
+})
 
 module.exports = router;
