@@ -8,9 +8,9 @@
             <p>곶감 에디터들의 특별한 경험을 함께 공유해보아요!</p>
         </div>
         <div class="section3_body">
-            <div class="body_container">
-                <div class="body_card">
-                    <div class="card-background1"></div>
+            <div class="body_container row">
+                <div class="body_card col-12 col-lg-4">
+                    <div class=" card-custom card-background1"></div>
                     <div class="overlay">&nbsp;</div>
                     <div class="card_text_wrap row">
                         <div class="card_text col-8">
@@ -30,8 +30,8 @@
                     </div>
                 </div>
 
-                <div class="body_card">
-                    <div class="card-background2"></div>
+                <div class="body_card col-12 col-lg-4">
+                    <div class="card-custom card-background2"></div>
                     <div class="overlay">&nbsp;</div>
                     <div class="card_text_wrap row">
                         <div class="card_text col-8">
@@ -51,8 +51,8 @@
                     </div>
                 </div>
 
-                <div class="body_card">
-                    <div class="card-background3"></div>
+                <div class="body_card col-12 col-lg-4">
+                    <div class=" card-custom card-background3"></div>
                     <div class="overlay">&nbsp;</div>
                     <div class="card_text_wrap row">
                         <div class="card_text col-8">
@@ -120,54 +120,48 @@ export default {
 
 .body_container {
     width: 100%;
-    display: flex;
+    /* display: flex; */
     border: 6px solid transparent;
     box-sizing: border-box;
 }
 
 .body_card {
-    width: 33.3%;
-    position: relative;
+    /* width: 33.3%; */
+    /* position: relative; */
     border: 6px solid transparent;
+    height: 300px;
+    margin-top: 20px;
+    padding: 0;
+}
+.card-custom{
+    display: flex;
+    background-size: cover !important;
+    background-position: center center !important;
+    position: relative;
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
 }
 
 .card-background1 {
-    background: url(../assets/section3_img1.jpg) no-repeat;
-    padding-top: 145%;
-    display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    width: 100%;
+    background: url(../assets/section3_img1.jpg)  no-repeat;
+  
 }
 
 .card-background2 {
-    background: url(../assets/section3_img2.jpg) no-repeat;
-    padding-top: 145%;
-    display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    width: 100%;
+    background: url(../assets/section3_img2.jpg) no-repeat ;
+
 }
 
 .card-background3 {
-    background: url(../assets/section3_img3.jpg) no-repeat;
-    padding-top: 145%;
-    display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    width: 100%;
+    background: url(../assets/section3_img3.jpg) no-repeat ;
+    
 }
 
 .overlay {
-    background: linear-gradient(0deg, #000, 2%, transparent 40%);
+    background: linear-gradient(0deg, #000, 2%, transparent 80%);
     width: 100%;
-    height: 100%;
+    height: inherit;
     position: absolute;
     top: 0;
     left: 0;
@@ -209,5 +203,10 @@ export default {
     font-size: 1.2rem;
     line-height: 1.7rem;
     color: #fff;
+}
+.row{
+    margin-left:0px;
+    margin-right:0px;
+
 }
 </style>

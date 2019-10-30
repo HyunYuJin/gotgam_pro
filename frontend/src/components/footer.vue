@@ -1,22 +1,22 @@
 <template>
   <div class="footer">
     <div class="footer_inner_wrap">
-      <div class="footer_wrap_menu">
-        <div class="footer_wrap_menu_intro">
+      <div class="footer_wrap_menu row">
+        <div class="footer_wrap_menu_intro col-12 col-md-6">
           <h4>곶감 is 곳곳의 감성</h4>
           <p>Everywhere You Want To Go.</p>
         </div>
-        <div class="footer_wrap_menu_browse">
+        <div class="footer_wrap_menu_browse col-4 col-md-2">
           <h4>Browse</h4>
           <a>Travel</a>
           <a>About</a>
           <a>FAQ</a>
         </div>
-        <div class="footer_wrap_menu_about">
+        <div class="footer_wrap_menu_about col-4 col-md-2" >
           <h4>About</h4>
           <a>지혁's story</a>
         </div>
-        <div class="footer_wrap_menu_social">
+        <div class="footer_wrap_menu_social col-4 col-md-2">
           <h4>Social</h4>
           <a class="sc_icon_wrap">
             <div class="sc_icon">
@@ -71,7 +71,7 @@ export default {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #FAFBFC;
+    background:rgba(230, 230, 230, 0.517);
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -79,13 +79,10 @@ export default {
 
 .footer_inner_wrap {
   margin: 0 auto;
-  max-width: 1024px;
-  min-width: 980px;
-  width: 60%;
+  width: 100%;
 }
 
 .footer_wrap_menu {
-  padding: 3.4rem 0;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -100,7 +97,7 @@ export default {
 .footer_wrap_menu_intro {
   justify-content: flex-start;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
   padding-right: 2.2rem;
 }
 
