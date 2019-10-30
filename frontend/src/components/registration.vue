@@ -3,13 +3,9 @@
     <div class="registration_inner_wrap">
       <!-- .container -->
       <b-container>
-        <b-tabs content-class="mt-3">
-          <b-tab title="Step 1" active>
             <form role="form" action="" method="post" class="step-1">
-              <!-- step-1 -->
               <h3>곶감 등록</h3>
-              <b-row class="setup-content justify-content-end" id="step-1">
-                <!-- step-1-1 -->
+              <b-row class="setup-content justify-content-end">
                 <b-col sm="12" md="6" class="step-1-1">
                   <b-col md="12">
                     <div class="img_uploader_wrap">
@@ -57,12 +53,15 @@
                       </b-col>
                     </b-row>
                     <b-row class="my-3">
-                      <b-col cols="12">
+                      <b-col cols="8">
                         <label for="input-default">여행 일수</label>
                       </b-col>
-                      <b-col cols="12">
-                        <b-form-input type="date" id="input-default" required="required" maxlength="100"
-                          placeholder="몇명이서 갔나요?"></b-form-input>
+                      <b-col cols="8">
+                        <b-form-input id="input-default" required="required" maxlength="100"
+                          placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
+                      </b-col>
+                      <b-col cols="4">
+                        <b-button class="col-12">OK</b-button>
                       </b-col>
                     </b-row>
                     <b-row class="my-3">
@@ -70,35 +69,24 @@
                         <label for="input-default">기분</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-input id="input-default" required="required" maxlength="100" placeholder="너의 기분은?">
-                        </b-form-input>
+                        <b-form-select v-model="selected" :options="options1" placeholder="여행당시의 기분은?"></b-form-select>
                       </b-col>
                     </b-row>
                     <b-row class="my-3">
                       <b-col cols="12">
-                        <label for="input-default">날씨 선택</label>
+                        <label for="input-default">지역 선택</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-select v-model="selected" :options="options"></b-form-select>
+                        <b-form-select v-model="selected" :options="options2"></b-form-select>
                       </b-col>
                     </b-row>
                   </b-col>
                 </b-col>
-                <div class="col-xs-3 col-md-6 button_Wrap">
-                  <div class="col-12">
-                    <b-button class="nextBtn w-100" type="button">Save</b-button>
-                  </div>
-                </div>
 
               </b-row>
-            </form>
-          </b-tab>
-          <b-tab title="Step 2">
-            <form action="">
-              <b-row class="setup-content" id="step-2">
+              <b-row class="setup-content mt-5">
                 <b-col cols="12" offset-md="12">
                   <b-col md="12">
-                    <h3> Step 2 </h3>
                     <b-card no-body>
                       <b-tabs card>
                         <!-- Render Tabs, supply a unique `key` to each tab -->
@@ -107,7 +95,7 @@
                             DAY {{ i }}
                           </p>
                           <b-col cols="12" class="pt-2">
-                            <div class="form-group p-0 form-inline justify-content-between col-12">
+                            <div class="form-group form-inline justify-content-between col-12">
                               <label class="font-weight-bold" for="day1">제목</label>
                               <input type="text" name="day1" id="" class="form-control col-8">
                               <button class="btn btn-danger"> 등록완료 </button>
@@ -131,18 +119,18 @@
                             </b-row>
                             <hr>
                             <b-row>
-                              <b-col cols="12" lg="6" class="form-group form-inline" id="display-traffic">
+                              <b-col cols="11" class="form-group form-inline" id="display-traffic">
                                 <label class="control-label font-weight-bold" for="traffic">교통</label>
-                                <textarea class="form-control col-10 mx-auto " rows="3" name="" id="traffic"></textarea>
+                                <textarea class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
                               </b-col>
-                              <b-col cols="12" lg="6" class="p-0 form-group form-inline" id="display-restaurant">
+                              <b-col cols="11" class="form-group form-inline" id="display-restaurant">
                                 <label class="control-label font-weight-bold" for="restaurant">맛집</label>
-                                <textarea class="form-control col-10 mx-auto " rows="3" name=""
+                                <textarea class="form-control col-10 mx-auto" rows="3" name=""
                                   id="restaurant"></textarea>
                               </b-col>
-                              <b-col cols="12" lg="6" class="p-0 form-group form-inline" id="display-location">
-                                <label class="control-label font-weight-bold" for="location">지도</label>
-                                <textarea class="form-control col-10 mx-auto " rows="3" name=""
+                              <b-col cols="11" class="form-group form-inline" id="display-location">
+                                <label class="control-label font-weight-bold" for="location">비용</label>
+                                <textarea class="form-control col-10 mx-auto" rows="3" name=""
                                   id="location"></textarea>
                               </b-col>
                             </b-row>
@@ -165,8 +153,7 @@
                       </b-tabs>
                     </b-card>
                     <b-row class="button_Wrap">
-                      <b-col cols="6"></b-col>
-                      <b-col cols="6" size="lg" class="pull-right">
+                      <b-col cols="4">
                         <b-button type="submit" class="col-12">Save</b-button>
                       </b-col>
                     </b-row>
@@ -174,8 +161,6 @@
                 </b-col>
               </b-row>
             </form>
-          </b-tab>
-        </b-tabs>
       </b-container>
     </div>
   </div>
@@ -198,14 +183,20 @@ export default {
             show: false,
 
             selected: null,
-            options: [
-                { value: null, text: '날씨를 선택해주세요.', disabled: true },
-                { value: 'sunny', text: '맑음' },
-                { value: 'rainy', text: '비' },
-                { value: 'cloud', text: '흐림' },
-                { value: 'wind', text: '바람', },
-                { value: 'cold', text: '추움', },
-                { value: 'hot', text: '더움', }
+            options1: [
+                { value: null, text: '기분을 선택해주세요.', disabled: true },
+                { value: 'angry', text: '화남' },
+                { value: 'expressionless', text: '무심함' },
+                { value: 'astonished', text: '놀란'},
+                { value: 'confounded', text: '혼란'},
+                { value: 'okey', text: '괜찮음'},
+                { value: 'blush', text: '설렘'}
+            ],
+            options2: [
+                { value: null, text: '지역을 선택해주세요.', disabled: true },
+                { value: 'seoul', text: '서울특별시' },
+                { value: 'kyeong', text: '경기도' },
+                { value: 'incheon', text: '인천광역시'}
             ]
         }
     },
@@ -278,7 +269,8 @@ export default {
 
 /* form */
 .form-group {
-    margin-bottom: 1.5rem;
+    margin: 0 auto;
+    padding-bottom: 1.5rem;
 }
 .gotgamStory {
     min-height: 10rem;
