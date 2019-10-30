@@ -30,6 +30,7 @@ router.post('/step1', function (req, res) {
 
     connection.query('INSERT INTO regist (maintitle, maincontent, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
         if (err) throw err;
+
         if(board.maintitle != null && board.maincontent != null && board.peoples != null && board.dayn != null) {
             res.json({
                 success: true,
@@ -43,5 +44,24 @@ router.post('/step1', function (req, res) {
         }
     });
   });
+
+  router.get('/list', function (req, res) {
+      connection.query('SELECT maintitle FROM regist', function(err, data) {
+        if (err) throw err;
+
+        if(data != null) {
+            console.log(data)
+            res.json({
+                message: '가져왔다.',
+                data: data
+            })
+        } else {
+            res.json({
+                message: '못가져왔다.'
+            })
+        }
+          
+      });
+  })
   
   module.exports = router;
