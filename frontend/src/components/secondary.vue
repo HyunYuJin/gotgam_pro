@@ -1,5 +1,5 @@
 <template>
-  <div class="secondary col-lg-4 col-md-4 col-sm-4 col-xs-12 tour-details-sidebar">
+  <div class="secondary col-lg-4 col-md-4 col-12 tour-details-sidebar">
       <div class="tour-side-details">
           <ul>
               <li class="side-title">Person</li>
@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style>
+
 .secondary {
     float: left;
     margin: 15px auto;

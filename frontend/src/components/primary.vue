@@ -1,5 +1,5 @@
 <template>
-    <div class="primary content-area col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-right">
+    <div class="primary content-area col-lg-8 col-md-8 col-12 pull-right">
         <div class="pri_main">
             <div class="content-wrapper">
                 <div class="calousel_wrapper">
@@ -123,7 +123,7 @@
 
     .schedule_box ul li {
         position: relative;
-        padding: 0 142px 30px 0;
+        padding: 0 0 30px 0;
     }
 
     .schedule_box ul li>a {
