@@ -21,10 +21,10 @@ connection.connect(function (err) {
 });
 
 router.post('/me', function (req, res, next) {
-  connection.query('SELECT * FROM users', function (err, result, field) {
-    // res.send(my)
-    console.log(result);
-  });
+  connection.query('SELECT * FROM users WHERE userid = "' + req.session.userid + '"', function (err, row) {
+    res.send(row[0]);
+    console.log(row[0])
+  })
 });
 
 module.exports = router;
