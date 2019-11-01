@@ -22,27 +22,24 @@ connection.connect(function (err) {
 
 router.post('/step1', function (req, res) {
     const board = {
-      'idx': req.body.idx,
       'maintitle': req.body.maintitle,
       'maincontent': req.body.maincontent,
       'peoples': req.body.peoples
     };
 
-    connection.query('INSERT INTO regist (maintitle, maincontent, peoples) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + board.peoples + '")', board, function (err, row2) {
-        if (err) throw err;
-        console.log(board)
-        if(board.maintitle != null && board.maincontent != null && board.peoples != null) {
-            res.json({
-                success: true,
-                message: '등록완료'
-            })
-        } else {
-            res.json({
-                success: false,
-                message: '모두 작성해주세요.'
-            })
-        }
-    });
+    connection.query('SELECT idx FROM users WHERE userid = "' + req.session.userid + '"', function(err, row){
+      console.log(row[0].idx)
+
+      if(row[0].idx != null) {
+        connection.query('INSERT INTO regist (maintitle, maincontent, peoples) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + board.peoples + '")"' + '" WHERE idx = "' + row[0].idx + '"' , board, function (err, row2) {
+          console.log(row2)
+          
+        });
+      } else {
+        console.log(err + '로그인 후 등록가능')
+      }
+
+    })
   });
 
   router.get('/list', function (req, res) {
