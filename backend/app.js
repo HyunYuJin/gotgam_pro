@@ -19,6 +19,7 @@ var usersRouter = require('./routes/users');
 var movies = require('./routes/movies');
 var regist = require('./routes/regist');
 var region = require('./routes/region');
+var mypage = require('./routes/mypage');
 
 // 미들웨어를 등록할 app 변수
 var app = express();
@@ -59,6 +60,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/movies', movies);
 app.use('/api/regist', regist);
 app.use('/api/region', region);
+app.use('/api/mypage', mypage);
 // app.use(require('connect-history-api-fallback')())
 
 // 에러 처리

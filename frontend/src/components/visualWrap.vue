@@ -8,13 +8,13 @@
       <div class ="selectdiv">
         <form name="form">
           <select id="first">
-            <option v-for="item1 in f_selbox" v-bind:key="item1.id" value="">
-               {{ item1.value }}
+            <option v-for="item1 in f_selbox" v-bind:key="item1.value">
+               {{ item1.text }}
             </option>
           </select>
           <select id="second">
-            <option v-for="item2 in s_selbox" v-bind:key="item2.id" value="">
-              {{ item2.value }}
+            <option v-for="item2 in s_selbox" v-bind:key="item2.value" value="">
+              {{ item2.text }}
             </option>
           </select>
           <button v-on:click="searchReg">지역 이동</button>
@@ -150,6 +150,14 @@
 
 <script>
 export default {
+  create() {
+    if(f_selbox.value == 'seoul' || f_selbox.value == 'incheon') {
+      s_selbox == disabled
+    } else {
+      s_selbox != disabled
+    }
+  },
+
   data() {
     return {
         temp: 0,
@@ -158,16 +166,17 @@ export default {
         phase: 'fa-adjust',
         region: '서울특별시',
         f_selbox:[
-          { value: '서울특별시'},
-          { value: '인천광역시'},
-          { value: '경기도' }
+          { text: '서울특별시', value: 'seoul'},
+          { text: '인천광역시', value: 'incheon'},
+          { text: '경기도', value: 'kyeon' }
         ],
         s_selbox: [
-          { value: '수원시' }, 
-          { value: '용인시' },
-          { value: '성남시' },
-          { value: '남양주시'}
-        ]
+          { text: '수원시', value: 'suwon' }, 
+          { text: '용인시', value: 'yeongin' },
+          { text: '성남시', value: 'seongnam' },
+          { text: '남양주시', value: 'namyangju'}
+        ],
+        selectdis: ''
     }
   },
     
@@ -259,29 +268,42 @@ hr {
 }
 
 .selectdiv {
-  min-width: 200px;
-  margin: 10px;
+  display: flex;
+  width: 50%;
 }
 
-select::-ms-expand {
-display: none;
+.selectdiv > form {
+  width: 100%;
 }
 
 .selectdiv select {
   display: block;
-  width: 100%;
-  max-width: 320px;
+  width: 40%;
   height: 50px;
   float: left;
   padding: 0px 20px;
   font-size: 16px;
-  line-height: 2;
   color: #333;
   background-color: #ffffff;
-  background-image: none;
   border: 1px solid #cccccc;
-  -ms-word-break: normal;
   word-break: normal;
+}
+
+.selectdiv button {
+  display: block;
+  width: 20%;
+  height: 50px;
+  float: left;
+  background-color: #fff;
+  border:1px solid #ccc;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.selectdiv > form::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .regionSelectWrap, .citySelectWrap {

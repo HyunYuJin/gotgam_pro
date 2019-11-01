@@ -13,6 +13,7 @@ import Registration from '@/components/registration.vue';
 import GotgamDetail from '@/components/gotgamDetail.vue';
 import About from '@/components/about.vue';
 import SignUp from '@/components/SignUp.vue';
+import myPage from '@/components/mypage.vue';
 
 export default new Router({
  mode: 'history',
@@ -70,6 +71,11 @@ export default new Router({
       path: '/signUp',
       name: 'SignUp',
       component: SignUp
+    },
+    {
+      path: '/mypage',
+      name: 'myPage',
+      component: myPage
     }
   ]
 })

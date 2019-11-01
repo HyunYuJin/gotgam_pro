@@ -267,7 +267,8 @@ export default {
           .then(
             (res) => {
               if(res.data.sucess) {
-                alert('등록을 완료했습니다.')
+                console.log(res.data.message);
+                // alert('등록을 완료했습니다.')
                 this.$router.push('/')
               }
               else {

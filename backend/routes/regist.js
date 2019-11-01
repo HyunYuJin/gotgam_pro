@@ -22,16 +22,16 @@ connection.connect(function (err) {
 
 router.post('/step1', function (req, res) {
     const board = {
+      'idx': req.body.idx,
       'maintitle': req.body.maintitle,
       'maincontent': req.body.maincontent,
-      'peoples': req.body.peoples,
-      'dayn': req.body.dayn
+      'peoples': req.body.peoples
     };
 
-    connection.query('INSERT INTO regist (maintitle, maincontent, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
+    connection.query('INSERT INTO regist (maintitle, maincontent, peoples) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + board.peoples + '")', board, function (err, row2) {
         if (err) throw err;
-
-        if(board.maintitle != null && board.maincontent != null && board.peoples != null && board.dayn != null) {
+        console.log(board)
+        if(board.maintitle != null && board.maincontent != null && board.peoples != null) {
             res.json({
                 success: true,
                 message: '등록완료'
