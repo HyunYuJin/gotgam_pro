@@ -3,11 +3,15 @@
     <div class="registration_inner_wrap">
       <!-- .container -->
       <b-container>
-            <form role="form" action="" method="post" class="step-1">
+            <form>
               <h3>곶감 등록</h3>
               <b-row class="setup-content justify-content-end">
+
+                <!-- left -->
                 <b-col sm="12" md="6" class="step-1-1">
                   <b-col md="12">
+
+                    <!-- main img uploader -->
                     <div class="img_uploader_wrap">
                       <label for="fileInput" slot="upload-label">
                         <span class="upload-caption">{{ hasImage ? "Replace" : "Click to upload" }}</span>
@@ -18,52 +22,61 @@
                       </image-uploader>
                     </div>
 
+                    <!-- main title -->
                     <b-row class="my-1">
                       <b-col cols="3">
                         <label for="input-default">곶감 제목:</label>
                       </b-col>
                       <b-col cols="9">
-                        <b-form-input id="input-default" required="required" maxlength="100"
+                        <b-form-input v-model="regist.maintitle" id="input-default" required="required" maxlength="100"
                           placeholder="제목을 입력해주세요..."></b-form-input>
                       </b-col>
                     </b-row>
 
+                    <!-- main content -->
                     <b-row class="mt-2">
                       <b-col cols="12">
                         <label for="textarea-default">곶감 스토리(내용):</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-textarea required="required" id="textarea-default" class="gotgamStory"
+                        <b-form-textarea v-model="regist.maincontent" required="required" id="textarea-default" class="gotgamStory"
                           placeholder="회원들과 곶감을 공유해주세요..."></b-form-textarea>
                       </b-col>
                     </b-row>
+
                   </b-col>
                 </b-col>
 
-                <!-- step-1-2 -->
+                <!-- right -->
                 <b-col sm="12" md="6" class="step-1-2">
                   <b-col md="12">
+
+                    <!-- peoples -->
                     <b-row class="my-3">
                       <b-col cols="12">
                         <label for="input-default">인원수</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-input id="input-default" required="required" maxlength="100" placeholder="몇명이서 갔나요?">
+                        <b-form-input v-model="regist.peoples" id="input-default" required="required" maxlength="100" placeholder="몇명이서 갔나요?">
                         </b-form-input>
                       </b-col>
                     </b-row>
+
+                    <!-- dayn -->
                     <b-row class="my-3">
                       <b-col cols="8">
                         <label for="input-default">여행 일수</label>
                       </b-col>
                       <b-col cols="8">
-                        <b-form-input id="input-default" required="required" maxlength="100"
+                        <b-form-input v-model="regist.dayn" id="input-default" required="required" maxlength="100"
                           placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
                       </b-col>
                       <b-col cols="4">
-                        <b-button class="col-12">OK</b-button>
+                        <b-button @click.prevent="newTab" href="#" class="col-12">OK</b-button>
                       </b-col>
                     </b-row>
+
+                    <!-- mood -->
                     <b-row class="my-3">
                       <b-col cols="12">
                         <label for="input-default">기분</label>
@@ -72,6 +85,8 @@
                         <b-form-select v-model="selected" :options="options1" placeholder="여행당시의 기분은?"></b-form-select>
                       </b-col>
                     </b-row>
+
+                    <!-- region -->
                     <b-row class="my-3">
                       <b-col cols="12">
                         <label for="input-default">지역 선택</label>
@@ -80,13 +95,18 @@
                         <b-form-select v-model="selected" :options="options2"></b-form-select>
                       </b-col>
                     </b-row>
+
                   </b-col>
                 </b-col>
 
               </b-row>
+
               <b-row class="setup-content mt-5">
+
                 <b-col cols="12" offset-md="12">
                   <b-col md="12">
+
+                    <!-- Day -->
                     <b-card no-body>
                       <b-tabs card>
                         <!-- Render Tabs, supply a unique `key` to each tab -->
@@ -94,13 +114,18 @@
                           <p class="text-center">
                             DAY {{ i }}
                           </p>
+                          
                           <b-col cols="12" class="pt-2">
+
+                            <!-- day title -->
                             <div class="form-group form-inline justify-content-between col-12">
                               <label class="font-weight-bold" for="day1">제목</label>
-                              <input type="text" name="day1" id="" class="form-control col-8">
-                              <button class="btn btn-danger"> 등록완료 </button>
+                              <input type="text" name="day1" id="" class="form-control col-12">
                             </div>
+
                             <b-row>
+
+                              <!-- day image uploader -->
                               <b-col cols="12" lg="6">
                                 <div class="img_uploader_wrap">
                                   <label for="fileInput" slot="upload-label">
@@ -112,28 +137,37 @@
                                   </image-uploader>
                                 </div>
                               </b-col>
+
+                              <!-- day content -->
                               <b-col cols="12" lg="6">
                                 <textarea class="form-control mb-3 text-xsmall" name="" id="" rows="6"
                                   placeholder="이날의 곶감을 기록해주세요."></textarea>
                               </b-col>
+                              
                             </b-row>
+
                             <hr>
+
                             <b-row>
+                              <!-- day traffic -->
                               <b-col cols="11" class="form-group form-inline" id="display-traffic">
                                 <label class="control-label font-weight-bold" for="traffic">교통</label>
                                 <textarea class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
                               </b-col>
+                              <!-- day food -->
                               <b-col cols="11" class="form-group form-inline" id="display-restaurant">
                                 <label class="control-label font-weight-bold" for="restaurant">맛집</label>
                                 <textarea class="form-control col-10 mx-auto" rows="3" name=""
                                   id="restaurant"></textarea>
                               </b-col>
+                              <!-- day pay -->
                               <b-col cols="11" class="form-group form-inline" id="display-location">
                                 <label class="control-label font-weight-bold" for="location">비용</label>
                                 <textarea class="form-control col-10 mx-auto" rows="3" name=""
                                   id="location"></textarea>
                               </b-col>
                             </b-row>
+
                           </b-col>
                         </b-tab>
 
@@ -152,11 +186,13 @@
                         </template>
                       </b-tabs>
                     </b-card>
+
                     <b-row class="button_Wrap">
                       <b-col cols="4">
-                        <b-button type="submit" class="col-12">Save</b-button>
+                        <b-button v-on:click="save" class="col-12">Save</b-button>
                       </b-col>
                     </b-row>
+
                   </b-col>
                 </b-col>
               </b-row>
@@ -197,7 +233,14 @@ export default {
                 { value: 'seoul', text: '서울특별시' },
                 { value: 'kyeong', text: '경기도' },
                 { value: 'incheon', text: '인천광역시'}
-            ]
+            ],
+
+            regist: {
+              maintitle: '',
+              maincontent: '',
+              peoples: '',
+              dayn: ''
+            }
         }
     },
 
@@ -216,6 +259,26 @@ export default {
         },
         newTab() {
             this.tabs.push(this.tabCounter++)
+        },
+        save(event) {
+          this.$http.post('/api/regist/step1',
+            this.regist
+          )
+          .then(
+            (res) => {
+              if(res.data.sucess) {
+                console.log(res.data.message);
+                // alert('등록을 완료했습니다.')
+                this.$router.push('/')
+              }
+              else {
+                console.log(res.data.message);
+              }
+            },
+          )
+          .catch(err => {
+            alert(err);
+          })
         }
     }
 }

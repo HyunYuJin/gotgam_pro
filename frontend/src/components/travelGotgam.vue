@@ -10,10 +10,10 @@
       <!-- travel_gotgam_body -->
       <div class="movies travel_gotgam_body">
           <!-- travel_gotgam_inner -->
-          <div class="travel_gotgam_inner" v-for="movie in movies" v-bind:key="movie.id">
+          <!-- <div class="travel_gotgam_inner" v-for="list in lists" v-bind:key="list"> -->
 
               <!-- travel_gotgam_list -->
-              <router-link :to="{ name: 'GotgamDetail', params: { id: movie.id }}">
+              <!-- <router-link :to="{ name: 'GotgamDetail', params: { id: list.id }}"> -->
                 <div class="travel_gotgam_list">
                     <!-- travel_gotgam_list_inner -->
                     <div class="travel_gotgam_list_inner">
@@ -21,7 +21,7 @@
                         <!-- travel_gotgam_img -->
                         <div class="travel_gotgam_list_img">
                             <div class="travel_gotgam_img">
-                                <img v-bind:src="movie.poster" class="travel_gotgam_img">
+                                <!-- <img v-bind:src="movie.poster" class="travel_gotgam_img"> -->
                             </div>
                         </div>
                         
@@ -29,15 +29,15 @@
                         <div class="travel_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <p>{{movie.name}}</p>
+                                <!-- <p>{{list.maintitle}}</p> -->
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <p><span>위치: </span> {{movie.site}}</p>
+                                <!-- <p><span>위치: </span> {{movie.site}}</p>
                                 <p><span>작성자: </span> {{movie.director}}</p>
-                                <p><span>작성일: </span> {{movie.year}}</p>
+                                <p><span>작성일: </span> {{movie.year}}</p> -->
                             </div>
                             <!-- list_content_info end -->
                         </div>
@@ -46,28 +46,28 @@
                     </div>
                     <!-- travel_gotgam_list_inner end -->
                 </div>
-              </router-link>
+              <!-- </router-link> -->
               <!-- travel_gotgam_list end -->
 
             </div>
             <!-- travel_gotgam_inner end -->
         </div>
         <!-- travel_gotgam_body end -->
-  </div>
+  <!-- </div> -->
   <!-- travel_gotgam_wrap end -->
 </template>
 
 <script>
 export default {
   created () {
-    this.$http.get('/api/movies')
+    this.$http.get('/api/regist/list')
     .then((response) => {
-      this.movies = response.data
+      this.lists = response.data
     })
   },
   data () {
     return {
-        movies: [],
+        lists: [],
         gotgamdetail: {
             link: "/gotgamdetail"
         }

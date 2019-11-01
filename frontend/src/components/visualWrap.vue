@@ -5,13 +5,20 @@
       <div class="selectbox_title">
         <span>여행 지역</span>
       </div>
-      <div class="selectbox">
-        <div class="regionSelectWrap">
-          <country-select v-model="country" :country="country" topCountry="Korea, Republic of" :countryName="true" />
-        </div>
-        <div class="citySelectWrap">
-          <region-select v-model="region" :country="country" :region="region" :countryName="true" :regionName="true" />
-        </div>
+      <div class ="selectdiv">
+        <form name="form">
+          <select id="first">
+            <option v-for="item1 in f_selbox" v-bind:key="item1.value">
+               {{ item1.text }}
+            </option>
+          </select>
+          <select id="second">
+            <option v-for="item2 in s_selbox" v-bind:key="item2.value" value="">
+              {{ item2.text }}
+            </option>
+          </select>
+          <button v-on:click="searchReg">지역 이동</button>
+        </form>
       </div>
     </div>
     <hr>
@@ -142,27 +149,44 @@
 </template>
 
 <script>
-import CountrySelect from '@/components/country-select'
-import RegionSelect from '@/components/region-select'
-
 export default {
-    components: {
-        CountrySelect,
-        RegionSelect
-    },
+  create() {
+    if(f_selbox.value == 'seoul' || f_selbox.value == 'incheon') {
+      s_selbox == disabled
+    } else {
+      s_selbox != disabled
+    }
+  },
 
-    data() {
-        return {
-            temp: 0,
-            format: 'C',
-            time: new Date(),
-            phase: 'fa-adjust',
-            country: 'Korea, Republic of',
-            region: '서울특별시'
-        }
-    },
+  data() {
+    return {
+        temp: 0,
+        format: 'C',
+        time: new Date(),
+        phase: 'fa-adjust',
+        region: '서울특별시',
+        f_selbox:[
+          { text: '서울특별시', value: 'seoul'},
+          { text: '인천광역시', value: 'incheon'},
+          { text: '경기도', value: 'kyeon' }
+        ],
+        s_selbox: [
+          { text: '수원시', value: 'suwon' }, 
+          { text: '용인시', value: 'yeongin' },
+          { text: '성남시', value: 'seongnam' },
+          { text: '남양주시', value: 'namyangju'}
+        ],
+        selectdis: ''
+    }
+  },
     
 	methods: {
+    searchReg: function (event) {
+      this.$http.get('/api/region/search',
+        console.log('지역 검색')
+      )
+    },
+
 		setCelsius: function() {
 			if (this.format = 'F') {
 				this.format = 'C';
@@ -243,10 +267,43 @@ hr {
   font-size: 2rem;
 }
 
-.selectbox {
+.selectdiv {
   display: flex;
-  flex-direction: column;
   width: 50%;
+}
+
+.selectdiv > form {
+  width: 100%;
+}
+
+.selectdiv select {
+  display: block;
+  width: 40%;
+  height: 50px;
+  float: left;
+  padding: 0px 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  word-break: normal;
+}
+
+.selectdiv button {
+  display: block;
+  width: 20%;
+  height: 50px;
+  float: left;
+  background-color: #fff;
+  border:1px solid #ccc;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.selectdiv > form::after {
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .regionSelectWrap, .citySelectWrap {

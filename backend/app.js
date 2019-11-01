@@ -9,12 +9,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
 
 // routes에 있는 파일을 가져온다.
 // routes는 express.Router()로 등록한 라우터 파일을 가지고 있는 디렉터리, 라우터 관리 담당
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var movies = require('./routes/movies');
+var regist = require('./routes/regist');
+var region = require('./routes/region');
+var mypage = require('./routes/mypage');
 
 // 미들웨어를 등록할 app 변수
 var app = express();
@@ -30,17 +35,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: '9772dbwls!',
+  resave: false,
+  saveUninitialized: true,
+  store: new MySQLStore({
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'root1234',
+    database: 'test_crud'
+  })
+}));
+
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 // 요청한 파일 호출
 // method와 URL로 라우팅되어 처리
 app.use('/', indexRouter);
-
-app.use('/api/users', usersRouter); // 이건 404 error
-// app.use('/api/users', usersRouter); // 이건 500 error
-
+app.use('/api/users', usersRouter);
 app.use('/api/movies', movies);
+app.use('/api/regist', regist);
+app.use('/api/region', region);
+app.use('/api/mypage', mypage);
 // app.use(require('connect-history-api-fallback')())
 
 // 에러 처리

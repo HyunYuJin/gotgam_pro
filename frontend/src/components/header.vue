@@ -19,6 +19,7 @@
 				<li>
 					<div class="login_bar">
 						<router-link :to="login.link">Login</router-link>
+						<button v-on:click="logout">Logout</button>
 					</div>
 				</li>
             </nav>
@@ -78,7 +79,21 @@ export default {
 			if(window.innerWidth < 660 && drop_menu.classList.contains("display")) {
 				event.target.parentElement.nextSibling.nextSibling.style.marginTop = drop_menu.clientHeight + "px";
 			}
-		}	
+		},
+		
+		logout: function (event) {
+			this.$http.get('/api/users/logout',
+				this.user
+			)
+			.then(
+				(res) => { //no error
+					alert("로그아웃")
+				}
+			)
+			.catch(err => {
+				alert(err);
+			})
+		}
 	}
 }
 </script>
