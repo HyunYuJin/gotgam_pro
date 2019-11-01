@@ -40,29 +40,17 @@ export default {
 
 <style>
 .mypage_wrap {
+    padding: 3.4rem 0;
     width: 100%;
-    height: calc(100% - 0px);
-    position: relative;
-    /* top: 0;
-    left: 0; */
-    margin-top: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    float: left;
     pointer-events: none;
 }
 
 .info {
-    padding: 3.45rem 0;
     width: 565px;
-    position: static;
-    display: grid;
     height: auto;
-    min-height: 1000px;
-    grid-template-rows: min-content min-content min-content 1fr;
-    grid-template-columns: 100%;
     border-right: 1px solid #ddd;
-    z-index: 2;
+    float: left;
 }
 
 .userId {
@@ -71,9 +59,6 @@ export default {
     position: relative;
     margin: 28px 0 -5px 0;
     left: 54px;
-    grid-area: 1 / 1 / 2 / 2;
-    justify-self: start;
-    align-self: start;
 }
 
 .userfont1 {
@@ -94,9 +79,6 @@ export default {
     position: relative;
     margin: 0 0 20px 0;
     left: 54px;
-    grid-area: 2 / 1 / 3 / 2;
-    justify-self: start;
-    align-self: start;
 }
 
 .mynav {
@@ -104,10 +86,6 @@ export default {
     position: relative;
     margin: 0 0 10px 0;
     left: 48px;
-    grid-area: 4 / 1 / 5 / 2;
-    justify-self: start;
-    align-self: start;
-    pointer-events: auto;
 }
 
 .mynav ul {
@@ -125,7 +103,7 @@ export default {
 
 .mynav ul li a {
     line-height: 25px;
-    font: italic normal normal 15px/1.4em nanumgothic-regular,sans-serif;
+    font: italic normal normal 15px/1.4em;
     display: inline;
     white-space: nowrap;
     overflow: hidden;
