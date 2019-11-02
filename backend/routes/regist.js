@@ -25,51 +25,33 @@ router.post('/step1', function (req, res) {
       'maintitle': req.body.maintitle
     };
 
-    connection.query('INSERT INTO boards (maintitle) VALUES("' + board.maintitle + '")', board, function (err, row2) {
+    connection.query('INSERT INTO boards (maintitle, userid) VALUES ("' + board.maintitle + '","' + req.session.foid + '")', board, function (err, row2) {
       if (err) throw err;
       else {
-        console.log(board.maintitle)
+        console.log(row2[0])
       }
     });
 
 });
 
 router.get('/list', function (req, res) {
-  connection.query('SELECT * FROM boards INNER JOIN users', function(err, data) {
+  connection.query('SELECT * FROM boards INNER JOIN users WHERE boards.userid = users.id', function(err, data) {
     if (err) throw err;
 
     if(data != null) {
         console.log(data)
-        res.json({
-            message: '가져왔다.',
-            data: data
-        })
+        res.send(data)
+        // res.json({
+        //     message: '가져왔다.',
+        //     data: data
+        // })
     } else {
-        res.json({
-            message: '못가져왔다.'
-        })
+        // res.json({
+        //     message: '못가져왔다.'
+        // })
     }
       
   });
 })
-
-  // router.get('/list', function (req, res) {
-  //     connection.query('SELECT maintitle FROM regist', function(err, data) {
-  //       if (err) throw err;
-
-  //       if(data != null) {
-  //           console.log(data)
-  //           res.json({
-  //               message: '가져왔다.',
-  //               data: data
-  //           })
-  //       } else {
-  //           res.json({
-  //               message: '못가져왔다.'
-  //           })
-  //       }
-          
-  //     });
-  // })
   
   module.exports = router;

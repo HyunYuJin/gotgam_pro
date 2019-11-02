@@ -56,7 +56,7 @@ router.post('/login1', function (req, res) {
     'userid': req.body.userid,
     'password': req.body.password
   };
-  connection.query('SELECT userid, password, name FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
+  connection.query('SELECT id, userid, password, name FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
     if (row[0] == null) {
       res.json({ // 매칭되는 아이디 없을 경우
         success: false,
@@ -64,7 +64,8 @@ router.post('/login1', function (req, res) {
       })
     } else if (row[0].password == user.password) {
       req.session.userid = user.userid;
-      console.log(req.session.userid)
+      req.session.foid = row[0].id;
+      console.log(req.session.foid)
       req.session.save(() =>{
         res.json({ // 로그인 성공 
           // name: row[0].name,
@@ -86,6 +87,8 @@ router.post('/login1', function (req, res) {
 
 router.get('/logout', function(req, res) {
   delete req.session.userid;
+  delete req.session.foid;
+  req.session.destroy()
   req.session.save(() => {
     res.redirect('/');
   })
