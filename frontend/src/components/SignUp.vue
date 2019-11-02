@@ -1,16 +1,20 @@
 <template>
   <div>
       <div class="input_row">
-        <label for="id">아이디</label>
-        <input type="text" id="id" v-model="user.userid">
+            <label for="id">아이디</label>
+            <input type="text" id="id" v-model="user.userid">
         </div>
         <div class="input_row">
-        <label for="name">이름</label>
-        <input type="text" id="name" v-model="user.name">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" v-model="user.password">
         </div>
         <div class="input_row">
-        <label for="password">비밀번호</label>
-        <input type="password" id="password" v-model="user.password">
+            <label for="name">이름</label>
+            <input type="text" id="name" v-model="user.name">
+        </div>
+        <div class="input_row">
+            <label for="name">나이</label>
+            <input type="text" id="age" v-model="user.age">
         </div>
         <button v-on:click="signUp">가입하기</button>
   </div>
@@ -24,8 +28,9 @@ export default {
             // user 객체 안에는 아이디, 이름, 비밀번호를 저장할 수 있는 속성이 있다.
             user: {
                 userid: '',
+                password: '',
                 name: '',
-                password: ''
+                age: ''
             }
         }
     },
