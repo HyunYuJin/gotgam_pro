@@ -28,12 +28,13 @@ router.get('/', function (req, res, next) {
 router.post('/signUp1', function (req, res) {
   const user = {
     'userid': req.body.userid,
+    'password': req.body.password,
     'name': req.body.name,
-    'password': req.body.password
+    'age': req.body.age
   };
   connection.query('SELECT userid FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
     if (row[0] == null) { //  동일한 아이디가 없을경우,
-      connection.query('INSERT INTO users (userid, name, password) VALUES ("' + user.userid + '","' + user.name + '","' + user.password + '")', user, function (err, row2) {
+      connection.query('INSERT INTO users (userid, password, name, age) VALUES ("' + user.userid + '","' + user.password + '","' + user.name + '","' + user.age + '")', user, function (err, row2) {
         if (err) throw err;
       });
       res.json({
@@ -88,6 +89,10 @@ router.get('/logout', function(req, res) {
   req.session.save(() => {
     res.redirect('/');
   })
+})
+
+router.get('/debug', function(req,res){
+  res.send(req.session)
 })
 
 module.exports = router;
