@@ -22,46 +22,36 @@ connection.connect(function (err) {
 
 router.post('/step1', function (req, res) {
     const board = {
-      'idx': req.body.idx,
-      'maintitle': req.body.maintitle,
-      'maincontent': req.body.maincontent,
-      'peoples': req.body.peoples
+      'maintitle': req.body.maintitle
     };
 
-    connection.query('INSERT INTO regist (maintitle, maincontent, peoples) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + board.peoples + '")', board, function (err, row2) {
-        if (err) throw err;
-        console.log(board)
-        if(board.maintitle != null && board.maincontent != null && board.peoples != null) {
-            res.json({
-                success: true,
-                message: '등록완료'
-            })
-        } else {
-            res.json({
-                success: false,
-                message: '모두 작성해주세요.'
-            })
-        }
+    connection.query('INSERT INTO boards (maintitle, userid) VALUES ("' + board.maintitle + '","' + req.session.foid + '")', board, function (err, row2) {
+      if (err) throw err;
+      else {
+        console.log(row2[0])
+      }
     });
+
+});
+
+router.get('/list', function (req, res) {
+  connection.query('SELECT * FROM boards INNER JOIN users WHERE boards.userid = users.id', function(err, data) {
+    if (err) throw err;
+
+    if(data != null) {
+        console.log(data)
+        res.send(data)
+        // res.json({
+        //     message: '가져왔다.',
+        //     data: data
+        // })
+    } else {
+        // res.json({
+        //     message: '못가져왔다.'
+        // })
+    }
+      
   });
-
-  router.get('/list', function (req, res) {
-      connection.query('SELECT maintitle FROM regist', function(err, data) {
-        if (err) throw err;
-
-        if(data != null) {
-            console.log(data)
-            res.json({
-                message: '가져왔다.',
-                data: data
-            })
-        } else {
-            res.json({
-                message: '못가져왔다.'
-            })
-        }
-          
-      });
-  })
+})
   
   module.exports = router;
