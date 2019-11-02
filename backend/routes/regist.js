@@ -22,10 +22,13 @@ connection.connect(function (err) {
 
 router.post('/step1', function (req, res) {
     const board = {
-      'maintitle': req.body.maintitle
+      'maintitle': req.body.maintitle,
+      'maincontent': req.body.maincontent,
+      'peoples': req.body.peoples,
+      'dayn': req.body.dayn
     };
 
-    connection.query('INSERT INTO boards (maintitle, userid) VALUES ("' + board.maintitle + '","' + req.session.foid + '")', board, function (err, row2) {
+    connection.query('INSERT INTO boards (maintitle, maincontent, userid, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + req.session.foid + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
       if (err) throw err;
       else {
         console.log(row2[0])
