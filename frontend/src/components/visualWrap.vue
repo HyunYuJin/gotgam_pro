@@ -7,15 +7,12 @@
       </div>
       <div class ="selectdiv">
         <form name="form">
-          <select id="first">
-            <option v-for="item1 in f_selbox" v-bind:key="item1.value">
-               {{ item1.text }}
-            </option>
+          <select id="make" v-model="make">
+            <option :value="null" disabled selected>Select Make</option>
+            <option v-for="option in makes_options" v-bind:value="option.id" v-bind:key="option.id">{{option.text}}</option>
           </select>
-          <select id="second">
-            <option v-for="item2 in s_selbox" v-bind:key="item2.value" value="">
-              {{ item2.text }}
-            </option>
+          <select class="form-control" name="model" id="model" v-model="model">
+            <option v-for="option in model_options[make]" v-bind:value="option.id" v-bind:key="option.id">{{option.text}}</option>
           </select>
           <button v-on:click="searchReg">지역 이동</button>
         </form>
@@ -151,11 +148,7 @@
 <script>
 export default {
   create() {
-    if(f_selbox.value == 'seoul' || f_selbox.value == 'incheon') {
-      s_selbox == disabled
-    } else {
-      s_selbox != disabled
-    }
+    
   },
 
   data() {
@@ -165,18 +158,42 @@ export default {
         time: new Date(),
         phase: 'fa-adjust',
         region: '서울특별시',
-        f_selbox:[
-          { text: '서울특별시', value: 'seoul'},
-          { text: '인천광역시', value: 'incheon'},
-          { text: '경기도', value: 'kyeon' }
-        ],
-        s_selbox: [
-          { text: '수원시', value: 'suwon' }, 
-          { text: '용인시', value: 'yeongin' },
-          { text: '성남시', value: 'seongnam' },
-          { text: '남양주시', value: 'namyangju'}
-        ],
-        selectdis: ''
+        make: null,
+        model: null,
+        makes_options: [
+        {
+          text: "서울",
+          id: 1
+        },
+        {
+          text: "인천",
+          id: 2
+        },
+        {
+          text: "경기",
+          id: 3
+        }
+      ],
+      model_options: {
+        3: [
+          {
+            text: "수원시",
+            id: 1
+          },
+          {
+            text: "고양시",
+            id: 2
+          },
+          {
+            text: "용인시",
+            id: 3
+          },
+          {
+            text: "성남시",
+            id: 4
+          }
+        ]
+      }
     }
   },
     

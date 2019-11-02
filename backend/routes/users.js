@@ -88,7 +88,6 @@ router.post('/login1', function (req, res) {
 router.get('/logout', function(req, res) {
   delete req.session.userid;
   delete req.session.foid;
-  req.session.destroy()
   req.session.save(() => {
     res.redirect('/');
   })
