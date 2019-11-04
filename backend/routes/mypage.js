@@ -20,25 +20,37 @@ connection.connect(function (err) {
   }
 });
 
-router.post('/me', function (req, res, next) {
-  // console.log(req.session.userid);
-  connection.query('SELECT * FROM users WHERE userid = "' + req.session.userid + '"', function (err1, row1) {
-    res.send(row1[0]);
-    console.log(row1[0]);
+router.post('/info', function (req, res) {
+  connection.query('SELECT * FROM users WHERE id = "' + req.session.foid + '"', function (err1, row1) {
+    if (err1) throw err1;
+    else {
+      console.log(row1[0].id);
+      res.send(row1[0])
+    }
+  });
 
-    connection.query('SELECT * FROM board INNER JOIN users ON users.id = board.id', function (err2, row2) {
-      console.log(row2[0]);
+})
+
+router.post('/me', function (req, res) {
+
+  console.log(req.session.userid);
+  // connection.query('SELECT * FROM users WHERE id = "' + req.session.foid + '"', function (err1, row1) {
+  //   if (err1) throw err1;
+  //   else {
+  //     console.log(row1[0].id);
+  //     res.send(row1[0])
+  //   }
+
+    connection.query('SELECT * FROM users, boards WHERE boards.userid = "' + req.session.foid + '"', function(err, data) {
+      if (err) throw err;
       
+      else {
+        // console.log(data);
+        res.send(data);
+      }
+
     })
-  })
+  // })
 });
-
-
-// router.post('/me', function (req, res, next) {
-//   connection.query('SELECT * FROM users WHERE userid = "' + req.session.userid + '"', function (err, row) {
-//     res.send(row[0]);
-//     console.log(row[0])
-//   })
-// });
 
 module.exports = router;

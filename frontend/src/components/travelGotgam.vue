@@ -10,10 +10,10 @@
       <!-- travel_gotgam_body -->
       <div class="movies travel_gotgam_body">
           <!-- travel_gotgam_inner -->
-          <!-- <div class="travel_gotgam_inner" v-for="list in lists" v-bind:key="list"> -->
+          <div class="travel_gotgam_inner" v-for="list in lists" v-bind:key="list">
 
               <!-- travel_gotgam_list -->
-              <!-- <router-link :to="{ name: 'GotgamDetail', params: { id: list.id }}"> -->
+              <router-link :to="{ name: 'GotgamDetail', params: { id: list.id }}">
                 <div class="travel_gotgam_list">
                     <!-- travel_gotgam_list_inner -->
                     <div class="travel_gotgam_list_inner">
@@ -29,15 +29,13 @@
                         <div class="travel_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <!-- <p>{{list.maintitle}}</p> -->
+                                <p>{{list.maintitle}}</p>
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <!-- <p><span>위치: </span> {{movie.site}}</p>
-                                <p><span>작성자: </span> {{movie.director}}</p>
-                                <p><span>작성일: </span> {{movie.year}}</p> -->
+                                <!-- <p><span>작성자: </span> {{movie.director}}</p> -->
                             </div>
                             <!-- list_content_info end -->
                         </div>
@@ -46,14 +44,14 @@
                     </div>
                     <!-- travel_gotgam_list_inner end -->
                 </div>
-              <!-- </router-link> -->
+              </router-link>
               <!-- travel_gotgam_list end -->
 
             </div>
             <!-- travel_gotgam_inner end -->
         </div>
         <!-- travel_gotgam_body end -->
-  <!-- </div> -->
+  </div>
   <!-- travel_gotgam_wrap end -->
 </template>
 

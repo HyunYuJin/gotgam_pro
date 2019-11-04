@@ -12,7 +12,7 @@
                   <b-col md="12">
 
                     <!-- main img uploader -->
-                    <div class="img_uploader_wrap">
+                    <!-- <div class="img_uploader_wrap">
                       <label for="fileInput" slot="upload-label">
                         <span class="upload-caption">{{ hasImage ? "Replace" : "Click to upload" }}</span>
                       </label>
@@ -20,7 +20,9 @@
                         capture="environment" :debug="1" doNotResize="gif" :autoRotate="true" outputFormat="verbose"
                         @input="setImage">
                       </image-uploader>
-                    </div>
+                    </div> -->
+
+                    <input type="file" name="file" @change="previewFiles">
 
                     <!-- main title -->
                     <b-row class="my-1">
@@ -245,6 +247,9 @@ export default {
     },
 
     methods: {
+        previewFiles(event) {
+            console.log(event.target.files[0].name);
+        },
         setImage: function(output) {
             this.hasImage = true;
             this.image = output;
