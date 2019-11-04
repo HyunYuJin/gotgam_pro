@@ -13,7 +13,7 @@
       <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
 
         <!-- travel_gotgam_list -->
-        <router-link :to="{ name: 'GotgamDetail', params: { id: my.id }}">
+        <router-link :to="{ name: 'myPageDetail', params: { id: my.id }}">
           <div class="travel_gotgam_list">
             <!-- travel_gotgam_list_inner -->
             <div class="travel_gotgam_list_inner">
@@ -73,7 +73,7 @@ import MyInfo from './myinfo.vue';
       return {
         mys: [],
         gotgamdetail: {
-          link: "/gotgamdetail"
+          link: "/myPageDetail"
         }
       }
     }
@@ -92,8 +92,21 @@ import MyInfo from './myinfo.vue';
   }
 
   .travel_gotgam_wrap {
+    width: 100%;
+    height: 100%;
     padding: 2.4rem 0;
     margin: 0 auto;
+  }
+
+  .travel_gotgam_wrap::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .travel_gotgam_title {
+    width: 30%;
+    float: left;
   }
 
   .travel_gotgam_title h2 {
@@ -105,9 +118,13 @@ import MyInfo from './myinfo.vue';
   }
 
   .travel_gotgam_body {
-    width: 1024px;
+    width: 70%;
+    height: 100%;
     margin: 0 auto;
     margin-top: 2.2rem;
+    float: right;
+    padding: 0 2rem;
+    border-left: 1px solid #ddd;
   }
 
   .travel_gotgam_list {

@@ -39,6 +39,7 @@ router.post('/me', function (req, res) {
 
     else {
       res.send(data);
+      console.log(data)
     }
 
   })
