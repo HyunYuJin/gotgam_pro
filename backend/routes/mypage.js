@@ -31,7 +31,7 @@ router.post('/info', function (req, res) {
 
 })
 
-router.post('/me', function (req, res) {
+router.post('/', function (req, res) {
   connection.query('SELECT * FROM boards WHERE boards.userid = "' + req.session.foid + '"', function (err, data) {
     if (err) throw err;
 
@@ -42,17 +42,15 @@ router.post('/me', function (req, res) {
   })
 });
 
-router.get('/me:id', function (req, res) {
+router.get('/:id', function (req, res) {
   var id = req.params.id;
-  var sql = "SELECT * FROM board WHERE id = ?";
-
-  connection.query(sql, [id], function(err, row) {
+  
+  connection.query('SELECT * FROM boards WHERE id = "' + [id] + '"', function (err, row) {
     if(err) console.error(err);
     
-    else {
-      // res.send(row[0]);
-      console.log(row[0])
-    }
+    console.log(row);
+    res.send(row[0]);
+
   });
 
 });

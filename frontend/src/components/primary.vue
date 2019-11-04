@@ -4,10 +4,10 @@
             <div class="content-wrapper">
                 <div class="calousel_wrapper">
                     <carousel :autoplay="true" :nav="false">
-                        <img v-bind:src="myboard.photo1">
+                        <!-- <img v-bind:src="myboard.photo1">
                         <img v-bind:src="myboard.photo2">
                         <img v-bind:src="myboard.photo3">
-                        <img v-bind:src="myboard.photo4">
+                        <img v-bind:src="myboard.photo4"> -->
                     </carousel>
                 </div>
 
@@ -33,7 +33,7 @@
             var id = this.$route.params.id;
             this.$http.get(`/api/mypage/${id}`)
                 .then((response) => {
-                    this.myboard = response.data[0]
+                    this.myboard = response.data
             })
         },
         data() {

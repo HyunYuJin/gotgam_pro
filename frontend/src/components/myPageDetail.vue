@@ -53,13 +53,17 @@
       Primary,
       Secondary
     },
+
     created() {
       var id = this.$route.params.id;
+
       this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
-          this.myboard = response.data[0]
+          this.myboard = response.data
+          console.log(response.data)
         })
     },
+
     data() {
       return {
         myboard: {}
