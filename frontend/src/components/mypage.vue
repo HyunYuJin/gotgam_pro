@@ -66,6 +66,7 @@ import MyInfo from './myinfo.vue';
         this.$http.post('/api/mypage/me')
         .then((response) => {
           this.mys = response.data
+          console.log(response.data)
         })
     },
 
