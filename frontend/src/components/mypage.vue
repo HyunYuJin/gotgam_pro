@@ -1,111 +1,174 @@
 <template>
-  <div class="mypage_wrap">
-    <div class="info">
+  <!-- travel_gotgam_wrap -->
+  <div class="travel_gotgam_wrap">
+    <!-- travel_gotgom_title -->
+    <div class="travel_gotgam_title">
       <div id="userid" class="userId"></div>
       <div id="username" class="userName"></div>
       <nav class="mynav">
-          <ul>
-              <li>
-                  <a href="">내가 작성한 게시물</a>
-              </li>
-          </ul>
+        <ul>
+          <li>
+            <a href="">내가 작성한 게시물</a>
+          </li>
+        </ul>
       </nav>
     </div>
-    <div>
-        <h2>여기에 게시물이 저장</h2>
+    <!-- travel_gotgam_title end -->
+
+    <!-- travel_gotgam_body -->
+    <div class="travel_gotgam_body">
+      <!-- travel_gotgam_inner -->
+      <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
+
+        <!-- travel_gotgam_list -->
+        <router-link :to="{ name: 'GotgamDetail', params: { id: my.id }}">
+          <div class="travel_gotgam_list">
+            <!-- travel_gotgam_list_inner -->
+            <div class="travel_gotgam_list_inner">
+
+              <!-- travel_gotgam_img -->
+              <div class="travel_gotgam_list_img">
+                <div class="travel_gotgam_img">
+                  <!-- <img v-bind:src="movie.poster" class="travel_gotgam_img"> -->
+                </div>
+              </div>
+
+              <!-- travel_gotgam_list_content -->
+              <div class="travel_gotgam_list_content">
+                <!-- list_content_title -->
+                <div class="list_content_title">
+                  <p>{{my.maintitle}}</p>
+                </div>
+                <!-- list_content_title end -->
+
+                <!-- list_content_info -->
+                <div class="list_content_info">
+                  <!-- <p><span>작성자: </span> {{movie.director}}</p> -->
+                </div>
+                <!-- list_content_info end -->
+              </div>
+              <!-- travel_gotgam_list_content end -->
+
+            </div>
+            <!-- travel_gotgam_list_inner end -->
+          </div>
+        </router-link>
+        <!-- travel_gotgam_list end -->
+
+      </div>
+      <!-- travel_gotgam_inner end -->
     </div>
+    <!-- travel_gotgam_body end -->
   </div>
 </template>
 
 <script>
-export default {
-    created () {
+  export default {
+    created() {
+      this.$http.post('/api/mypage/info')
+        .then((response) => {
+          var dom1 = document.getElementById('userid');
+          dom1.innerHTML = '<p class="userfont1">' + response.data.userid + '</p>';
+
+          var dom2 = document.getElementById('username');
+          dom2.innerHTML = '<p class="userfont2">' + response.data.name + '</p>';
+        }),
+
         this.$http.post('/api/mypage/me')
         .then((response) => {
-            var dom1 = document.getElementById('userid');
-            dom1.innerHTML = '<p class="userfont1">' + response.data.userid + '</p>';
-
-            var dom2 = document.getElementById('username');
-            dom2.innerHTML = '<p class="userfont2">' + response.data.name + '</p>'
+          this.mys = response.data
         })
     },
 
     data() {
-        return {
-            
+      return {
+        mys: [],
+        gotgamdetail: {
+          link: "/gotgamdetail"
         }
+      }
     }
-}
+  }
 </script>
 
 <style>
-.mypage_wrap {
-    padding: 3.4rem 0;
+  a {
+    text-decoration: none;
+    color: #2c3250;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #2c3250;
+  }
+
+  .travel_gotgam_wrap {
+    padding: 2.4rem 0;
+    margin: 0 auto;
+  }
+
+  .travel_gotgam_title h2 {
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 2.4rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .travel_gotgam_body {
+    width: 1024px;
+    margin: 0 auto;
+    margin-top: 2.2rem;
+  }
+
+  .travel_gotgam_list {
     width: 100%;
-    float: left;
-    pointer-events: none;
-}
+    height: 16rem;
+    flex: 1;
+    display: flex;
+    margin: 3rem 0;
+  }
 
-.info {
-    width: 565px;
-    height: auto;
-    border-right: 1px solid #ddd;
-    float: left;
-}
-
-.userId {
-    width: 485px;
-    pointer-events: none;
-    position: relative;
-    margin: 28px 0 -5px 0;
-    left: 54px;
-}
-
-.userfont1 {
-    letter-spacing: normal;
-    line-height: 1em;
-    font: normal normal bold 87px / 1.4em 'times new roman', times, serif;
-}
-
-.userfont2 {
-    letter-spacing: normal;
-    line-height: 1em;
-    font: normal normal bold 70px / 1.4em 'times new roman', times, serif;
-}
-
-.userName {
-    width: 485px;
-    pointer-events: none;
-    position: relative;
-    margin: 0 0 20px 0;
-    left: 54px;
-}
-
-.mynav {
-    width: 288px;
-    position: relative;
-    margin: 0 0 10px 0;
-    left: 48px;
-}
-
-.mynav ul {
-    display: table;
+  .travel_gotgam_list_inner {
     width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid #ddd;
     box-sizing: border-box;
-}
+    padding: 1.5rem;
+  }
 
-.mynav ul li {
-    height: 25px;
-    text-align: left;
-    display: table;
-    width: calc(100% - (2 * 0px));
-}
+  .travel_gotgam_list_img {
+    width: 35%;
+    padding-right: 3rem;
+    box-sizing: border-box;
+  }
 
-.mynav ul li a {
-    line-height: 25px;
-    font: italic normal normal 15px/1.4em;
-    display: inline;
-    white-space: nowrap;
-    overflow: hidden;
-}
+  .travel_gotgam_img {
+    width: 100%;
+    height: 100%;
+    /* background: url(../assets/section3_img2.jpg) no-repeat; */
+    background-size: cover;
+  }
+
+  .travel_gotgam_list_content {
+    width: 55%;
+    box-sizing: border-box;
+    padding-right: 3rem;
+  }
+
+  .travel_gotgam_list_content>div {
+    margin: 1.2rem 0;
+  }
+
+  .list_content_title {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .my_gotgam_wrap {
+    width: 10%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+  }
 </style>

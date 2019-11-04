@@ -12,7 +12,7 @@
                   <b-col md="12">
 
                     <!-- main img uploader -->
-                    <div class="img_uploader_wrap">
+                    <!-- <div class="img_uploader_wrap">
                       <label for="fileInput" slot="upload-label">
                         <span class="upload-caption">{{ hasImage ? "Replace" : "Click to upload" }}</span>
                       </label>
@@ -20,7 +20,9 @@
                         capture="environment" :debug="1" doNotResize="gif" :autoRotate="true" outputFormat="verbose"
                         @input="setImage">
                       </image-uploader>
-                    </div>
+                    </div> -->
+
+                    <input type="file" name="file" @change="previewFiles">
 
                     <!-- main title -->
                     <b-row class="my-1">
@@ -57,7 +59,7 @@
                         <label for="input-default">인원수</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-input id="input-default" required="required" maxlength="100" placeholder="몇명이서 갔나요?">
+                        <b-form-input v-model="regist.peoples" id="input-default" required="required" maxlength="100" placeholder="몇명이서 갔나요?">
                         </b-form-input>
                       </b-col>
                     </b-row>
@@ -68,7 +70,7 @@
                         <label for="input-default">여행 일수</label>
                       </b-col>
                       <b-col cols="8">
-                        <b-form-input id="input-default" required="required" maxlength="100"
+                        <b-form-input v-model="regist.dayn" id="input-default" required="required" maxlength="100"
                           placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
                       </b-col>
                       <b-col cols="4">
@@ -237,12 +239,17 @@ export default {
 
             regist: {
               maintitle: '',
-              maincontent: ''
+              maincontent: '',
+              peoples: '',
+              dayn: ''
             }
         }
     },
 
     methods: {
+        previewFiles(event) {
+            console.log(event.target.files[0].name);
+        },
         setImage: function(output) {
             this.hasImage = true;
             this.image = output;
