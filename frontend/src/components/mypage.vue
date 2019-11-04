@@ -3,15 +3,7 @@
   <div class="travel_gotgam_wrap">
     <!-- travel_gotgom_title -->
     <div class="travel_gotgam_title">
-      <div id="userid" class="userId"></div>
-      <div id="username" class="userName"></div>
-      <nav class="mynav">
-        <ul>
-          <li>
-            <a href="">내가 작성한 게시물</a>
-          </li>
-        </ul>
-      </nav>
+       <my-info></my-info>
     </div>
     <!-- travel_gotgam_title end -->
 
@@ -21,7 +13,7 @@
       <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
 
         <!-- travel_gotgam_list -->
-        <router-link :to="{ name: 'GotgamDetail', params: { id: my.id }}">
+        <router-link :to="{ name: 'myPageDetail', params: { id: my.id }}">
           <div class="travel_gotgam_list">
             <!-- travel_gotgam_list_inner -->
             <div class="travel_gotgam_list_inner">
@@ -37,7 +29,7 @@
               <div class="travel_gotgam_list_content">
                 <!-- list_content_title -->
                 <div class="list_content_title">
-                  <p>{{my.maintitle}}</p>
+                  <p>{{ my.maintitle }}</p>
                 </div>
                 <!-- list_content_title end -->
 
@@ -63,17 +55,14 @@
 </template>
 
 <script>
+import MyInfo from './myinfo.vue';
+
   export default {
+    components: {
+      MyInfo
+    },
+
     created() {
-      this.$http.post('/api/mypage/info')
-        .then((response) => {
-          var dom1 = document.getElementById('userid');
-          dom1.innerHTML = '<p class="userfont1">' + response.data.userid + '</p>';
-
-          var dom2 = document.getElementById('username');
-          dom2.innerHTML = '<p class="userfont2">' + response.data.name + '</p>';
-        }),
-
         this.$http.post('/api/mypage/me')
         .then((response) => {
           this.mys = response.data
@@ -84,7 +73,7 @@
       return {
         mys: [],
         gotgamdetail: {
-          link: "/gotgamdetail"
+          link: "/myPageDetail"
         }
       }
     }
@@ -103,8 +92,21 @@
   }
 
   .travel_gotgam_wrap {
+    width: 100%;
+    height: 100%;
     padding: 2.4rem 0;
     margin: 0 auto;
+  }
+
+  .travel_gotgam_wrap::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .travel_gotgam_title {
+    width: 30%;
+    float: left;
   }
 
   .travel_gotgam_title h2 {
@@ -116,9 +118,13 @@
   }
 
   .travel_gotgam_body {
-    width: 1024px;
+    width: 70%;
+    height: 100%;
     margin: 0 auto;
     margin-top: 2.2rem;
+    float: right;
+    padding: 0 2rem;
+    border-left: 1px solid #ddd;
   }
 
   .travel_gotgam_list {

@@ -14,6 +14,7 @@ import GotgamDetail from '@/components/gotgamDetail.vue';
 import About from '@/components/about.vue';
 import SignUp from '@/components/SignUp.vue';
 import myPage from '@/components/mypage.vue';
+import myPageDetail from '@/components/myPageDetail.vue';
 
 export default new Router({
  mode: 'history',
@@ -58,7 +59,6 @@ export default new Router({
     },
     {
       path: '/regiontravel:id',
-      // path: '/gotgamdetail',
       name: 'GotgamDetail',
       component: GotgamDetail
     },
@@ -76,6 +76,11 @@ export default new Router({
       path: '/mypage',
       name: 'myPage',
       component: myPage
+    },
+    {
+      path: '/mypage:id',
+      name: 'myPageDetail',
+      component: myPageDetail
     }
   ]
 })

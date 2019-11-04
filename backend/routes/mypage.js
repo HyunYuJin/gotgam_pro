@@ -34,23 +34,15 @@ router.post('/info', function (req, res) {
 router.post('/me', function (req, res) {
 
   console.log(req.session.userid);
-  // connection.query('SELECT * FROM users WHERE id = "' + req.session.foid + '"', function (err1, row1) {
-  //   if (err1) throw err1;
-  //   else {
-  //     console.log(row1[0].id);
-  //     res.send(row1[0])
-  //   }
+  connection.query('SELECT * FROM users, boards WHERE boards.userid = "' + req.session.foid + '"', function (err, data) {
+    if (err) throw err;
 
-    connection.query('SELECT * FROM users, boards WHERE boards.userid = "' + req.session.foid + '"', function(err, data) {
-      if (err) throw err;
-      
-      else {
-        // console.log(data);
-        res.send(data);
-      }
+    else {
+      res.send(data);
+      console.log(data)
+    }
 
-    })
-  // })
+  })
 });
 
 module.exports = router;
