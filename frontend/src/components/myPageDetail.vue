@@ -8,16 +8,16 @@
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
           <div class="item-img">
-            <img v-bind:src="movie.poster">
+            <!-- <img v-bind:src="movie.poster"> -->
           </div>
-          <div class="item-desc item-desc-single-over" v-bind:key="movie.id">
-            <h1>{{movie.name}}</h1>
+          <div class="item-desc item-desc-single-over" v-bind:key="myboard.id">
+            <h1>{{ myboard.maintitle }}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                {{movie.director}}
+                {{ myboard.name }}
               </li>
-              <li class="meta-date">{{movie.year}}</li>
+              <li class="meta-date">{{ myboard.dayn }}</li>
             </ul>
           </div>
         </div>
@@ -53,16 +53,20 @@
       Primary,
       Secondary
     },
+
     created() {
       var id = this.$route.params.id;
-      this.$http.get(`/api/movies/${id}`)
+
+      this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
-          this.movie = response.data[0]
+          this.myboard = response.data
+          console.log(response.data)
         })
     },
+
     data() {
       return {
-        movie: {}
+        myboard: {}
       }
     }
   }
@@ -92,7 +96,6 @@
   .item-img {
     width: 100%;
     height: 100%;
-    /* background: url(../assets/suwon_park.jpg) no-repeat; */
     background-position: center center;
     background-size: cover;
     display: block;

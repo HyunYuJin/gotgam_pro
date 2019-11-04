@@ -4,14 +4,14 @@
             <div class="content-wrapper">
                 <div class="calousel_wrapper">
                     <carousel :autoplay="true" :nav="false">
-                        <img v-bind:src="movie.photo1">
-                        <img v-bind:src="movie.photo2">
-                        <img v-bind:src="movie.photo3">
-                        <img v-bind:src="movie.photo4">
+                        <!-- <img v-bind:src="myboard.photo1">
+                        <img v-bind:src="myboard.photo2">
+                        <img v-bind:src="myboard.photo3">
+                        <img v-bind:src="myboard.photo4"> -->
                     </carousel>
                 </div>
 
-                <p>{{movie.content}}</p>
+                <p>{{ myboard.maincontent }}</p>
 
                 <!-- accordion -->
                 <accordion-wrap></accordion-wrap>
@@ -31,14 +31,14 @@
         },
         created() {
             var id = this.$route.params.id;
-            this.$http.get(`/api/movies/${id}`)
+            this.$http.get(`/api/mypage/${id}`)
                 .then((response) => {
-                    this.movie = response.data[0]
+                    this.myboard = response.data
             })
         },
         data() {
             return {
-                movie: {}
+                myboard: {}
             }
         }
 

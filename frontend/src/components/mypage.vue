@@ -63,9 +63,10 @@ import MyInfo from './myinfo.vue';
     },
 
     created() {
-        this.$http.post('/api/mypage/me')
+        this.$http.post('/api/mypage/')
         .then((response) => {
           this.mys = response.data
+          console.log(response.data)
         })
     },
 
