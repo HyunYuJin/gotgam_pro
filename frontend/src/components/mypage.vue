@@ -3,15 +3,7 @@
   <div class="travel_gotgam_wrap">
     <!-- travel_gotgom_title -->
     <div class="travel_gotgam_title">
-      <div id="userid" class="userId"></div>
-      <div id="username" class="userName"></div>
-      <nav class="mynav">
-        <ul>
-          <li>
-            <a href="">내가 작성한 게시물</a>
-          </li>
-        </ul>
-      </nav>
+       <my-info></my-info>
     </div>
     <!-- travel_gotgam_title end -->
 
@@ -37,7 +29,7 @@
               <div class="travel_gotgam_list_content">
                 <!-- list_content_title -->
                 <div class="list_content_title">
-                  <p>{{my.maintitle}}</p>
+                  <p>{{ my.maintitle }}</p>
                 </div>
                 <!-- list_content_title end -->
 
@@ -63,17 +55,14 @@
 </template>
 
 <script>
+import MyInfo from './myinfo.vue';
+
   export default {
+    components: {
+      MyInfo
+    },
+
     created() {
-      this.$http.post('/api/mypage/info')
-        .then((response) => {
-          var dom1 = document.getElementById('userid');
-          dom1.innerHTML = '<p class="userfont1">' + response.data.userid + '</p>';
-
-          var dom2 = document.getElementById('username');
-          dom2.innerHTML = '<p class="userfont2">' + response.data.name + '</p>';
-        }),
-
         this.$http.post('/api/mypage/me')
         .then((response) => {
           this.mys = response.data
