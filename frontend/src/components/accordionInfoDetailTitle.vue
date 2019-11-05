@@ -3,15 +3,9 @@
     <b-card>
       <b-media>
         <b-media-body>
-          <h5 class="mt-0">Media Title</h5>
+          <h5 class="mt-0">이날의 곶감</h5>
           <p>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-            sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-            condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </p>
-          <p class="mb-0">
-            Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis
-            natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            {{myboard.daycontent}}
           </p>
         </b-media-body>
       </b-media>
@@ -21,6 +15,21 @@
 
 <script>
 export default {
+  created() {
+      var id = this.$route.params.id;
+
+      this.$http.get(`/api/mypage/${id}`)
+        .then((response) => {
+          this.myboard = response.data
+          console.log(response.data)
+        })
+    },
+
+    data() {
+        return {
+          myboard: {}
+    }
+    }
 
 }
 </script>

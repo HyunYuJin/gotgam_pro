@@ -4,17 +4,12 @@
           <ul>
               <li class="side-title">Person</li>
               <li>
-                  <span>성인</span>
-                  <span class="person-side">2명</span>
-              </li>
-              <li>
-                  <span>어린이</span>
-                  <span class="person-side">0명</span>
+                  <span>{{ myboard.peoples }}</span>
               </li>
           </ul>
           <ul>
-              <li class="side-title">DATE</li>
-              <li>10 Oct - 12 Oct, 2019</li>
+              <li class="side-title">DAY</li>
+              <li>{{ myboard.dayn }}일</li>
           </ul>
           <ul>
               <li class="side-title">Mood</li>
@@ -30,6 +25,21 @@
 
 <script>
 export default {
+    created() {
+      var id = this.$route.params.id;
+
+      this.$http.get(`/api/mypage/${id}`)
+        .then((response) => {
+          this.myboard = response.data
+          console.log(response.data)
+        })
+    },
+
+    data() {
+        return {
+          myboard: {}
+    }
+}
 
 }
 </script>

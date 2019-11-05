@@ -45,7 +45,7 @@ router.post('/', function (req, res) {
 router.get('/:id', function (req, res) {
   var id = req.params.id;
   
-  connection.query('SELECT * FROM boards WHERE id = "' + [id] + '"', function (err, row) {
+  connection.query('SELECT * FROM boards, day WHERE boards.id = "' + [id] + '"', function (err, row) {
     if(err) console.error(err);
     
     console.log(row);

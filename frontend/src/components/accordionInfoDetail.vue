@@ -5,7 +5,7 @@
         <AccordionInfoDetailTitle></AccordionInfoDetailTitle>
 
         <b-list-group>
-          <b-list-group-item href="#" active>
+          <b-list-group-item href="#">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">교통수단</h5>
             </div>
@@ -13,14 +13,7 @@
               <ul>
                 <li>
                   <dl>
-                    <dt>출발지: 신나무실 아파트</dt>
-                    <dd>3번버스이용 (약 30분 소요)</dd>
-                  </dl>
-                </li>
-                <li>
-                  <dl>
-                    <dt>도착지: 광교호수공원입구</dt>
-                    <dd>도보 5분</dd>
+                    <dd>{{ myboard.daytraffic }}</dd>
                   </dl>
                 </li>
               </ul>
@@ -30,19 +23,11 @@
           <b-list-group-item href="#">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">맛집</h5>
-              <strong class="text-muted">존앤진피자</strong>
+              <!-- <strong class="text-muted">존앤진피자</strong> -->
             </div>
-            <p class="mb-1">광교호수공원 상가 1층</p>
-            <small class="text-muted">묻지도 따지지도 말고 수제맥주는 꼭 시켜드세요.</small>
+            <p class="mb-1">{{ myboard.dayfood }}</p>
           </b-list-group-item>
-          <b-list-group-item href="#">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">위치</h5>
-              <small class="text-muted">경기 수원시 영통구 광교호수로 57</small>
-            </div>
-            <p class="mb-1">지도 넣기</p>
-          </b-list-group-item>
-          <b-list-group-item href="#foobar" disabled>
+          <b-list-group-item href="#foobar">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">비용</h5>
               <small class="text-muted">₩23000</small>
@@ -57,8 +42,7 @@
                 </li>
                 <li>
                   <dl>
-                    <dt>저녁: 존앤진피자</dt>
-                    <dd>₩18000</dd>
+                    <dd>{{ myboard.daypay }}</dd>
                   </dl>
                 </li>
               </ul>
@@ -74,6 +58,22 @@
   export default {
     components: {
       AccordionInfoDetailTitle
+    },
+
+    created() {
+      var id = this.$route.params.id;
+
+      this.$http.get(`/api/mypage/${id}`)
+        .then((response) => {
+          this.myboard = response.data
+          console.log(response.data)
+        })
+    },
+
+    data() {
+        return {
+          myboard: {}
+    }
     }
   }
 </script>
