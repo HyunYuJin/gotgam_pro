@@ -28,33 +28,56 @@ router.post('/step1', function (req, res) {
       'dayn': req.body.dayn
     };
 
+    const day = {
+      'daytitle': req.body.daytitle,
+      'daycontent': req.body.daycontent,
+      'daytraffic': req.body.daytraffic,
+      'dayfood': req.body.dayfood,
+      'daypay': req.body.daypay
+    }
+
     connection.query('INSERT INTO boards (maintitle, maincontent, userid, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + req.session.foid + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
-      if (err) throw err;
-      else {
-        console.log(row2[0])
-      }
+
+      connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
+        console.log(row[0].idd)
+
+        connection.query('INSERT INTO day (daytitle, daycontent, daytraffic, dayfood, daypay, boardid) VALUES ("' + day.daytitle + '","' + day.daycontent + '","' + day.daytraffic + '","' + day.dayfood + '","' + day.daypay + '","' + row[0].idd + '")', function(err, row3) {
+          if (err) throw err;
+        })
+      })
+      
+      res.json({
+        success: true,
+        message: '등록이 완료되었습니다!'
+      })
     });
 
 });
 
-router.get('/list', function (req, res) {
-  connection.query('SELECT * FROM boards INNER JOIN users WHERE boards.userid = users.id', function(err, data) {
+router.get('/', function (req, res) {
+  connection.query('SELECT * FROM boards', function(err, data) {
     if (err) throw err;
 
-    if(data != null) {
-        console.log(data)
-        res.send(data)
-        // res.json({
-        //     message: '가져왔다.',
-        //     data: data
-        // })
-    } else {
-        // res.json({
-        //     message: '못가져왔다.'
-        // })
-    }
-      
+    res.send(data)
+
   });
 })
+
+router.get('/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM boards WHERE boards.id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+
+    console.log(row[0])
+
+    connection.query('SELECT * FROM day WHERE day.boardid = "' + [id] + '"', function(err, row1) {
+      if(err) console.log(err);
+
+      res.send(row1[0])
+    })
+  })
+
+});
   
   module.exports = router;

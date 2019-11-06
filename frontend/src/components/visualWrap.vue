@@ -8,11 +8,8 @@
       <div class ="selectdiv">
         <form name="form">
           <select id="make" v-model="make">
-            <option :value="null" disabled selected>Select Make</option>
+            <option :value="null" disabled selected>지역을 선택하세요</option>
             <option v-for="option in makes_options" v-bind:value="option.id" v-bind:key="option.id">{{option.text}}</option>
-          </select>
-          <select class="form-control" name="model" id="model" v-model="model">
-            <option v-for="option in model_options[make]" v-bind:value="option.id" v-bind:key="option.id">{{option.text}}</option>
           </select>
           <button v-on:click="searchReg">지역 이동</button>
         </form>
@@ -173,27 +170,7 @@ export default {
           text: "경기",
           id: 3
         }
-      ],
-      model_options: {
-        3: [
-          {
-            text: "수원시",
-            id: 1
-          },
-          {
-            text: "고양시",
-            id: 2
-          },
-          {
-            text: "용인시",
-            id: 3
-          },
-          {
-            text: "성남시",
-            id: 4
-          }
-        ]
-      }
+      ]
     }
   },
     

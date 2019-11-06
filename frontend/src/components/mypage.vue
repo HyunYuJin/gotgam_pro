@@ -1,14 +1,14 @@
 <template>
   <!-- travel_gotgam_wrap -->
-  <div class="travel_gotgam_wrap">
+  <div class="travel_gotgam_wrap2">
     <!-- travel_gotgom_title -->
-    <div class="travel_gotgam_title">
+    <div class="travel_gotgam_title2">
        <my-info></my-info>
     </div>
     <!-- travel_gotgam_title end -->
 
     <!-- travel_gotgam_body -->
-    <div class="travel_gotgam_body">
+    <div class="travel_gotgam_body2">
       <!-- travel_gotgam_inner -->
       <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
 
@@ -92,25 +92,25 @@ import MyInfo from './myinfo.vue';
     color: #2c3250;
   }
 
-  .travel_gotgam_wrap {
+  .travel_gotgam_wrap2 {
     width: 100%;
     height: 100%;
     padding: 2.4rem 0;
     margin: 0 auto;
   }
 
-  .travel_gotgam_wrap::after {
+  .travel_gotgam_wrap2::after {
     content: '';
     display: table;
     clear: both;
   }
 
-  .travel_gotgam_title {
+  .travel_gotgam_title2 {
     width: 30%;
     float: left;
   }
 
-  .travel_gotgam_title h2 {
+  .travel_gotgam_title2 h2 {
     font-weight: 700;
     font-size: 1.9rem;
     line-height: 2.4rem;
@@ -118,7 +118,7 @@ import MyInfo from './myinfo.vue';
     padding: 0;
   }
 
-  .travel_gotgam_body {
+  .travel_gotgam_body2 {
     width: 70%;
     height: 100%;
     margin: 0 auto;

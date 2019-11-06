@@ -25,7 +25,7 @@
                         </a>
 
                         <!-- accordion_info_detail -->
-                        <accordion-info-detail></accordion-info-detail>
+                        <accordion-info-detail1></accordion-info-detail1>
                     </li>
                 </ul>
             </div>
@@ -37,17 +37,17 @@
 </template>
 
 <script>
-import AccordionInfoDetail from './accordionInfoDetail.vue';
+import AccordionInfoDetail1 from './accordionInfoDetail1.vue';
 
 export default {
     components: {
-        AccordionInfoDetail,
+        AccordionInfoDetail1,
     },
 
     created() {
       var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
+      this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
           this.myboard = response.data
           // console.log(response.data)

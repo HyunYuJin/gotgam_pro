@@ -20,38 +20,41 @@ connection.connect(function (err) {
   }
 });
 
+// 현재 로그인 중인 사용자의 정보를 보여준다.
 router.post('/info', function (req, res) {
   connection.query('SELECT * FROM users WHERE id = "' + req.session.foid + '"', function (err1, row1) {
     if (err1) throw err1;
     else {
-      // console.log(row1[0].id);
       res.send(row1[0])
     }
   });
 
 })
 
+// 현재 로그인 중인 사용자가 작성한 게시물의 리스트를 보여준다.
 router.post('/', function (req, res) {
   connection.query('SELECT * FROM boards WHERE boards.userid = "' + req.session.foid + '"', function (err, data) {
     if (err) throw err;
 
-    else {
-      res.send(data);
-    }
+    res.send(data);
 
   })
 });
 
 router.get('/:id', function (req, res) {
   var id = req.params.id;
-  
-  connection.query('SELECT * FROM boards WHERE id = "' + [id] + '"', function (err, row) {
-    if(err) console.error(err);
-    
-    console.log(row);
-    res.send(row[0]);
 
-  });
+  connection.query('SELECT * FROM boards WHERE boards.id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+
+    console.log(row[0])
+
+    connection.query('SELECT * FROM day WHERE day.boardid = "' + [id] + '"', function(err, row1) {
+      if(err) console.log(err);
+
+      res.send(row1[0])
+    })
+  })
 
 });
 

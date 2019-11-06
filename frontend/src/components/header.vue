@@ -18,8 +18,24 @@
                 <li><router-link :to="about.link">About</router-link></li>
 				<li>
 					<div class="login_bar">
+						<!-- login -->
 						<router-link :to="login.link">Login</router-link>
-						<button v-on:click="logout">Logout</button>
+
+						<!-- 내정보 dropdown -->
+						<b-nav-item-dropdown
+						id="my-nav-dropdown"
+						text="내정보"
+						toggle-class="nav-link-custom"
+						right
+						>
+						<b-dropdown-item>
+							<router-link class="mypage" :to="mypage.link">My Page</router-link>
+						</b-dropdown-item>
+						<b-dropdown-divider></b-dropdown-divider>
+						<b-dropdown-item>
+							<button class="logoutbtn" v-on:click="logout">Logout</button>
+						</b-dropdown-item>
+						</b-nav-item-dropdown>
 					</div>
 				</li>
             </nav>
@@ -50,6 +66,9 @@ export default {
 			  },
 			  login: {
 				  link: "login"
+			  },
+			  mypage: {
+				  link: "/mypage"
 			  }
 		};
 	},
@@ -87,7 +106,10 @@ export default {
 			)
 			.then(
 				(res) => { //no error
-					alert("로그아웃")
+					if(res.data.success){
+						alert(res.data.message)
+						this.$router.push('/') 
+					}
 				}
 			)
 			.catch(err => {
@@ -371,5 +393,33 @@ export default {
 		vertical-align: middle;
 		display: inline-block;
 		background-repeat: no-repeat;
+	}
+
+	.dropdown-menu li {
+		width: 100%;
+		margin: 0 !important;
+		text-align: center;
+	}
+	
+	.logoutbtn {
+		width: 100%;
+		background: transparent;
+		border: none;
+		font-size: 1.15em;
+	}
+
+	.logoutbtn:hover {
+		color: #ff4401;
+	}
+
+	.mypage, .mypage:hover {
+		width: 100%;
+		display: inline-block;
+		transition: 0s !important;
+		border-bottom: none !important;
+	}
+
+	.nav-link {
+		padding: 0;
 	}
 </style>

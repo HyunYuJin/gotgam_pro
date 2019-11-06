@@ -2,7 +2,7 @@
   <div>
     <!-- accordion_info_detail -->
     <div class="accordion_info_detail">
-        <AccordionInfoDetailTitle></AccordionInfoDetailTitle>
+        <AccordionInfoDetailTitle1></AccordionInfoDetailTitle1>
 
         <b-list-group>
           <b-list-group-item href="#">
@@ -54,16 +54,16 @@
 </template>
 
 <script>
-  import AccordionInfoDetailTitle from './accordionInfoDetailTitle.vue';
+  import AccordionInfoDetailTitle1 from './accordionInfoDetailTitle1.vue';
   export default {
     components: {
-      AccordionInfoDetailTitle
+      AccordionInfoDetailTitle1
     },
 
     created() {
       var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
+      this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
           this.myboard = response.data
           // console.log(response.data)

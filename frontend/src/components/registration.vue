@@ -121,8 +121,9 @@
 
                             <!-- day title -->
                             <div class="form-group form-inline justify-content-between col-12">
+                              <!-- <input type="text" v-model="regist[i].day"> -->
                               <label class="font-weight-bold" for="day1">제목</label>
-                              <input type="text" name="day1" id="" class="form-control col-12">
+                              <input type="text" name="day1" v-model="regist.daytitle" class="form-control col-12">
                             </div>
 
                             <b-row>
@@ -142,7 +143,7 @@
 
                               <!-- day content -->
                               <b-col cols="12" lg="6">
-                                <textarea class="form-control mb-3 text-xsmall" name="" id="" rows="6"
+                                <textarea v-model="regist.daycontent" class="form-control mb-3 text-xsmall" name="" id="" rows="6"
                                   placeholder="이날의 곶감을 기록해주세요."></textarea>
                               </b-col>
                               
@@ -154,18 +155,18 @@
                               <!-- day traffic -->
                               <b-col cols="11" class="form-group form-inline" id="display-traffic">
                                 <label class="control-label font-weight-bold" for="traffic">교통</label>
-                                <textarea class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
+                                <textarea v-model="regist.daytraffic" class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
                               </b-col>
                               <!-- day food -->
                               <b-col cols="11" class="form-group form-inline" id="display-restaurant">
                                 <label class="control-label font-weight-bold" for="restaurant">맛집</label>
-                                <textarea class="form-control col-10 mx-auto" rows="3" name=""
+                                <textarea v-model="regist.datfood" class="form-control col-10 mx-auto" rows="3" name=""
                                   id="restaurant"></textarea>
                               </b-col>
                               <!-- day pay -->
                               <b-col cols="11" class="form-group form-inline" id="display-location">
                                 <label class="control-label font-weight-bold" for="location">비용</label>
-                                <textarea class="form-control col-10 mx-auto" rows="3" name=""
+                                <textarea v-model="regist.daypay" class="form-control col-10 mx-auto" rows="3" name=""
                                   id="location"></textarea>
                               </b-col>
                             </b-row>
@@ -212,38 +213,44 @@ export default {
         Header
     },
     data() {
-        return {
-            link: "registration",
-            hasImage: false,
-            image: null,
-            tabs: [],
-            tabCounter: 1,
-            show: false,
+      return {
+        link: "registration",
+        hasImage: false,
+        image: null,
+        tabs: [],
+        tabCounter: 1,
+        show: false,
 
-            selected: null,
-            options1: [
-                { value: null, text: '기분을 선택해주세요.', disabled: true },
-                { value: 'angry', text: '화남' },
-                { value: 'expressionless', text: '무심함' },
-                { value: 'astonished', text: '놀란'},
-                { value: 'confounded', text: '혼란'},
-                { value: 'okey', text: '괜찮음'},
-                { value: 'blush', text: '설렘'}
-            ],
-            options2: [
-                { value: null, text: '지역을 선택해주세요.', disabled: true },
-                { value: 'seoul', text: '서울특별시' },
-                { value: 'kyeong', text: '경기도' },
-                { value: 'incheon', text: '인천광역시'}
-            ],
+        selected: null,
+        options1: [
+            { value: null, text: '기분을 선택해주세요.', disabled: true },
+            { value: 'angry', text: '화남' },
+            { value: 'expressionless', text: '무심함' },
+            { value: 'astonished', text: '놀란'},
+            { value: 'confounded', text: '혼란'},
+            { value: 'okey', text: '괜찮음'},
+            { value: 'blush', text: '설렘'}
+        ],
+        options2: [
+            { value: null, text: '지역을 선택해주세요.', disabled: true },
+            { value: 'seoul', text: '서울특별시' },
+            { value: 'kyeong', text: '경기도' },
+            { value: 'incheon', text: '인천광역시'}
+        ],
 
-            regist: {
-              maintitle: '',
-              maincontent: '',
-              peoples: '',
-              dayn: ''
-            }
-        }
+        regist: {
+          maintitle: '',
+          maincontent: '',
+          peoples: '',
+          dayn: '',
+          daytitle: '',
+          daycontent: '',
+          daytraffic: '',
+          dayfood: '',
+          daypay: ''
+        },
+        reg:[]
+      }
     },
 
     methods: {
@@ -271,13 +278,12 @@ export default {
           )
           .then(
             (res) => {
-              if(res.data.sucess) {
-                console.log(res.data.message);
-                // alert('등록을 완료했습니다.')
-                this.$router.push('/')
+              if(res.data.success) {
+                alert(res.data.message)
+                this.$router.push('/mypage')
               }
               else {
-                console.log(res.data.message);
+                alert('등록실패')
               }
             },
           )

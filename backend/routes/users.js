@@ -22,7 +22,7 @@ connection.connect(function (err) {
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send('서버 넘어와싸');
+  
 });
 
 router.post('/signUp1', function (req, res) {
@@ -73,7 +73,6 @@ router.post('/login1', function (req, res) {
           success: true,
           message: '곶감에 로그인 되었습니다!'
         })
-        // res.redirect('/')
       })
     } else {
       res.json({ // 매칭되는 아이디는 있으나, 비밀번호가 틀린 경우 
@@ -89,7 +88,10 @@ router.get('/logout', function(req, res) {
   delete req.session.userid;
   delete req.session.foid;
   req.session.save(() => {
-    res.redirect('/');
+    res.json({
+      success: true,
+      message: '로그아웃 되었습니다.'
+    })
   })
 })
 

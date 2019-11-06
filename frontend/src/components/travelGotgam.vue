@@ -10,7 +10,7 @@
       <!-- travel_gotgam_body -->
       <div class="movies travel_gotgam_body">
           <!-- travel_gotgam_inner -->
-          <div class="travel_gotgam_inner" v-for="list in lists" v-bind:key="list">
+          <div class="travel_gotgam_inner" v-for="(list, idx) in lists" v-bind:key="idx">
 
               <!-- travel_gotgam_list -->
               <router-link :to="{ name: 'GotgamDetail', params: { id: list.id }}">
@@ -29,13 +29,13 @@
                         <div class="travel_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <p>{{list.maintitle}}</p>
+                                <p>{{ list.maintitle }}</p>
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <!-- <p><span>작성자: </span> {{movie.director}}</p> -->
+                                <p>작성자: {{ list.userid }}</p>
                             </div>
                             <!-- list_content_info end -->
                         </div>
@@ -58,7 +58,7 @@
 <script>
 export default {
   created () {
-    this.$http.get('/api/regist/list')
+    this.$http.get('/api/regist/')
     .then((response) => {
       this.lists = response.data
     })
