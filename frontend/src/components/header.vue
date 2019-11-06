@@ -87,7 +87,10 @@ export default {
 			)
 			.then(
 				(res) => { //no error
-					alert("로그아웃")
+					if(res.data.success){
+						alert(res.data.message)
+						this.$router.push('/') 
+					}
 				}
 			)
 			.catch(err => {
