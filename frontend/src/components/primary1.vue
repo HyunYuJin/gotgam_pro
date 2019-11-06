@@ -14,7 +14,7 @@
                 <p>{{ myboard.maincontent }}</p>
 
                 <!-- accordion -->
-                <accordion-wrap></accordion-wrap>
+                <accordion-wrap1></accordion-wrap1>
             </div>
         </div>
     </div>
@@ -22,16 +22,16 @@
 
 <script>
     import carousel from 'vue-owl-carousel';
-    import AccordionWrap from './accordionWrap.vue';
+    import AccordionWrap1 from './accordionWrap1.vue';
     
     export default {
         components: {
             carousel,
-            AccordionWrap,
+            AccordionWrap1,
         },
         created() {
             var id = this.$route.params.id;
-            this.$http.get(`/api/regist/${id}`)
+            this.$http.get(`/api/mypage/detail${id}`)
                 .then((response) => {
                     this.myboard = response.data
             })

@@ -52,35 +52,32 @@ router.post('/step1', function (req, res) {
       })
     });
 
-    // connection.query('INSERT INTO day (daytitle) VALUES ("' + day.daytitle + '") WHERE boardid = ' + sql, function(err, row) {
-    //   if (err) throw err;
-
-    //   res.json({
-    //     success: true,
-    //     message: '등록쓰'
-    //   })
-    // })
-
 });
 
-router.get('/list', function (req, res) {
-  connection.query('SELECT * FROM boards INNER JOIN users WHERE boards.userid = users.id', function(err, data) {
+router.get('/', function (req, res) {
+  connection.query('SELECT * FROM boards', function(err, data) {
     if (err) throw err;
 
-    if(data != null) {
-        console.log(data)
-        res.send(data)
-        // res.json({
-        //     message: '가져왔다.',
-        //     data: data
-        // })
-    } else {
-        // res.json({
-        //     message: '못가져왔다.'
-        // })
-    }
-      
+    res.send(data)
+
   });
 })
+
+router.get('/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM boards WHERE boards.id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+
+    console.log(row[0])
+
+    connection.query('SELECT * FROM day WHERE day.boardid = "' + [id] + '"', function(err, row1) {
+      if(err) console.log(err);
+
+      res.send(row1[0])
+    })
+  })
+
+});
   
   module.exports = router;

@@ -8,16 +8,15 @@
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
           <div class="item-img">
-            <img v-bind:src="movie.poster">
+            <!-- <img v-bind:src="ourboard.poster"> -->
           </div>
-          <div class="item-desc item-desc-single-over" v-bind:key="movie.id">
-            <h1>{{movie.name}}</h1>
+          <div class="item-desc item-desc-single-over" v-bind:key="ourboard.id">
+            <h1>{{ ourboard.maintitle }}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                {{movie.director}}
+                <span>{{ ourboard.userid }}</span>
               </li>
-              <li class="meta-date">{{movie.year}}</li>
             </ul>
           </div>
         </div>
@@ -53,16 +52,20 @@
       Primary,
       Secondary
     },
+
     created() {
       var id = this.$route.params.id;
-      this.$http.get(`/api/movies/${id}`)
+
+      this.$http.get(`/api/regist/${id}`)
         .then((response) => {
-          this.movie = response.data[0]
+          this.ourboard = response.data
+          console.log(response.data)
         })
     },
+
     data() {
       return {
-        movie: {}
+        ourboard: {}
       }
     }
   }
@@ -145,15 +148,6 @@
 
   .meta-author {
     position: relative;
-  }
-
-  .meta-author::after {
-    content: '/';
-    color: #fff;
-    opacity: 0.7;
-    position: absolute;
-    right: -12px;
-    top: 0;
   }
 
   /* gotgam_info_body */

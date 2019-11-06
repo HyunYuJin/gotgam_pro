@@ -22,7 +22,7 @@ connection.connect(function (err) {
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send('서버 넘어와싸');
+  
 });
 
 router.post('/signUp1', function (req, res) {

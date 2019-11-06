@@ -17,7 +17,6 @@
                 <span class="author-url">By</span>
                 {{ myboard.name }}
               </li>
-              <li class="meta-date">{{ myboard.dayn }}</li>
             </ul>
           </div>
         </div>
@@ -30,11 +29,11 @@
       <div class="gotgam_info_body container-fluid">
         <div class="row">
           <!-- primary -->
-          <Primary></Primary>
+          <Primary1></Primary1>
           <!-- primary end -->
 
           <!-- secondary -->
-          <Secondary></Secondary>
+          <Secondary1></Secondary1>
         </div>
       </div>
       <!-- gotgam_info_body end -->
@@ -45,13 +44,13 @@
 </template>
 
 <script>
-  import Primary from './primary.vue';
-  import Secondary from './secondary.vue';
+  import Primary1 from './primary1.vue';
+  import Secondary1 from './secondary1.vue';
 
   export default {
     components: {
-      Primary,
-      Secondary
+      Primary1,
+      Secondary1
     },
 
     created() {
@@ -148,15 +147,6 @@
 
   .meta-author {
     position: relative;
-  }
-
-  .meta-author::after {
-    content: '/';
-    color: #fff;
-    opacity: 0.7;
-    position: absolute;
-    right: -12px;
-    top: 0;
   }
 
   /* gotgam_info_body */
