@@ -45,6 +45,7 @@
 
 <script>
 import * as header from '../js/header.js';
+import dataManager from '@/util/data-manager.js';
 
 export default {
 	data() {
@@ -106,6 +107,7 @@ export default {
 			)
 			.then(
 				(res) => { //no error
+					dataManager.clearData();
 					if(res.data.success){
 						alert(res.data.message)
 						this.$router.push('/') 
