@@ -21,36 +21,32 @@ connection.connect(function (err) {
 });
 
 router.post('/step1', function (req, res) {
-    const board = {
-      'maintitle': req.body.maintitle,
-      'maincontent': req.body.maincontent,
-      'peoples': req.body.peoples,
-      'dayn': req.body.dayn
-    };
+  const board = {
+    'maintitle': req.body.regist.maintitle,
+    'maincontent': req.body.regist.maincontent,
+    'peoples': req.body.regist.peoples,
+    'dayn': req.body.regist.dayn
+  };
 
-    const day = {
-      'daytitle': req.body.daytitle,
-      'daycontent': req.body.daycontent,
-      'daytraffic': req.body.daytraffic,
-      'dayfood': req.body.dayfood,
-      'daypay': req.body.daypay
-    }
+  const day = req.body.reg
 
-    connection.query('INSERT INTO boards (maintitle, maincontent, userid, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + req.session.foid + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
+  connection.query('INSERT INTO boards (maintitle, maincontent, userid, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + req.session.foid + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
 
-      connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
-        console.log(row[0].idd)
+    connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
+      console.log(row[0].idd)
 
-        connection.query('INSERT INTO day (daytitle, daycontent, daytraffic, dayfood, daypay, boardid) VALUES ("' + day.daytitle + '","' + day.daycontent + '","' + day.daytraffic + '","' + day.dayfood + '","' + day.daypay + '","' + row[0].idd + '")', function(err, row3) {
+      for (let i = 1; i <= board.dayn; i++) {
+        connection.query('INSERT INTO day (daytitle, daycontent, daytraffic, dayfood, daypay, boardid) VALUES ("' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].dayfood + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
           if (err) throw err;
         })
-      })
-      
-      res.json({
-        success: true,
-        message: '등록이 완료되었습니다!'
-      })
-    });
+      }
+    })
+    
+    res.json({
+      success: true,
+      message: '등록이 완료되었습니다!'
+    })
+  });
 
 });
 

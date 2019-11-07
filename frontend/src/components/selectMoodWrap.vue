@@ -9,27 +9,27 @@
         <ul class="range-labels">
           <li class="rangeBulletangry dark">
             <p>Angry</p>
-            <i class="em em-angry"></i>
+            <i class="em em-angry"><button></button></i>
           </li>
           <li class="rangeBulletexpressionless dark">
             <p>Expressionless</p>
-            <i class="em em-expressionless"></i>
+            <i class="em em-expressionless"><button></button></i>
           </li>
           <li class="rangeBulletastonished dark">
             <p>Astonished</p>
-            <i class="em em-astonished"></i>
+            <i class="em em-astonished"><button></button></i>
           </li>
           <li class="rangeBulletconfounded dark">
             <p>Confounded</p>
-            <i class="em em-confounded"></i>
+            <i class="em em-confounded"><button></button></i>
           </li>
           <li class="rangeBulletokay dark">
             <p>Okey?</p>
-            <i class="em em-face_with_raised_eyebrow"></i>
+            <i class="em em-face_with_raised_eyebrow"><button></button></i>
           </li>
           <li class="rangeBulletblush dark">
             <p>Blush</p>
-            <i class="em em-blush"></i>
+            <i class="em em-blush"><button></button></i>
           </li>
         </ul>
 
@@ -45,7 +45,6 @@
 
 <script>
   export default {
-
   }
 </script>
 
@@ -213,12 +212,24 @@ section .range-container {
   margin: 0 auto;
   bottom: -75px;
   font-size: 15px;
+  transition: all ease 0.5s;
+}
+
+.range-container .range-labels li i:hover {
+  transform: scale( 1.5 );
 }
 
 /* emoji */
 .em {
   height: 1.6em;
   width: 1.6em;
+}
+
+.em button {
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
 }
 
 .em.em-angry {

@@ -14,24 +14,7 @@
 </template>
 
 <script>
-export default {
-  created() {
-      var id = this.$route.params.id;
-
-      this.$http.get(`/api/mypage/${id}`)
-        .then((response) => {
-          this.myboard = response.data
-          // console.log(response.data)
-        })
-    },
-
-    data() {
-        return {
-          myboard: {}
-    }
-    }
-
-}
+  export default {}
 </script>
 
 <style>
