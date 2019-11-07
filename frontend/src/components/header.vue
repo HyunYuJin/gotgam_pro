@@ -19,7 +19,13 @@
 				<li>
 					<div class="login_bar">
 						<!-- login -->
-						<router-link :to="login.link">Login</router-link>
+						<div v-if="this.$store.getters.userId.length == 0">
+							<router-link :to="login.link">Login</router-link>
+						</div>
+						<div v-else>
+							<button class="logoutbtn" v-on:click="logout">Logout</button>
+						</div>
+						<!-- <router-link :to="login.link">Login</router-link> -->
 
 						<!-- 내정보 dropdown -->
 						<b-nav-item-dropdown
@@ -31,10 +37,10 @@
 						<b-dropdown-item>
 							<router-link class="mypage" :to="mypage.link">My Page</router-link>
 						</b-dropdown-item>
-						<b-dropdown-divider></b-dropdown-divider>
+						<!-- <b-dropdown-divider></b-dropdown-divider>
 						<b-dropdown-item>
 							<button class="logoutbtn" v-on:click="logout">Logout</button>
-						</b-dropdown-item>
+						</b-dropdown-item> -->
 						</b-nav-item-dropdown>
 					</div>
 				</li>
@@ -110,7 +116,7 @@ export default {
 					dataManager.clearData();
 					if(res.data.success){
 						alert(res.data.message)
-						this.$router.push('/') 
+						this.$router.push('login') 
 					}
 				}
 			)
