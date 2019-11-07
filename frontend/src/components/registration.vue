@@ -74,7 +74,7 @@
                           placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
                       </b-col>
                       <b-col cols="4">
-                        <b-button @click.prevent="newTab" href="#" class="col-12">OK</b-button>
+                        <b-button @click.prevent="setTab()" href="#" class="col-12">OK</b-button>
                       </b-col>
                     </b-row>
 
@@ -257,6 +257,13 @@ export default {
           {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
           {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
           {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
           {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''}
         ]
       }
@@ -280,6 +287,28 @@ export default {
         },
         newTab() {
             this.tabs.push(this.tabCounter++)
+        },
+        setTab(){
+          if(this.regist.dayn<1|| this.regist.dayn>14){
+            window.alert('1 ~ 14 사이의 값을 입력해주세요')
+            return;
+          }
+          while(this.tabCounter!=this.regist.dayn){
+            console.log(this.tabCounter+"  :  "+this.regist.dayn)
+            if(this.tabCounter<this.regist.dayn)
+            {
+              this.tabs.push(this.tabCounter++)
+                          console.log(this.tabCounter+"  :  "+this.regist.dayn)
+            }
+            else{
+              this.tabs.splice(this.tabs.length - 1, 1)
+                if (this.tabCounter < 1) {
+                  this.tabCounter--;
+               }
+            }
+          }
+          this.tabs.push(this.tabCounter++)
+
         },
         save(event) {
           this.$http.post('/api/regist/step1',
