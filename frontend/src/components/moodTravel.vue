@@ -12,7 +12,7 @@
           @onClick="handleClick"
         />
         <div v-if="currentTab === 'tab1'">
-          <p>기분 소개</p>
+          <mood-intro></mood-intro>
         </div>
 
         <div v-if="currentTab === 'tab2'">
@@ -25,12 +25,14 @@
 <script>
 import SelectMoodWrap from './selectMoodWrap.vue';
 import Tabs from "vue-tabs-with-active-line";
+import MoodIntro from './moodIntro.vue';
 import MoodGotgam from './moodGotgam.vue';
 
 export default {
   components: {
     SelectMoodWrap,
     Tabs,
+    MoodIntro,
     MoodGotgam
   },
 
