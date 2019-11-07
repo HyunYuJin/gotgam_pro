@@ -12,9 +12,7 @@
           <p class="mb-1">
             <ul>
               <li>
-                <dl>
-                  <dd>{{ myboard.daytraffic }}</dd>
-                </dl>
+                  <p>{{ day.daytraffic }}</p>
               </li>
             </ul>
           </p>
@@ -42,7 +40,7 @@
               </li>
               <li>
                 <dl>
-                  <dd>{{ myboard.daypay }}</dd>
+                  <dd>{{ day.daypay }}</dd>
                 </dl>
               </li>
             </ul>
@@ -59,6 +57,23 @@
   export default {
     components: {
       AccordionInfoDetailTitle1
+    },
+
+    created() {
+      var id = this.$route.params.id;
+
+      this.$http.get(`/api/mypage/${id}`)
+        .then((response) => {
+          this.myboard = response.data.board
+          this.day = response.data.day
+        })
+    },
+
+    data() {
+      return {
+        myboard: {},
+        day:[]
+      }
     }
   }
 </script>

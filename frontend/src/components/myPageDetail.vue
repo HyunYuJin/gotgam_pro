@@ -59,7 +59,7 @@
       this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
           this.myboard = response.data.board
-          this.day=response.data.day
+          this.day = response.data.day
           console.log(response)
         })
     },

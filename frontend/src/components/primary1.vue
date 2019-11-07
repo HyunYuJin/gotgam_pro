@@ -28,6 +28,23 @@
     components: {
       carousel,
       AccordionWrap1,
+    },
+
+    created() {
+      var id = this.$route.params.id;
+
+      this.$http.get(`/api/mypage/${id}`)
+        .then((response) => {
+          this.myboard = response.data.board
+          this.day = response.data.day
+        })
+    },
+
+    data() {
+      return {
+        myboard: {},
+        day:[]
+      }
     }
 
   }
