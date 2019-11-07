@@ -14,24 +14,24 @@
 </template>
 
 <script>
-export default {
-  created() {
+  export default {
+    created() {
       var id = this.$route.params.id;
 
       this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
-          this.myboard = response.data
-          // console.log(response.data)
+          this.myboard = response.data.board
+          this.day = response.data.day
         })
     },
 
     data() {
-        return {
-          myboard: {}
+      return {
+        myboard: {},
+        day:[]
+      }
     }
-    }
-
-}
+  }
 </script>
 
 <style>

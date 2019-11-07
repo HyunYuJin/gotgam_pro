@@ -74,7 +74,7 @@
                           placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
                       </b-col>
                       <b-col cols="4">
-                        <b-button @click.prevent="newTab" href="#" class="col-12">OK</b-button>
+                        <b-button @click.prevent="setTab()" href="#" class="col-12">OK</b-button>
                       </b-col>
                     </b-row>
 
@@ -123,7 +123,7 @@
                             <div class="form-group form-inline justify-content-between col-12">
                               <!-- <input type="text" v-model="regist[i].day"> -->
                               <label class="font-weight-bold" for="day1">제목</label>
-                              <input type="text" name="day1" v-model="regist.daytitle" class="form-control col-12">
+                              <input type="text" name="day1" v-model="reg[i].daytitle" class="form-control col-12">
                             </div>
 
                             <b-row>
@@ -143,7 +143,7 @@
 
                               <!-- day content -->
                               <b-col cols="12" lg="6">
-                                <textarea v-model="regist.daycontent" class="form-control mb-3 text-xsmall" name="" id="" rows="6"
+                                <textarea v-model="reg[i].daycontent" class="form-control mb-3 text-xsmall" name="" id="" rows="6"
                                   placeholder="이날의 곶감을 기록해주세요."></textarea>
                               </b-col>
                               
@@ -155,18 +155,18 @@
                               <!-- day traffic -->
                               <b-col cols="11" class="form-group form-inline" id="display-traffic">
                                 <label class="control-label font-weight-bold" for="traffic">교통</label>
-                                <textarea v-model="regist.daytraffic" class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
+                                <textarea v-model="reg[i].daytraffic" class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
                               </b-col>
                               <!-- day food -->
                               <b-col cols="11" class="form-group form-inline" id="display-restaurant">
                                 <label class="control-label font-weight-bold" for="restaurant">맛집</label>
-                                <textarea v-model="regist.datfood" class="form-control col-10 mx-auto" rows="3" name=""
+                                <textarea v-model="reg[i].dayfood" class="form-control col-10 mx-auto" rows="3" name=""
                                   id="restaurant"></textarea>
                               </b-col>
                               <!-- day pay -->
                               <b-col cols="11" class="form-group form-inline" id="display-location">
                                 <label class="control-label font-weight-bold" for="location">비용</label>
-                                <textarea v-model="regist.daypay" class="form-control col-10 mx-auto" rows="3" name=""
+                                <textarea v-model="reg[i].daypay" class="form-control col-10 mx-auto" rows="3" name=""
                                   id="location"></textarea>
                               </b-col>
                             </b-row>
@@ -239,17 +239,33 @@ export default {
         ],
 
         regist: {
-          maintitle: '',
-          maincontent: '',
-          peoples: '',
-          dayn: '',
+          maintitle: 'mt',
+          maincontent: 'mc',
+          peoples: '3',
+          dayn: '4',
           daytitle: '',
           daycontent: '',
           daytraffic: '',
           dayfood: '',
           daypay: ''
         },
-        reg:[]
+        reg:[
+          {},
+          {daytitle:'d1',daycontent:'dc2',daytraffic:'dt',dayfood:'',daypay:''},
+          {daytitle:'d2',daycontent:'',daytraffic:'22',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'333',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
+          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''}
+        ]
       }
     },
 
@@ -272,9 +288,34 @@ export default {
         newTab() {
             this.tabs.push(this.tabCounter++)
         },
+        setTab(){
+          if(this.regist.dayn<1|| this.regist.dayn>14){
+            window.alert('1 ~ 14 사이의 값을 입력해주세요')
+            return;
+          }
+          while(this.tabCounter!=this.regist.dayn){
+            console.log(this.tabCounter+"  :  "+this.regist.dayn)
+            if(this.tabCounter<this.regist.dayn)
+            {
+              this.tabs.push(this.tabCounter++)
+                          console.log(this.tabCounter+"  :  "+this.regist.dayn)
+            }
+            else{
+              this.tabs.splice(this.tabs.length - 1, 1)
+                if (this.tabCounter < 1) {
+                  this.tabCounter--;
+               }
+            }
+          }
+          this.tabs.push(this.tabCounter++)
+
+        },
         save(event) {
           this.$http.post('/api/regist/step1',
-            this.regist
+          {
+            regist:this.regist,
+            reg:this.reg
+          }
           )
           .then(
             (res) => {

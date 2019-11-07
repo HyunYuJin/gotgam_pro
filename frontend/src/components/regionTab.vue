@@ -102,7 +102,6 @@ export default {
 
 <style>
 /* tab */
-
 button {
   width: 25%;
   box-sizing: border-box;
