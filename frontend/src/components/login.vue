@@ -4,9 +4,9 @@
       <h3>곶감 로그인</h3>
 
       <div class="login">
-        <input v-model="user.userid" class="member_id" name="member_id" placeholder="ID" type="text">
+        <input v-model="user.userid" class="member_id" name="member_id" placeholder="ID" type="text" v-on:keyup.enter="login">
         <br>
-        <input v-model="user.password" class="member_password" name="member_password" placeholder="password"
+        <input v-model="user.password" class="member_password" name="member_password" placeholder="password" v-on:keyup.enter="login"
           type="password">
         <button v-on:click="login" class="btn_login">
           <img src="../assets/btn_login.gif" />

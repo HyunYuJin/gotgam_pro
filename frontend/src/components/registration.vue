@@ -269,7 +269,12 @@ export default {
         ]
       }
     },
-
+    beforeCreate(){
+      if(this.$store.getters.userId.length == 0){
+        alert('로그인이 필요한 메뉴입니다.');
+        this.$router.push('/login');
+      }
+    },
     methods: {
         previewFiles(event) {
             console.log(event.target.files[0].name);
