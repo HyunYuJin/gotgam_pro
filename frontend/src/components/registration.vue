@@ -272,7 +272,7 @@ export default {
     beforeCreate(){
       if(this.$store.getters.userId.length == 0){
         alert('로그인이 필요한 메뉴입니다.');
-        this.$router.push('/');
+        this.$router.push('/login');
       }
     },
     methods: {
