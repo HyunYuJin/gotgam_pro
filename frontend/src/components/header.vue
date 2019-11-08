@@ -14,7 +14,9 @@
                         <router-link :to="moodtravel.link">기분별</router-link>
                     </ul>
                 </li>
-				<li><router-link :to="registration.link">Registration</router-link></li>
+				<li>
+					<router-link :to="registration.link">Registration</router-link>
+				</li>
                 <li><router-link :to="about.link">About</router-link></li>
 				<li>
 					<div class="login_bar">
