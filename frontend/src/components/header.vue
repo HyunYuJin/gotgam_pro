@@ -24,24 +24,25 @@
 						</div>
 						<div v-else>
 							<button class="logoutbtn" v-on:click="logout">Logout</button>
-						</div>
-						<!-- <router-link :to="login.link">Login</router-link> -->
+						
+							<!-- <router-link :to="login.link">Login</router-link> -->
 
-						<!-- 내정보 dropdown -->
-						<b-nav-item-dropdown
-						id="my-nav-dropdown"
-						text="내정보"
-						toggle-class="nav-link-custom"
-						right
-						>
-						<b-dropdown-item>
-							<router-link class="mypage" :to="mypage.link">My Page</router-link>
-						</b-dropdown-item>
-						<!-- <b-dropdown-divider></b-dropdown-divider>
-						<b-dropdown-item>
-							<button class="logoutbtn" v-on:click="logout">Logout</button>
-						</b-dropdown-item> -->
-						</b-nav-item-dropdown>
+							<!-- 내정보 dropdown -->
+							<b-nav-item-dropdown
+							id="my-nav-dropdown"
+							text="내정보"
+							toggle-class="nav-link-custom"
+							right
+							>
+							<b-dropdown-item>
+								<router-link class="mypage" :to="mypage.link">My Page</router-link>
+							</b-dropdown-item>
+							<!-- <b-dropdown-divider></b-dropdown-divider>
+							<b-dropdown-item>
+								<button class="logoutbtn" v-on:click="logout">Logout</button>
+							</b-dropdown-item> -->
+							</b-nav-item-dropdown>
+						</div>
 					</div>
 				</li>
             </nav>
