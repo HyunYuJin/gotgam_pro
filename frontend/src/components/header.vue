@@ -423,17 +423,19 @@ export default {
 		background: transparent;
 		border: none;
 		font-size: 1.15em;
+		padding: 0;
+		border-bottom: 2px solid #fff;
+		transition: 0.15s;
 	}
 
 	.logoutbtn:hover {
 		color: #ff4401;
+		border-bottom: 2px solid #ff4401;
 	}
 
 	.mypage, .mypage:hover {
 		width: 100%;
 		display: inline-block;
-		transition: 0s !important;
-		border-bottom: none !important;
 	}
 
 	.nav-link {
