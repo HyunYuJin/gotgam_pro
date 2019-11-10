@@ -7,9 +7,9 @@
       <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
         <b-card-body>
           <b-card-text>
-              <div class="schedule_box" v-bind:key="myboard.id">
+              <div class="schedule_box" v-bind:key="myboard.board_id">
                 <h2>1일차</h2>
-                <p class="desc">{{ myboard.daytitle }}</p>
+                <p class="desc">{{ myboard.title }}</p>
                 <ul>
                     <li>
                         <a href="#">
@@ -19,8 +19,8 @@
                             </div>
 
                             <div class="info">
-                                <strong class="info_title">{{ myboard.daytitle }}</strong>
-                                <p>{{ myboard.daytitle }}</p>
+                                <strong class="info_title">{{ myboard.title }}</strong>
+                                <p>{{ myboard.title }}</p>
                             </div>
                         </a>
 
@@ -50,7 +50,7 @@ export default {
       this.$http.get(`/api/regist/${id}`)
         .then((response) => {
           this.myboard = response.data
-          // console.log(response.data)
+          //console.log(response.data)
         })
     },
 

@@ -11,7 +11,7 @@
                     </carousel>
                 </div>
 
-                <p>{{ myboard.maincontent }}</p>
+                <p>{{ myboard.content }}</p>
 
                 <!-- accordion -->
                 <accordion-wrap></accordion-wrap>

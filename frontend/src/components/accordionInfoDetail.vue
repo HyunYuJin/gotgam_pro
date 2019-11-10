@@ -13,7 +13,7 @@
               <ul>
                 <li>
                   <dl>
-                    <dd>{{ myboard.daytraffic }}</dd>
+                    <dd>{{ myboard.traffic }}</dd>
                   </dl>
                 </li>
               </ul>
@@ -25,7 +25,7 @@
               <h5 class="mb-1">맛집</h5>
               <!-- <strong class="text-muted">존앤진피자</strong> -->
             </div>
-            <p class="mb-1">{{ myboard.dayfood }}</p>
+            <!-- <p class="mb-1">{{ myboard.dayfood }}</p> -->
           </b-list-group-item>
           <b-list-group-item href="#foobar">
             <div class="d-flex w-100 justify-content-between">
@@ -42,7 +42,7 @@
                 </li>
                 <li>
                   <dl>
-                    <dd>{{ myboard.daypay }}</dd>
+                    <dd>{{ myboard.pay }}</dd>
                   </dl>
                 </li>
               </ul>

@@ -13,7 +13,7 @@
           <div class="travel_gotgam_inner" v-for="(list, idx) in lists" v-bind:key="idx">
 
               <!-- travel_gotgam_list -->
-              <router-link :to="{ name: 'GotgamDetail', params: { id: list.id }}">
+              <router-link :to="{ name: 'GotgamDetail', params: { id: list.board_id }}">
                 <div class="travel_gotgam_list">
                     <!-- travel_gotgam_list_inner -->
                     <div class="travel_gotgam_list_inner">
@@ -29,13 +29,13 @@
                         <div class="travel_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <p>{{ list.maintitle }}</p>
+                                <p>{{ list.title }}</p>
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <p>작성자: {{ list.userid }}</p>
+                                <p>작성자: {{ list.user_id }}</p>
                             </div>
                             <!-- list_content_info end -->
                         </div>

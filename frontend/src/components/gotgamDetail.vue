@@ -10,12 +10,12 @@
           <div class="item-img">
             <!-- <img v-bind:src="ourboard.poster"> -->
           </div>
-          <div class="item-desc item-desc-single-over" v-bind:key="ourboard.id">
-            <h1>{{ ourboard.maintitle }}</h1>
+          <div class="item-desc item-desc-single-over" v-bind:key="ourboard.board_id">
+            <h1>{{ ourboard.title }}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                <span>{{ ourboard.userid }}</span>
+                <span>{{ ourboard.user_id }}</span>
               </li>
             </ul>
           </div>
@@ -59,7 +59,7 @@
       this.$http.get(`/api/regist/${id}`)
         .then((response) => {
           this.ourboard = response.data
-          console.log(response.data)
+          //console.log(response.data)
         })
     },
 

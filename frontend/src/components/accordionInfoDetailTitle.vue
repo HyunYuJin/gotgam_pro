@@ -5,7 +5,7 @@
         <b-media-body>
           <h5 class="mt-0">이날의 곶감</h5>
           <p>
-            {{myboard.daycontent}}
+            {{myboard.content}}
           </p>
         </b-media-body>
       </b-media>
