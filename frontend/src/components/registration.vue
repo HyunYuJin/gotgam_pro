@@ -249,23 +249,8 @@ export default {
         },
         // 여행일수는 최대 14일까지 입력 가능하다.
         // 0부터 시작되기 때문에 15개
-        reg:[
-          {},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''}
-        ]
+        day : {dayseq: '', daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+        reg:[]
       }
     },
     beforeCreate(){
@@ -278,71 +263,84 @@ export default {
       }
     },
     methods: {
-        setImage: function(output) {
-            this.hasImage = true;
-            this.image = output;
-            console.log(this.image);
-        },
+      setImage: function(output) {
+          this.hasImage = true;
+          this.image = output;
+          console.log(this.image);
+      },
 
-        // closeTab() {
-        //     this.tabs.splice(this.tabs.length - 1, 1)
-        //     if (this.tabCounter != 1) {
-        //         this.tabCounter--;
-        //     }
-        // },
-        // newTab() {
-        //     this.tabs.push(this.tabCounter++)
-        // },
-        setTab(){
-          if(this.regist.dayn < 1 || this.regist.dayn > 14){
-            window.alert('여행일수는 최소 1일 ~ 최대 14일까지 등록할 수 있어요!')
-            return;
-          }
-          const tab = [];
-          for(var i = 1; i<=this.regist.dayn; i++){
-            tab.push(i);
-          }
-          this.tabs = tab;
-          // while(this.tabCounter!=this.regist.dayn){
-          //   console.log(this.tabCounter+"  :  "+this.regist.dayn)
-          //   if(this.tabCounter<this.regist.dayn)
-          //   {
-          //     this.tabs.push(this.tabCounter++)
-          //                 console.log(this.tabCounter+"  :  "+this.regist.dayn)
-          //   }
-          //   else{
-          //     this.tabs.splice(this.tabs.length - 1, 1)
-          //       if (this.tabCounter < 1) {
-          //         this.tabCounter--;
-          //      }
-          //   }
-          // }
-          // this.tabs.push(this.tabCounter++)
-        },
-        save(event) {
-          this.regist.user_id = this.$store.getters.userId[0].name
-          
-          this.$http.post('/api/regist/step1',
-          {
-            regist:this.regist,
-            reg:this.reg
-          }
-          )
-          .then(
-            (res) => {
-              if(res.data.success) {
-                alert(res.data.message)
-                this.$router.push('/mypage')
-              }
-              else {
-                alert('등록실패')
-              }
-            },
-          )
-          .catch(err => {
-            alert(err);
-          })
+      // closeTab() {
+      //     this.tabs.splice(this.tabs.length - 1, 1)
+      //     if (this.tabCounter != 1) {
+      //         this.tabCounter--;
+      //     }
+      // },
+      // newTab() {
+      //     this.tabs.push(this.tabCounter++)
+      // },
+      setTab(){
+        if(this.regist.dayn < 1 || this.regist.dayn > 14){
+          window.alert('여행일수는 최소 1일 ~ 최대 14일까지 등록할 수 있어요!')
+          return;
         }
+        const tab = [];
+        var reg_tab = [];
+        for(var i = 1; i<=this.regist.dayn; i++){
+          tab.push(i);
+          const day = {dayseq: i, daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''};
+          //this.day.day_seq = i;
+          //reg_tab.push(day);
+          reg_tab[i] = day;
+          //console.log(reg_tab[i]);
+        }
+        this.reg = reg_tab;
+        this.tabs = tab;
+        //console.log(this.reg[2])
+        //console.log(this.tabs)
+        // while(this.tabCounter!=this.regist.dayn){
+        //   console.log(this.tabCounter+"  :  "+this.regist.dayn)
+        //   if(this.tabCounter<this.regist.dayn)
+        //   {
+        //     this.tabs.push(this.tabCounter++)
+        //                 console.log(this.tabCounter+"  :  "+this.regist.dayn)
+        //   }
+        //   else{
+        //     this.tabs.splice(this.tabs.length - 1, 1)
+        //       if (this.tabCounter < 1) {
+        //         this.tabCounter--;
+        //      }
+        //   }
+        // }
+        // this.tabs.push(this.tabCounter++)
+      },
+      save(event) {
+        this.regist.user_id = this.$store.getters.userId[0].name
+        if(this.regist.mood == null || this.regist.region_id == null){
+          window.alert('기분과 지역을 선택해주세요!')
+          return;
+        }
+
+        this.$http.post('/api/regist/step1',
+        {
+          regist:this.regist,
+          reg:this.reg
+        }
+        )
+        .then(
+          (res) => {
+            if(res.data.success) {
+              alert(res.data.message)
+              this.$router.push('/mypage')
+            }
+            else {
+              alert('등록실패')
+            }
+          },
+        )
+        .catch(err => {
+          alert(err);
+        })
+      }
     }
 }
 </script>

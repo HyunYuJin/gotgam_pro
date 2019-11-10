@@ -27,7 +27,8 @@ router.post('/step1', function (req, res) {
     'user_id': req.body.regist.user_id,
     'peoples': req.body.regist.peoples,
     'mood': req.body.regist.mood,
-    'region_id': req.body.regist.region_id
+    'region_id': req.body.regist.region_id,
+    'dayn': req.body.regist.dayn
   };
 
   const day = req.body.reg
@@ -35,14 +36,16 @@ router.post('/step1', function (req, res) {
   connection.query('INSERT INTO boards (title, content, user_id, peoples, mood, region_id) VALUES ("' + board.title + '","' + board.content + '","' + board.user_id + '","' + board.peoples + '","' + board.mood + '","' + board.region_id + '")', board, function (err, row2) {
 
     connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
-      console.log(row[0].idd)
-      console.log(day)
+      //console.log(row[0].idd)
+      //console.log(req.body.regist.dayn)
+      //console.log(day[3])
 
-      // for (let i = 1; i <= day.length; i++) {
-      //   connection.query('INSERT INTO day (title, content, traffic, pay, board_id) VALUES ("' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].dayfood + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
-      //     if (err) throw err;
-      //   })
-      // }
+      for (let i = 1; i <= board.dayn; i++) {
+        console.log(row[0].idd)
+        connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + day[i].dayseq + '","' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
+          if (err) throw err;
+        })
+      }
     })
     
     res.json({
