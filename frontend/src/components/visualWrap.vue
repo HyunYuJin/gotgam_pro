@@ -13,6 +13,7 @@
           </select>
           <button v-on:click="searchReg">지역 이동</button>
         </form>
+        
       </div>
     </div>
     <hr>
@@ -70,7 +71,7 @@
             </span>
             <strong>명소</strong>
             <p>
-              수원 화성
+              {{attraction}}
             </p>
           </li>
           <li class="special">
@@ -124,7 +125,7 @@
             </span>
             <strong>특산물</strong>
             <p>
-              갈비
+              {{special}}
             </p>
           </li>
           <li class="graph">
@@ -143,42 +144,78 @@
 </template>
 
 <script>
-export default {
-  create() {
-    
-  },
+import dataManager from '@/util/data-manager.js';
 
+export default {
   data() {
     return {
         temp: 0,
         format: 'C',
         time: new Date(),
         phase: 'fa-adjust',
-        region: '서울특별시',
+        region: '',
         make: null,
         model: null,
+        attraction: '',
+        special: '',
         makes_options: [
         {
           text: "서울",
           id: 1
         },
         {
-          text: "인천",
+          text: "경기",
           id: 2
         },
         {
-          text: "경기",
+          text: "인천",
           id: 3
         }
       ]
     }
   },
     
+  created() {
+    var id = '';
+    if(this.$store.getters.regionId[0] == undefined){
+      console.log('und');
+      // 지정한 지역정보가 없을 때
+      // 1번 서울을 기본값으로 가져옴
+      id = 1;
+    }else{
+      console.log(this.$store.getters.regionId[0]);
+      id = this.$store.getters.regionId[0];
+    }
+    this.$http.get(`/api/region/` + id)
+        .then((res) => {
+          //alert(response.data) 
+          //dataManager.saveData('REGION_ID', res.data.region_id);
+          console.log(res.data);
+          this.region = res.data.name;
+          this.attraction = res.data.attraction;
+          this.special = res.data.special_product;
+          //res.data
+          
+        })
+  },
+
 	methods: {
-    searchReg: function (event) {
-      this.$http.get('/api/region/search',
-        console.log('지역 검색')
-      )
+    searchReg: function () {
+      dataManager.saveData('REGION_ID', this.make);
+      // this.$http.get(`/api/region/` + this.make)
+      //   .then((res) => {
+      //     //alert(response.data) 
+      //     dataManager.saveData('REGION_ID', res.data.region_id);
+      //     //console.log(res.data)
+          
+      //   })
+
+      //alert(event);
+      //alert(this.make);
+      //this.region = 'asd';
+      // this.$http.get('/api/region/search',
+      //   console.log('지역 검색')
+      // )
     },
 
 		setCelsius: function() {

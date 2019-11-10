@@ -1,9 +1,13 @@
 const USER_ID = 'USER_ID';
+const REGION_ID = 'REGION_ID';
+const MOOD = 'MOOD';
 
 // State(상태)
 // 이곳에서 상태를 저장한다.
 const state = {
   userId: '',
+  regionId: '',
+  mood: '',
 };
 
 // Getters
@@ -12,6 +16,12 @@ const getters = {
   userId(state) {
     return state.userId
   },
+  regionId(state) {
+    return state.regionId
+  },
+  mood(state) {
+    return state.mood
+  },
 };
 
 // Mutations (변이)
@@ -19,6 +29,12 @@ const getters = {
 const mutations = {
   [USER_ID](state, payload) {
     state.userId = payload;
+  },
+  [REGION_ID](state, payload) {
+    state.regionId = payload;
+  },
+  [MOOD](state, payload) {
+    state.mood = payload;
   },
 };
 

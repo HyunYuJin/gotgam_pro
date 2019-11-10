@@ -30,10 +30,18 @@ export default {
   loadDataFromCookie: () => {
     // string 으로 받아서 json파싱
     const userId = JSON.parse(cookieManager.getCookie('USER_ID'));
+    const regionId = JSON.parse(cookieManager.getCookie('REGION_ID'));
+    const mood = JSON.parse(cookieManager.getCookie('MOOD'));
 
     // 쿠키에 데이터가 있었는지 확인 후 vuex에 저장
     if (userId != null) {
       saveDataVuex('USER_ID', userId);
+    }
+    if (regionId != null) {
+      saveDataVuex('REGION_ID', regionId);
+    }
+    if (mood != null) {
+      saveDataVuex('MOOD', mood);
     }
   },
   /**
@@ -42,8 +50,12 @@ export default {
   clearData: () => {
     // Vuex에서 tabStack들을 삭제
     store.commit('USER_ID', []);
+    store.commit('REGION_ID', []);
+    store.commit('MOOD', []);
 
     // Cookie에서 tabStack들을 삭제
     cookieManager.deleteCookie('USER_ID');
+    cookieManager.deleteCookie('REGION_ID');
+    cookieManager.deleteCookie('MOOD');
   },
 };

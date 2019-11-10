@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: 'root',
   password: 'root1234',
-  database: 'test_crud'
+  database: 'gotgam'
 });
 
 // Connect
@@ -18,6 +18,18 @@ connection.connect(function (err) {
     console.error(err);
     throw err;
   }
+});
+
+router.get('/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id + "get")
+
+  connection.query('SELECT * FROM region WHERE region.region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+    
+    res.send(row[0])
+
+  })
 });
 
 router.get('/search', function (req, res) {
