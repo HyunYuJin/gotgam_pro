@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: 'root',
   password: 'root1234',
-  database: 'test_crud'
+  database: 'gotgam'
 });
 
 // Connect
@@ -27,14 +27,14 @@ router.get('/', function (req, res, next) {
 
 router.post('/signUp1', function (req, res) {
   const user = {
-    'userid': req.body.userid,
+    'user_id': req.body.userid,
     'password': req.body.password,
     'name': req.body.name,
     'age': req.body.age
   };
-  connection.query('SELECT userid FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
+  connection.query('SELECT user_id FROM users WHERE user_id = "' + user.user_id + '"', function (err, row) {
     if (row[0] == null) { //  동일한 아이디가 없을경우,
-      connection.query('INSERT INTO users (userid, password, name, age) VALUES ("' + user.userid + '","' + user.password + '","' + user.name + '","' + user.age + '")', user, function (err, row2) {
+      connection.query('INSERT INTO users (user_id, password, name, age) VALUES ("' + user.user_id + '","' + user.password + '","' + user.name + '","' + user.age + '")', user, function (err, row2) {
         if (err) throw err;
       });
       res.json({
@@ -53,23 +53,23 @@ router.post('/signUp1', function (req, res) {
 
 router.post('/login1', function (req, res) {
   const user = {
-    'userid': req.body.userid,
+    'user_id': req.body.userid,
     'password': req.body.password
   };
-  connection.query('SELECT id, userid, password, name FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
+  connection.query('SELECT user_id, password, name FROM users WHERE user_id = "' + user.user_id + '"', function (err, row) {
     if (row[0] == null) {
       res.json({ // 매칭되는 아이디 없을 경우
         success: false,
         message: '아이디가 없어요!'
       })
     } else if (row[0].password == user.password) {
-      req.session.userid = user.userid;
-      req.session.foid = row[0].id;
-      console.log(req.session.foid)
+      // req.session.userid = user.user_id;
+      // req.session.foid = row[0].id;
+      // console.log(req.session.foid)
       req.session.save(() =>{
         res.json({ // 로그인 성공 
           // name: row[0].name,
-          name: req.session.userid,
+          name: user.user_id,
           success: true,
           message: '곶감에 로그인 되었습니다!'
         })
@@ -85,8 +85,8 @@ router.post('/login1', function (req, res) {
 });
 
 router.get('/logout', function(req, res) {
-  delete req.session.userid;
-  delete req.session.foid;
+  // delete req.session.userid;
+  // delete req.session.foid;
   req.session.save(() => {
     res.json({
       success: true,

@@ -10,12 +10,12 @@
           <div class="item-img">
             <!-- <img v-bind:src="movie.poster"> -->
           </div>
-          <div class="item-desc item-desc-single-over" v-bind:key="myboard.id">
-            <h1>{{ myboard.maintitle }}</h1>
+          <div class="item-desc item-desc-single-over" v-bind:key="myboard.board_id">
+            <h1>{{ myboard.title }}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                {{ myboard.name }}
+                {{ myboard.user_id }}
               </li>
             </ul>
           </div>

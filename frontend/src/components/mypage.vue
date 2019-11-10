@@ -13,7 +13,7 @@
       <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
 
         <!-- travel_gotgam_list -->
-        <router-link :to="{ name: 'myPageDetail', params: { id: my.id }}">
+        <router-link :to="{ name: 'myPageDetail', params: { id: my.board_id }}">
           <div class="travel_gotgam_list">
             <!-- travel_gotgam_list_inner -->
             <div class="travel_gotgam_list_inner">
@@ -22,7 +22,7 @@
               <div class="travel_gotgam_list_content">
                 <!-- list_content_title -->
                 <div class="list_content_title">
-                  <p>{{ my.maintitle }}</p>
+                  <p>{{ my.title }}</p>
                 </div>
                 <!-- list_content_title end -->
               </div>
@@ -50,16 +50,28 @@ import MyInfo from './myinfo.vue';
     },
 
     created() {
-        this.$http.post('/api/mypage/')
+      if(this.$store.getters.userId.length != 0){
+        const user = {
+          user_id : this.$store.getters.userId[0].name
+        }
+        this.$http.post('/api/mypage/',
+          user
+        )
         .then((response) => {
-          this.mys = response.data
-          console.log(response.data)
+          this.mys = [response.data[0]];
+          console.log(this.mys)
         })
+      }
+      // this.$http.post('/api/mypage/')
+      // .then((response) => {
+      //   this.mys = response.data
+      //   console.log(response.data)
+      // })
     },
 
     data() {
       return {
-        mys: [],
+        mys: '',
         gotgamdetail: {
           link: "/myPageDetail"
         }
