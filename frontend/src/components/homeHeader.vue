@@ -1,7 +1,7 @@
 <template>
   <div class="homeHeader row justify-content-center">
     <!-- hh_wrap1 -->
-    <div class="hh_wrap1 col-12 col-lg-5">
+    <div class="hh_wrap1 mt-4 col-12 col-lg-5">
       <!-- hh_inner_wrap1 -->
       <div class="hh_inner_wrap1">
         <h1>
@@ -20,7 +20,7 @@
         <div class="hh_form_wrap">
 
           <!-- desti_wrap -->
-          <div class="desti_wrap">
+          <!-- <div class="desti_wrap">
             <div class="desti_form">
               <div class="desti_icon">
                 <svg data-v-3c805d31="" data-v-738935cd="" xmlns="http://www.w3.org/2000/svg" width="16" height="20"
@@ -38,11 +38,11 @@
                 <input type="text" disabled="disabled" size="1" placeholder="Destination">
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- desti_wrap END -->
 
           <!-- etc_wrap -->
-          <div class="etc_wrap">
+          <!-- <div class="etc_wrap">
             <div class="day_form">
               <div class="day_inner_form">
                 <div class="day_icon">
@@ -85,7 +85,7 @@
             <div class="search_form">
               <span>Search</span>
             </div>
-          </div>
+          </div> -->
           <!-- etc_wrap END -->
         </div>
         <!-- hh_form_wrap END -->
@@ -142,19 +142,18 @@
   }
 
   .hh_inner_wrap1 h1 {
-    /* max-width: 300px; */
+    margin-top: 3rem;
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     line-height: 3rem;
   }
 
   .hh_inner_wrap1 p {
-    /* margin: 1rem 0 3.4rem; */
-    /* max-width: 420px; */
+    margin: 3.4rem 0 1rem;
     font-weight: 600;
     color: #898ea2;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 1.18rem;
+    line-height: 2rem;
   }
 
   .hh_form_wrap {

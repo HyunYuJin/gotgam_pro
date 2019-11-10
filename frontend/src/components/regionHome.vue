@@ -25,33 +25,13 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image2"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap2">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>남이섬</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="card_col_wrap">
                 <div class="card_col_cell">
                     <div class="card_inner_cell">
                         <div class="card_hover_cell">
-                            <div class="card_image3"></div>
+                            <div class="card_image2"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
                                 <div class="card_text_wrap2">
@@ -66,32 +46,13 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image4"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap2">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>허브 아일랜드</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="card_col_wrap">
                 <div class="card_col_cell">
                     <div class="card_inner_cell">
                         <div class="card_hover_cell">
-                            <div class="card_image5"></div>
+                            <div class="card_image3"></div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
                                 <div class="card_text_wrap2">
@@ -106,26 +67,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image6"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap2">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>제이드 가든</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>
@@ -171,6 +112,7 @@ export default {
 
 .card_col_cell {
     display: flex;
+    height: 100%;
 }
 
 .card_inner_cell {
@@ -198,6 +140,7 @@ export default {
     background-position: 50%;
     position: relative;
     width: 100%;
+    height: 100%;
 }
 
 .card_image2 {
@@ -209,6 +152,7 @@ export default {
     background-position: 50%;
     position: relative;
     width: 100%;
+    height: 100%;
 }
 
 .card_image3 {
@@ -220,39 +164,7 @@ export default {
     background-position: 50%;
     position: relative;
     width: 100%;
-}
-
-.card_image4 {
-    background: url(../assets/herb.png) no-repeat;
-    padding-top: 140%;
-    display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    width: 100%;
-}
-
-.card_image5 {
-    background: url(../assets/bridge.png) no-repeat;
-    padding-top: 110%;
-    display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    width: 100%;
-}
-
-.card_image6 {
-    background: url(../assets/jade.png) no-repeat;
-    padding-top: 110%;
-    display: flex;
-    overflow: hidden;
-    background-size: cover;
-    background-position: 50%;
-    position: relative;
-    width: 100%;
+    height: 100%;
 }
 
 .card_overlay {
