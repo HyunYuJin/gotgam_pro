@@ -22,17 +22,13 @@ connection.connect(function (err) {
 
 // 현재 로그인 중인 사용자의 정보를 보여준다.
 router.post('/info', function (req, res) {
-  try{
-    // 비밀번호를 제외한 유저정보를 리턴
-    connection.query('SELECT user_id, name, age FROM users WHERE user_id = "' + req.body.user_id + '"', function (err, row) {
-      if (err) throw err;
-      else {
-        res.send(row[0])
-      }
-    });
-  }catch(e){
-    console.log(e);
-  }
+  // 비밀번호를 제외한 유저정보를 리턴
+  connection.query('SELECT user_id, name, age FROM users WHERE user_id = "' + req.body.user_id + '"', function (err, row) {
+    if (err) throw err;
+    else {
+      res.send(row[0])
+    }
+  });
 })
 
 // 현재 로그인 중인 사용자가 작성한 게시물의 리스트를 보여준다.
