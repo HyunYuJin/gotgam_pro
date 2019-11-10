@@ -62,10 +62,10 @@
                         <label for="input-default">여행 일수</label>
                       </b-col>
                       <b-col cols="8">
-                        <b-form-input id="input-default" required="required" maxlength="100"
-                          placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
-                        <!-- <b-form-input v-model="regist.dayn" id="input-default" required="required" maxlength="100"
+                        <!-- <b-form-input id="input-default" required="required" maxlength="100"
                           placeholder="예시: (3박 4일인 경우 4)"></b-form-input> -->
+                        <b-form-input v-model="regist.dayn" id="input-default" required="required" maxlength="100"
+                          placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
                       </b-col>
                       <b-col cols="4">
                         <b-button @click.prevent="setTab()" href="#" class="col-12">OK</b-button>
@@ -240,6 +240,7 @@ export default {
           peoples: '3',
           mood: null,
           region_id: null,
+          dayn: '',
           daytitle: '',
           daycontent: '',
           daytraffic: '',
@@ -283,36 +284,40 @@ export default {
             console.log(this.image);
         },
 
-        closeTab() {
-            this.tabs.splice(this.tabs.length - 1, 1)
-            if (this.tabCounter != 1) {
-                this.tabCounter--;
-            }
-        },
-        newTab() {
-            this.tabs.push(this.tabCounter++)
-        },
+        // closeTab() {
+        //     this.tabs.splice(this.tabs.length - 1, 1)
+        //     if (this.tabCounter != 1) {
+        //         this.tabCounter--;
+        //     }
+        // },
+        // newTab() {
+        //     this.tabs.push(this.tabCounter++)
+        // },
         setTab(){
           if(this.regist.dayn < 1 || this.regist.dayn > 14){
             window.alert('여행일수는 최소 1일 ~ 최대 14일까지 등록할 수 있어요!')
             return;
           }
-          while(this.tabCounter!=this.regist.dayn){
-            console.log(this.tabCounter+"  :  "+this.regist.dayn)
-            if(this.tabCounter<this.regist.dayn)
-            {
-              this.tabs.push(this.tabCounter++)
-                          console.log(this.tabCounter+"  :  "+this.regist.dayn)
-            }
-            else{
-              this.tabs.splice(this.tabs.length - 1, 1)
-                if (this.tabCounter < 1) {
-                  this.tabCounter--;
-               }
-            }
+          const tab = [];
+          for(var i = 1; i<=this.regist.dayn; i++){
+            tab.push(i);
           }
-          this.tabs.push(this.tabCounter++)
-
+          this.tabs = tab;
+          // while(this.tabCounter!=this.regist.dayn){
+          //   console.log(this.tabCounter+"  :  "+this.regist.dayn)
+          //   if(this.tabCounter<this.regist.dayn)
+          //   {
+          //     this.tabs.push(this.tabCounter++)
+          //                 console.log(this.tabCounter+"  :  "+this.regist.dayn)
+          //   }
+          //   else{
+          //     this.tabs.splice(this.tabs.length - 1, 1)
+          //       if (this.tabCounter < 1) {
+          //         this.tabCounter--;
+          //      }
+          //   }
+          // }
+          // this.tabs.push(this.tabCounter++)
         },
         save(event) {
           this.regist.user_id = this.$store.getters.userId[0].name
