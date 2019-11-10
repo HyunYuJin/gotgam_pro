@@ -437,8 +437,4 @@ export default {
 		width: 100%;
 		display: inline-block;
 	}
-
-	.nav-link {
-		padding: 0;
-	}
 </style>
