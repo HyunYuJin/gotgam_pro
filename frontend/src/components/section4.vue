@@ -33,8 +33,8 @@
                     <div class="s4_person_inner">
                         <div class="s4_person_profile2"></div>
                     </div>
-                    <p class="person_name">Jeong Ji Hyurk
-                        <span class="person_text">Yongin, Korea</span>
+                    <p class="person_name">Minseong Kang
+                        <span class="person_text">Seoul, Korea</span>
                     </p>
                 </div>
             

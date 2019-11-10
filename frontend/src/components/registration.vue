@@ -157,6 +157,48 @@
                                 <textarea v-model="reg[i].dayfood" class="form-control col-10 mx-auto" rows="3" name=""
                                   id="restaurant"></textarea>
                               </b-col>
+                              <b-col cols="11" class="form-group form-inline">
+                                <label class="control-label font-weight-bold">맛집추천</label>
+
+                                <ul class="plus_minus_wrap">
+                                  <b-nav-item v-on:click="newTab()" href="#"><b>+</b></b-nav-item>
+                                  <b-nav-item v-on:click="closeTab()" href="#"><b>-</b></b-nav-item>
+                                </ul>
+
+                                <div class="pm_food_card_wrap">
+                                  <div v-for="(food, index) in foods" v-bind:key="index" class="pm_food_card">
+                                    <b-form-group class="food_img" label="맛집사진:" label-for="file-food" label-cols-sm="2">
+                                      <b-form-file id="file-food"></b-form-file>
+                                    </b-form-group>
+                                    <b-row class="my-3">
+                                      <b-col cols="3">
+                                        <label for="res_address">주소</label>
+                                      </b-col>
+                                      <b-col cols="9">
+                                        <b-form-input id="res_address" maxlength="100" placeholder="맛집의 주소를 써주세요."></b-form-input>
+                                      </b-col>
+                                      <b-col cols="3">
+                                        <label for="res_name">이름</label>
+                                      </b-col>
+                                      <b-col cols="9">
+                                        <b-form-input id="res_name" maxlength="100" placeholder="맛집의 이름을 써주세요."></b-form-input>
+                                      </b-col>
+                                      <b-col cols="3">
+                                        <label for="res_time">영업시간</label>
+                                      </b-col>
+                                      <b-col cols="9">
+                                        <b-form-input id="res_time" maxlength="100" placeholder="맛집의 영업시간을 써주세요."></b-form-input>
+                                      </b-col>
+                                      <b-col cols="3">
+                                        <label for="res_tel">전화번호</label>
+                                      </b-col>
+                                      <b-col cols="9">
+                                        <b-form-input id="res_tel" maxlength="100" placeholder="맛집의 전화번호를 써주세요."></b-form-input>
+                                      </b-col>
+                                    </b-row>
+                                  </div>
+                                </div>
+                              </b-col>
                               <!-- day pay -->
                               <b-col cols="11" class="form-group form-inline" id="display-location">
                                 <label class="control-label font-weight-bold" for="location">비용</label>
@@ -214,6 +256,8 @@ export default {
         tabs: [],
         tabCounter: 1,
         show: false,
+        foods: [],
+        foodCounter: 1,
 
         selected1: null,
         selected2: null,
@@ -234,10 +278,10 @@ export default {
         ],
 
         regist: {
-          title: 'mt',
-          content: 'mc',
+          title: '',
+          content: '',
           user_id: '',
-          peoples: '3',
+          peoples: '',
           mood: null,
           region_id: null,
           dayn: '',
@@ -278,6 +322,18 @@ export default {
       // newTab() {
       //     this.tabs.push(this.tabCounter++)
       // },
+
+      closeTab() {
+          this.foods.splice(this.foods.length - 1, 1)
+          if (this.foodCounter != 1) {
+              this.foodCounter--;
+          }
+      },
+
+      newTab() {
+          this.foods.push(this.foodCounter++)
+      },
+
       setTab(){
         if(this.regist.dayn < 1 || this.regist.dayn > 14){
           window.alert('여행일수는 최소 1일 ~ 최대 14일까지 등록할 수 있어요!')
@@ -452,5 +508,69 @@ label {
     object-fit: contain;
     display: block;
     margin: 0 auto;
+}
+
+.plus_minus_wrap {
+  margin-left: 37px;
+  margin-bottom: 0px;
+}
+
+.plus_minus_wrap::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.plus_minus_wrap li {
+  float: left;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+.plus_minus_wrap li a {
+  display: inline-block;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 50px;
+}
+
+.plus_minus_wrap li a b {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.pm_food_card_wrap {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.pm_food_card_wrap::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.pm_food_card {
+  width: 50%;
+  border: 1px solid #ddd;
+  float: left;
+}
+
+.pm_food_card input {
+  width: 90% !important;
+  margin-bottom: 5px;
+}
+
+.food_img {
+  margin: 10px 5px;
+  padding: 0;
 }
 </style>

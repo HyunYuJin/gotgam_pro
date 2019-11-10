@@ -18,13 +18,6 @@
             <!-- travel_gotgam_list_inner -->
             <div class="travel_gotgam_list_inner">
 
-              <!-- travel_gotgam_img -->
-              <div class="travel_gotgam_list_img">
-                <div class="travel_gotgam_img">
-                  <!-- <img v-bind:src="movie.poster" class="travel_gotgam_img"> -->
-                </div>
-              </div>
-
               <!-- travel_gotgam_list_content -->
               <div class="travel_gotgam_list_content">
                 <!-- list_content_title -->
@@ -32,12 +25,6 @@
                   <p>{{ my.title }}</p>
                 </div>
                 <!-- list_content_title end -->
-
-                <!-- list_content_info -->
-                <div class="list_content_info">
-                  <!-- <p><span>작성자: </span> {{movie.director}}</p> -->
-                </div>
-                <!-- list_content_info end -->
               </div>
               <!-- travel_gotgam_list_content end -->
 

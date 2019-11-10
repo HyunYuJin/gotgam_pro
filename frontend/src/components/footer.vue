@@ -87,6 +87,7 @@ export default {
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
+  margin-left: 0;
 }
 
 .footer_wrap_menu a {

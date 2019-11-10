@@ -1,7 +1,7 @@
 <template>
   <div class="section4_contents row">
     <div class="s4_contents_wrap col-12 col-md-6">
-      <svg data-v-9004fbdc="" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 50 50"
+      <svg data-v-9004fbdc="" xmlns="http://www.w3.org/2000/svg" width="150px" height="50px" viewBox="0 0 50 50"
         data-v-701be175="">
         <g fill="#ff4401">
           <path
@@ -11,11 +11,11 @@
       </svg>
       <div class="s4_contents">
         <p class="s4_normal">
-          Q. 곶감을 이용해 여행중 극복한 점? <br> <br>
+          <span class="qu">Q. 곶감을 이용해 여행중 극복한 점?</span> <br> <br>
           위로 역시 받았지만 그 와중에도 여행지를 찾아 떠나는 계획에 큰 시간이 들지 않아 무척이나 좋았던 것 같다. 여행 중 잦은 소비가 걱정이었다면 곶감에 따른 여행지 선택 및 사용후기를 본 결과 좀 더 현명하게 소비를 할 수 있었다. 또한 현지인의 추천대로 여행을 가보는 것도 무척 훌륭한 선택이었다고 생각한다. 
         </p>
         <p class="s4_bold">
-          Ji Hyurk In Yongin
+          Minseong In Seoul
         </p>
       </div>
     </div>
@@ -32,6 +32,11 @@ export default {
 </script>
 
 <style>
+.qu {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
@@ -45,5 +50,6 @@ export default {
     position: relative;
     width: 100%;
     display: flex;
+    border-radius: 13px;
 }
 </style>
