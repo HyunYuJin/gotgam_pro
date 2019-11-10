@@ -56,7 +56,7 @@
     created() {
       var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
+      this.$http.get(`/api/regist/board/${id}`)
         .then((response) => {
           this.ourboard = response.data
           //console.log(response.data)

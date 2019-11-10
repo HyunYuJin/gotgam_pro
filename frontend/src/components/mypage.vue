@@ -13,7 +13,7 @@
       <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
 
         <!-- travel_gotgam_list -->
-        <router-link :to="{ name: 'myPageDetail', params: { id: my.board_id }}">
+        <router-link :to="{ name: 'GotgamDetail', params: { id: my.board_id }}">
           <div class="travel_gotgam_list">
             <!-- travel_gotgam_list_inner -->
             <div class="travel_gotgam_list_inner">

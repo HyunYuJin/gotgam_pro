@@ -9,7 +9,7 @@
           <b-card-text>
               <div class="schedule_box" v-bind:key="myboard.board_id">
                 <h2>1일차</h2>
-                <p class="desc">{{ myboard.title }}</p>
+                <!-- <p class="desc">{{ myboard.title }}</p> -->
                 <ul>
                     <li>
                         <a href="#">
@@ -20,7 +20,7 @@
 
                             <div class="info">
                                 <strong class="info_title">{{ myboard.title }}</strong>
-                                <p>{{ myboard.title }}</p>
+                                <!-- <p>{{ myboard.title }}</p> -->
                             </div>
                         </a>
 

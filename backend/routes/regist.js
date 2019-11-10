@@ -71,7 +71,7 @@ router.get('/:id', function (req, res) {
   connection.query('SELECT * FROM boards WHERE boards.board_id = "' + [id] + '"', function (err, row) {
     if(err) console.log(err);
 
-    console.log(row[0])
+    //console.log(row[0])
 
     connection.query('SELECT * FROM day WHERE day.board_id = "' + [id] + '"', function(err, row1) {
       if(err) console.log(err);
