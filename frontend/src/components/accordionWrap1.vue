@@ -7,9 +7,9 @@
       <b-collapse :id="'accordion-' + [idx + 1]" accordion="my-accordion" role="tabpanel">
         <b-card-body>
           <b-card-text>
-            <div class="schedule_box" v-bind:key="d.id">
+            <div class="schedule_box" v-bind:key="d.day_id">
               <h2>{{idx + 1}}일차</h2>
-              <p class="desc">{{ d.daytitle }}</p>
+              <p class="desc">{{ d.title }}</p>
               <ul>
                 <li>
                   <a href="#">
@@ -19,8 +19,8 @@
                     </div>
 
                     <div class="info">
-                      <strong class="info_title">{{ d.daytitle }}</strong>
-                      <p>{{ d.daytitle }}</p>
+                      <strong class="info_title">{{ d.title }}</strong>
+                      <p>{{ d.title }}</p>
                     </div>
                   </a>
 
@@ -49,8 +49,9 @@
 
       this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
-          this.myboard = response.data.board
-          this.day = response.data.day
+          this.myboard = [response.data.board]
+          this.day = [response.data.day]
+          console.log(this.day)
         })
     },
 
