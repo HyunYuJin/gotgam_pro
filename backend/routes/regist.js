@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: 'root',
   password: 'root1234',
-  database: 'test_crud'
+  database: 'gotgam'
 });
 
 // Connect
@@ -22,24 +22,27 @@ connection.connect(function (err) {
 
 router.post('/step1', function (req, res) {
   const board = {
-    'maintitle': req.body.regist.maintitle,
-    'maincontent': req.body.regist.maincontent,
+    'title': req.body.regist.title,
+    'content': req.body.regist.content,
+    'user_id': req.body.regist.user_id,
     'peoples': req.body.regist.peoples,
-    'dayn': req.body.regist.dayn
+    'mood': req.body.regist.mood,
+    'region_id': req.body.regist.region_id
   };
 
   const day = req.body.reg
 
-  connection.query('INSERT INTO boards (maintitle, maincontent, userid, peoples, dayn) VALUES ("' + board.maintitle + '","' + board.maincontent + '","' + req.session.foid + '","' + board.peoples + '","' + board.dayn + '")', board, function (err, row2) {
+  connection.query('INSERT INTO boards (title, content, user_id, peoples, mood, region_id) VALUES ("' + board.title + '","' + board.content + '","' + board.user_id + '","' + board.peoples + '","' + board.mood + '","' + board.region_id + '")', board, function (err, row2) {
 
     connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
       console.log(row[0].idd)
+      console.log(day)
 
-      for (let i = 1; i <= board.dayn; i++) {
-        connection.query('INSERT INTO day (daytitle, daycontent, daytraffic, dayfood, daypay, boardid) VALUES ("' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].dayfood + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
-          if (err) throw err;
-        })
-      }
+      // for (let i = 1; i <= day.length; i++) {
+      //   connection.query('INSERT INTO day (title, content, traffic, pay, board_id) VALUES ("' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].dayfood + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
+      //     if (err) throw err;
+      //   })
+      // }
     })
     
     res.json({
@@ -60,19 +63,19 @@ router.get('/', function (req, res) {
 })
 
 router.get('/:id', function (req, res) {
-  var id = req.params.id;
+  // var id = req.params.id;
 
-  connection.query('SELECT * FROM boards WHERE boards.id = "' + [id] + '"', function (err, row) {
-    if(err) console.log(err);
+  // connection.query('SELECT * FROM boards WHERE boards.id = "' + [id] + '"', function (err, row) {
+  //   if(err) console.log(err);
 
-    console.log(row[0])
+  //   console.log(row[0])
 
-    connection.query('SELECT * FROM day WHERE day.boardid = "' + [id] + '"', function(err, row1) {
-      if(err) console.log(err);
+  //   connection.query('SELECT * FROM day WHERE day.boardid = "' + [id] + '"', function(err, row1) {
+  //     if(err) console.log(err);
 
-      res.send(row1[0])
-    })
-  })
+  //     res.send(row1[0])
+  //   })
+  // })
 
 });
   

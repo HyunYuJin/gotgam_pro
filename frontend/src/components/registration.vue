@@ -30,7 +30,7 @@
                         <label for="input-default">곶감 제목:</label>
                       </b-col>
                       <b-col cols="9">
-                        <b-form-input v-model="regist.maintitle" id="input-default" required="required" maxlength="100"
+                        <b-form-input v-model="regist.title" id="input-default" required="required" maxlength="100"
                           placeholder="제목을 입력해주세요..."></b-form-input>
                       </b-col>
                     </b-row>
@@ -41,7 +41,7 @@
                         <label for="textarea-default">곶감 스토리(내용):</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-textarea v-model="regist.maincontent" required="required" id="textarea-default" class="gotgamStory"
+                        <b-form-textarea v-model="regist.content" required="required" id="textarea-default" class="gotgamStory"
                           placeholder="회원들과 곶감을 공유해주세요..."></b-form-textarea>
                       </b-col>
                     </b-row>
@@ -70,8 +70,10 @@
                         <label for="input-default">여행 일수</label>
                       </b-col>
                       <b-col cols="8">
-                        <b-form-input v-model="regist.dayn" id="input-default" required="required" maxlength="100"
+                        <b-form-input id="input-default" required="required" maxlength="100"
                           placeholder="예시: (3박 4일인 경우 4)"></b-form-input>
+                        <!-- <b-form-input v-model="regist.dayn" id="input-default" required="required" maxlength="100"
+                          placeholder="예시: (3박 4일인 경우 4)"></b-form-input> -->
                       </b-col>
                       <b-col cols="4">
                         <b-button @click.prevent="setTab()" href="#" class="col-12">OK</b-button>
@@ -84,7 +86,7 @@
                         <label for="input-default">기분</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-select v-model="selected1" :options="options1" placeholder="여행당시의 기분은?"></b-form-select>
+                        <b-form-select v-model="regist.mood" :options="options1" placeholder="여행당시의 기분은?"></b-form-select>
                       </b-col>
                     </b-row>
 
@@ -94,7 +96,7 @@
                         <label for="input-default">지역 선택</label>
                       </b-col>
                       <b-col cols="12">
-                        <b-form-select v-model="selected2" :options="options2"></b-form-select>
+                        <b-form-select v-model="regist.region_id" :options="options2"></b-form-select>
                       </b-col>
                     </b-row>
 
@@ -234,16 +236,18 @@ export default {
         ],
         options2: [
             { value: null, text: '지역을 선택해주세요.', disabled: true },
-            { value: 'seoul', text: '서울특별시' },
-            { value: 'kyeong', text: '경기도' },
-            { value: 'incheon', text: '인천광역시'}
+            { value: '1', text: '서울특별시' },
+            { value: '2', text: '경기도' },
+            { value: '3', text: '인천광역시'}
         ],
 
         regist: {
-          maintitle: 'mt',
-          maincontent: 'mc',
+          title: 'mt',
+          content: 'mc',
+          user_id: '',
           peoples: '3',
-          dayn: '4',
+          mood: null,
+          region_id: null,
           daytitle: '',
           daycontent: '',
           daytraffic: '',
@@ -273,6 +277,9 @@ export default {
       if(this.$store.getters.userId.length == 0){
         alert('로그인이 필요한 메뉴입니다.');
         this.$router.push('/login');
+      }else{
+        //console.log(this.$store.getters.userId[0].name)
+        //this.regist.user_id = this.$store.getters.userId[0].name
       }
     },
     methods: {
@@ -317,6 +324,8 @@ export default {
 
         },
         save(event) {
+          this.regist.user_id = this.$store.getters.userId[0].name
+          
           this.$http.post('/api/regist/step1',
           {
             regist:this.regist,
