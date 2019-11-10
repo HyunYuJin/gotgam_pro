@@ -187,16 +187,16 @@ export default {
       id = this.$store.getters.regionId[0];
     }
     this.$http.get(`/api/region/` + id)
-        .then((res) => {
-          //alert(response.data) 
-          //dataManager.saveData('REGION_ID', res.data.region_id);
-          console.log(res.data);
-          this.region = res.data.name;
-          this.attraction = res.data.attraction;
-          this.special = res.data.special_product;
-          //res.data
-          
-        })
+    .then((res) => {
+      //alert(response.data) 
+      //dataManager.saveData('REGION_ID', res.data.region_id);
+      console.log(res.data);
+      this.region = res.data.name;
+      this.attraction = res.data.attraction;
+      this.special = res.data.special_product;
+      //res.data
+      
+    })
   },
 
 	methods: {
