@@ -234,19 +234,12 @@ export default {
         ],
 
         regist: {
-<<<<<<< HEAD
           title: 'mt',
           content: 'mc',
           user_id: '',
           peoples: '3',
           mood: null,
           region_id: null,
-=======
-          maintitle: '',
-          maincontent: '',
-          peoples: '',
-          dayn: '',
->>>>>>> d39a1605e08322eb21d142f0fdfb3d7f64bdfc6f
           daytitle: '',
           daycontent: '',
           daytraffic: '',
