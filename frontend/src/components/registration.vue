@@ -12,17 +12,9 @@
                   <b-col md="12">
 
                     <!-- main img uploader -->
-                    <!-- <div class="img_uploader_wrap">
-                      <label for="fileInput" slot="upload-label">
-                        <span class="upload-caption">{{ hasImage ? "Replace" : "Click to upload" }}</span>
-                      </label>
-                      <image-uploader :preview="true" :className="['fileinput', { 'fileinput--loaded': hasImage }]"
-                        capture="environment" :debug="1" doNotResize="gif" :autoRotate="true" outputFormat="verbose"
-                        @input="setImage">
-                      </image-uploader>
-                    </div> -->
-
-                    <input type="file" name="file" @change="previewFiles">
+                    <b-form-group class="mainfile" label="대표이미지:" label-for="file-main" label-cols-sm="2">
+                      <b-form-file id="file-main"></b-form-file>
+                    </b-form-group>
 
                     <!-- main title -->
                     <b-row class="my-1">
@@ -177,15 +169,15 @@
                         </b-tab>
 
                         <!-- New Tab Button (Using tabs-end slot) -->
-                        <template v-slot:tabs-start>
+                        <!-- <template v-slot:tabs-start>
                           <b-nav-item @click.prevent="newTab" href="#"><b>+</b></b-nav-item>
                           <b-nav-item @click.prevent="closeTab" href="#"><b>-</b></b-nav-item>
-                        </template>
+                        </template> -->
 
                         <!-- Render this if no tabs -->
                         <template v-slot:empty>
                           <div class="text-center text-muted">
-                            <b>+</b> 버튼을 눌러 <br>
+                            <b>여행일수</b> 만큼 <br>
                             당신의 곶감을 등록해주세요.
                           </div>
                         </template>
@@ -242,34 +234,43 @@ export default {
         ],
 
         regist: {
+<<<<<<< HEAD
           title: 'mt',
           content: 'mc',
           user_id: '',
           peoples: '3',
           mood: null,
           region_id: null,
+=======
+          maintitle: '',
+          maincontent: '',
+          peoples: '',
+          dayn: '',
+>>>>>>> d39a1605e08322eb21d142f0fdfb3d7f64bdfc6f
           daytitle: '',
           daycontent: '',
           daytraffic: '',
           dayfood: '',
           daypay: ''
         },
+        // 여행일수는 최대 14일까지 입력 가능하다.
+        // 0부터 시작되기 때문에 15개
         reg:[
           {},
-          {daytitle:'d1',daycontent:'dc2',daytraffic:'dt',dayfood:'',daypay:''},
-          {daytitle:'d2',daycontent:'',daytraffic:'22',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'333',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''},
-          {daytitle:'',daycontent:'',daytraffic:'',dayfood:'',daypay:''}
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
+          {daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''}
         ]
       }
     },
@@ -283,9 +284,6 @@ export default {
       }
     },
     methods: {
-        previewFiles(event) {
-            console.log(event.target.files[0].name);
-        },
         setImage: function(output) {
             this.hasImage = true;
             this.image = output;
@@ -302,8 +300,8 @@ export default {
             this.tabs.push(this.tabCounter++)
         },
         setTab(){
-          if(this.regist.dayn<1|| this.regist.dayn>14){
-            window.alert('1 ~ 14 사이의 값을 입력해주세요')
+          if(this.regist.dayn < 1 || this.regist.dayn > 14){
+            window.alert('여행일수는 최소 1일 ~ 최대 14일까지 등록할 수 있어요!')
             return;
           }
           while(this.tabCounter!=this.regist.dayn){
@@ -370,6 +368,11 @@ export default {
 
 /* Form */
 /* .step */
+.form-row > .col, .form-row > [class*="col-"] {
+  padding-left: 0;
+  font-size: 1.1em;
+}
+
 .step-1-1, .step-1-2 {
     padding-top: 2rem;
 }
