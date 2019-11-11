@@ -8,7 +8,7 @@
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
           <div class="item-img">
-            <!-- <img v-bind:src="ourboard.poster"> -->
+            <img v-bind:src="src">
           </div>
           <div class="item-desc item-desc-single-over" v-bind:key="ourboard.board_id">
             <h1>{{ ourboard.title }}</h1>
@@ -60,6 +60,14 @@
         .then((response) => {
           this.ourboard = response.data[0];
           this.user_data = response.data[1];
+
+          var bytes, blob;
+          if(this.ourboard.picture.data != null){
+            bytes = new Uint8Array(this.ourboard.picture.data);
+            blob = new Blob([bytes], {type:'image/bmp'});
+            console.log(URL.createObjectURL(blob));
+            this.src = URL.createObjectURL(blob);
+          }
           //console.log(response.data[1]);
           //console.log(response.data)
         })
@@ -68,7 +76,8 @@
     data() {
       return {
         ourboard: {},
-        user_data: {}
+        user_data: {},
+        src:''
       }
     }
   }

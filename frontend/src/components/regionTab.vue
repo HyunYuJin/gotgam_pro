@@ -18,6 +18,7 @@
         <!-- carousel -->
         <carousel :auto="3000" :watch-items="lists">
           <carousel-item v-for="item in lists" :key="item.seq">
+            <img v-bind:src="item.reg_date">
             <p>
               {{item.seq}} {{item.name}}
             </p>
@@ -109,6 +110,17 @@ export default {
       // 보드
       // console.log(res.data);
       this.lists = res.data;
+      for(var i = 0; i<this.lists.length; i++){
+        var bytes, blob;
+        console.log(this.lists[0])
+        if(this.lists[i].picture != null){
+          bytes = new Uint8Array(this.lists[i].picture.data);
+          blob = new Blob([bytes], {type:'image/bmp'});
+          console.log(URL.createObjectURL(blob));
+          this.lists[i].reg_date = URL.createObjectURL(blob);
+        }
+      }
+      console.log(this.lists)
     });
   },
 

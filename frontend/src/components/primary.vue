@@ -8,9 +8,10 @@
                         <img v-bind:src="myboard.photo2">
                         <img v-bind:src="myboard.photo3">
                         <img v-bind:src="myboard.photo4"> -->
+                        <img v-bind:src="src">
                     </carousel>
                 </div>
-
+                
                 <p>{{ myboard.content }}</p>
 
                 <!-- accordion -->
@@ -34,11 +35,21 @@
             this.$http.get(`/api/regist/board/${id}`)
             .then((response) => {
                 this.myboard = response.data[0]
+                //console.log(this.myboard)
+                var bytes, blob;
+                if(this.myboard.picture.data != null){
+                    bytes = new Uint8Array(this.myboard.picture.data);
+                    blob = new Blob([bytes], {type:'image/bmp'});
+                    console.log(URL.createObjectURL(blob));
+                    this.src = URL.createObjectURL(blob);
+                }
             })
             this.$http.get(`/api/regist/day/${id}`)
             .then((response) => {
                 this.days = response.data;
-                console.log(this.days);
+                
+                
+                
                 //console.log(this.day)
                 //console.log(response.data)
                 //this.myboard = response.data
@@ -47,7 +58,8 @@
         data() {
             return {
                 myboard: {},
-                days: []
+                days: [],
+                src: ''
             }
         }
 

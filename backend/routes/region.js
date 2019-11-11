@@ -57,7 +57,7 @@ router.get('/search/:id', function (req, res) {
 
   connection.query('SELECT * FROM boards WHERE boards.region_id = "' + [id] + '"', function (err, row) {
     if(err) console.log(err);
-
+    console.log(row)
     res.send(row)
     //console.log(row);
   })

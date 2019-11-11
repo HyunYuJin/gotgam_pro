@@ -73,6 +73,7 @@ export default {
         // 홈
         // 곶감 여행기
         this.lists = res.data;
+        console.log(this.lists)
     });
   },
   data () {
