@@ -22,6 +22,7 @@
                         <div class="travel_gotgam_list_img">
                             <div class="travel_gotgam_img">
                                 <!-- <img v-bind:src="movie.poster" class="travel_gotgam_img"> -->
+                                <img v-bind:src="list.reg_date" class="travel_gotgam_img">
                             </div>
                         </div>
                         
@@ -73,7 +74,18 @@ export default {
         // 홈
         // 곶감 여행기
         this.lists = res.data;
-        console.log(this.lists)
+        console.log(this.lists);
+        var bytes, blob;
+        for(var i = 0; i<this.lists.length; i++){
+        var bytes, blob;
+        console.log(this.lists[0])
+        if(this.lists[i].picture != null){
+          bytes = new Uint8Array(this.lists[i].picture.data);
+          blob = new Blob([bytes], {type:'image/bmp'});
+          console.log(URL.createObjectURL(blob));
+          this.lists[i].reg_date = URL.createObjectURL(blob);
+        }
+      }
     });
   },
   data () {
