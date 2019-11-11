@@ -28,7 +28,16 @@ router.get('/:id', function (req, res) {
     if(err) console.log(err);
     
     res.send(row[0])
+  })
+});
+router.get('/detail/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id + "get")
 
+  connection.query('SELECT * FROM region_explanation WHERE region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+    
+    res.send(row)
   })
 });
 

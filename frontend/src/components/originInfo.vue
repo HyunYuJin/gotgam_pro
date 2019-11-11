@@ -34,26 +34,22 @@
 
               <!-- .city_info_table_wrap -->
               <div class="city_info_table_wrap">
-                  <table class="table table-borderless">
-                    <tbody>
+                  <table class="table table-borderless" >
+                    <tbody v-for="item in region_detail" :key="item.seq">
                         <tr>
                             <td style="width: 5%;"></td>
-                            <td style="width: 20%;">위치</td>
+                            <td style="width: 20%;">{{item.category}}</td>
                             <td style="width: 75%;">
-                                <p>경기도 중부에 있는 특별시</p>
+                                <dt>{{item.content_title}}</dt>
                                 <p>
-                                    <span>행정구역: </span>
-                                    <span>종로구 · 중구 · 용산구 · 성동구 · 광진구 · 동대문구 · 중랑구 ·
-                                    성북구 · 강북구 · 도봉구 · 노원구 · 은평구 · 서대문구 · 마포구 · 양천구 ·
-                                    강서구 · 구로구 · 금천구 · 영등포구 · 동작구 · 관악구 · 서초구 · 강남구 ·
-                                    송파구 · 강동구</span>
+                                    <span>{{item.content}}</span>
                                 </p>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td></td>
                             <td>면적</td>
-                            <td colspan="2">
+                            <td colspan="2"> 
                                 <p>
                                     <span>605.2</span>
                                     <span> ㎢</span>
@@ -115,7 +111,7 @@
                                     <span> 명</span>
                                 </p>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                   </table>
               </div>
@@ -131,7 +127,7 @@ export default {
     data() {
         return {
             region_info : '',
-            lists: [],
+            region_detail: [],
             //list: [{ url: "남산타워" }, { url: "광화문" }, { url: "url3" }]
         };
     },
@@ -139,19 +135,26 @@ export default {
     created () {
         var id = '';
         if(this.$store.getters.regionId[0] == undefined){
-        console.log('und');
-        // 지정한 지역정보가 없을 때
-        // 1번 서울을 기본값으로 가져옴
-        id = 1;
+            console.log('und');
+            // 지정한 지역정보가 없을 때
+            // 1번 서울을 기본값으로 가져옴
+            id = 1;
         }else{
-        console.log(this.$store.getters.regionId[0]);
-        id = this.$store.getters.regionId[0];
+            console.log(this.$store.getters.regionId[0]);
+            id = this.$store.getters.regionId[0];
         }
+
         this.$http.get(`/api/region/` + id)
         .then((res) => {
-        this.region_info = res.data;
-        // console.log(res.data);
-        // this.lists = res.data;
+            this.region_info = res.data;
+        });
+
+        this.$http.get(`/api/region/detail/` + id)
+        .then((res) => {
+            //this.region_info = res.data;
+            this.region_detail = res.data;
+            console.log(this.region_detail);
+            // this.lists = res.data;
         });
     },
 }
