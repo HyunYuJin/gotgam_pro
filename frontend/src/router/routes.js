@@ -10,6 +10,7 @@ import About from '@/components/about.vue';
 import SignUp from '@/components/SignUp.vue';
 import myPage from '@/components/mypage.vue';
 import myPageDetail from '@/components/myPageDetail.vue';
+import myPageUpdate from '@/components/myPageUpdate.vue';
 
 export default [
     {
@@ -73,5 +74,10 @@ export default [
         path: '/mypage:id',
         name: 'myPageDetail',
         component: myPageDetail
+    },
+    {
+        path: '/myPageUpdate',
+        name: 'myPageUpdate',
+        component: myPageUpdate
     }
 ]
