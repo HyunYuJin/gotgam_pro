@@ -43,6 +43,23 @@ router.post('/', function (req, res) {
   })
 });
 
+router.post('/update', function (req, res) {
+  const user = {
+    'user_id': req.fields.userid,
+    'password': req.fields.password,
+    'name': req.fields.name,
+    'age': req.fields.age
+  };
+  //var id = req.params.id;
+  //console.log(id)
+  //console.log(req.body.user_id)
+  connection.query('UPDATE users SET password = "' + req.fields.password + '", name = "' + req.fields.name + '", age = "' + req.fields.age + '" WHERE user_id = "' + req.fields.user_id + '"', function (err, data) {
+    if (err) throw err;
+    //console.log(data)
+    res.send(data);
+  })
+});
+
 
 // router.post('/', function (req, res) {
 //   connection.query('SELECT * FROM boards WHERE boards.user_id = "' + req.session.foid + '"', function (err, data) {
