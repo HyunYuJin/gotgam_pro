@@ -147,13 +147,20 @@ router.get('/board/:id', function (req, res) {
   connection.query('SELECT * FROM boards WHERE boards.board_id = "' + [id] + '"', function (err, row) {
     if(err) console.log(err);
 
-    res.send(row[0])
+    connection.query('SELECT * FROM users WHERE user_id = "' + row[0].user_id + '"', function (err1, row1) {
+      if(err1) console.log(err1);
+    
+    console.log(row[0].user_id)
+    console.log(row1[0])
+    row[1] = row1[0];
+    res.send(row)
 
     // connection.query('SELECT * FROM day WHERE day.board_id = "' + [id] + '"', function(err, row1) {
     //   if(err) console.log(err);
 
     //   res.send(row1[0])
     // })
+    });
   })
 });
 

@@ -33,7 +33,7 @@
             var id = this.$route.params.id;
             this.$http.get(`/api/regist/board/${id}`)
             .then((response) => {
-                this.myboard = response.data
+                this.myboard = response.data[0]
             })
             this.$http.get(`/api/regist/day/${id}`)
             .then((response) => {

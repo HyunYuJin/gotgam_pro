@@ -30,8 +30,8 @@ export default {
 
       this.$http.get(`/api/regist/board/${id}`)
         .then((response) => {
-          this.myboard = response.data
-          console.log(response.data)
+          this.myboard = response.data[0]
+          //console.log(response.data)
         })
     },
 

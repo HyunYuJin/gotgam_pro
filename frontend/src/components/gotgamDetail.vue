@@ -15,7 +15,7 @@
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                <span>{{ ourboard.user_id }}</span>
+                <span>{{ user_data.name }}</span>
               </li>
             </ul>
           </div>
@@ -58,14 +58,17 @@
 
       this.$http.get(`/api/regist/board/${id}`)
         .then((response) => {
-          this.ourboard = response.data
+          this.ourboard = response.data[0];
+          this.user_data = response.data[1];
+          //console.log(response.data[1]);
           //console.log(response.data)
         })
     },
 
     data() {
       return {
-        ourboard: {}
+        ourboard: {},
+        user_data: {}
       }
     }
   }
