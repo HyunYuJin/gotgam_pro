@@ -27,10 +27,10 @@
                 </router-link>
               </td>
               <td class="col-2">
-                <b-button>수정</b-button>
+                <b-button class="upBtn">수정</b-button>
               </td>
               <td class="col-2">
-                <b-button>삭제</b-button>
+                <b-button class="deBtn">삭제</b-button>
               </td>
             </tr>
           </tbody>
@@ -177,10 +177,17 @@ import MyInfo from './myinfo.vue';
 
   .travel_gotgam_inner table thead tr.row {
     margin: 0;
+    height: 50px !important;
   }
 
   .travel_gotgam_inner table tbody tr.row {
     margin: 0;
+    height: 50px !important;
+  }
+
+  .upBtn, .deBtn {
+    width: 48px !important;
+    height: 34px !important;
   }
 
   /* .travel_gotgam_list {
