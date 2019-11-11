@@ -76,7 +76,7 @@ export default {
     // 홈
     // Best 곶감
     // rate 순서대로 가져오므로 앞에서 3개를 빼서 사용
-    console.log(res.data);
+    // console.log(res.data);
     this.lists = res.data;
 
     // this.$http.get('/api/regist/')

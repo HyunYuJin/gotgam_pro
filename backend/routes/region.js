@@ -32,7 +32,7 @@ router.get('/:id', function (req, res) {
   })
 });
 
-router.get('/search/:id', function (req, res) {
+router.get('/search/desc/:id', function (req, res) {
   var id = req.params.id;
 
   connection.query('SELECT * FROM boards WHERE boards.region_id = "' + [id] + '" ORDER BY rate DESC', function (err, row) {
@@ -43,8 +43,15 @@ router.get('/search/:id', function (req, res) {
   })
 });
 
-router.get('/search', function (req, res) {
-    console.log("지역 경로 타고왔당")
+router.get('/search/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM boards WHERE boards.region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+
+    res.send(row)
+    //console.log(row);
+  })
 });
 
 module.exports = router;

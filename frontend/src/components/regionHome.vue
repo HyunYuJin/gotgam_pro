@@ -87,7 +87,7 @@ export default {
         console.log(this.$store.getters.regionId[0]);
         id = this.$store.getters.regionId[0];
         }
-        this.$http.get(`/api/region/search/` + id)
+        this.$http.get(`/api/region/search/desc/` + id)
         .then((res) => {
         //alert(response.data) 
         //dataManager.saveData('REGION_ID', res.data.region_id);
