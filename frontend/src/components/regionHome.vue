@@ -6,7 +6,7 @@
     <div class="best_card_body">
         <div class="best_card_inner">
 
-            <div class="card_col_wrap" v-for="(list, idx) in list3" v-bind:key="idx">
+            <div class="card_col_wrap" v-for="(list, idx) in lists" v-bind:key="idx">
                 
                 <div class="card_col_cell">
                     <div class="card_inner_cell">
@@ -78,6 +78,12 @@
 
 <script>
 export default {
+    data () {
+        return {
+            lists: [],
+            list3: []
+        }
+    },
     created() {
         var id = '';
         if(this.$store.getters.regionId[0] == undefined){
@@ -116,12 +122,6 @@ export default {
             console.log(this.list3);
         })
     },
-    data () {
-    return {
-        lists: [],
-        list3: []
-    }
-  }
 }
 </script>
 
