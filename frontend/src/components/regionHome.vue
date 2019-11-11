@@ -6,7 +6,8 @@
     <div class="best_card_body">
         <div class="best_card_inner">
 
-            <div class="card_col_wrap">
+            <div class="card_col_wrap" v-for="(list, idx) in list3" v-bind:key="idx">
+                
                 <div class="card_col_cell">
                     <div class="card_inner_cell">
                         <div class="card_hover_cell">
@@ -14,11 +15,12 @@
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
                                 <div class="card_text_wrap2">
+                                    <img v-bind:src="list.reg_date">
                                     <div class="card_text_subtitle">
-                                        <p>현유진</p>
+                                        <p>{{list.user_id}}</p>
                                     </div>
                                     <div class="card_text_title">
-                                        <h4>제부도</h4>
+                                        <h4>{{list.title}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -26,7 +28,7 @@
                     </div>
                 </div>
             </div>
-
+<!-- 
             <div class="card_col_wrap">
                 <div class="card_col_cell">
                     <div class="card_inner_cell">
@@ -67,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -96,8 +98,30 @@ export default {
             // Best 곶감
             // rate 순서대로 가져오므로 앞에서 3개를 빼서 사용
             console.log(res.data);
+            this.lists = res.data;
+            for(var i = 0; i<this.lists.length; i++){
+                var bytes, blob;
+                console.log(this.lists[0])
+                if(this.lists[i].picture != null){
+                bytes = new Uint8Array(this.lists[i].picture.data);
+                blob = new Blob([bytes], {type:'image/bmp'});
+                console.log(URL.createObjectURL(blob));
+                this.lists[i].reg_date = URL.createObjectURL(blob);
+                }
+            }
+            console.log(this.lists)
+            for(var i = 0; i<3; i++){
+                this.list3[i] = this.lists[i];
+            }
+            console.log(this.list3);
         })
     },
+    data () {
+    return {
+        lists: [],
+        list3: []
+    }
+  }
 }
 </script>
 
