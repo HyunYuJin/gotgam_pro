@@ -66,8 +66,9 @@ router.post('/step1', function (req, res) {
     region_id: req.fields.region_id,
     picture: fs.readFileSync(req.files.image.path)
   };
-
-  // const dayn = req.fields.dayn;
+  const reg = JSON.parse(req.fields.reg)
+  console.log(reg);
+  const dayn = req.fields.dayn;
   // //const day = req.fields.reg;
   // //console.log(board.region_id);
   console.log(board);
@@ -81,26 +82,26 @@ router.post('/step1', function (req, res) {
       //console.log(req.body.regist.dayn)
       //console.log(day[3])
 
-      // for (let i = 1; i <= dayn; i++) {
-      //   console.log(row[0].idd)
-      //   // const dayI = {
-      //   //   day_seq:
-      //   //   title:
-      //   //   content:
-      //   //   traffic:
-      //   //   pay:
-      //   //   board_id:
-      //   // }
-      //   connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + day[i].dayseq + '","' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
-      //     if (err) throw err;
-      //   })
-      // }
+      for (let i = 1; i <= dayn; i++) {
+        console.log(row[0].idd)
+        // const dayI = {
+        //   day_seq:
+        //   title:
+        //   content:
+        //   traffic:
+        //   pay:
+        //   board_id:
+        // }
+        connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + reg[i].dayseq + i + '","' + reg[i].daytitle + i + '","' +  reg[i].daycontent + i + '","' +  reg[i].daytraffic + i + '","' +  reg[i].daypay + i + '","' + row[0].idd + '")', function(err, row3) {
+          if (err) throw err;
+        })
+      }
     })
     
-  //   res.json({
-  //     success: true,
-  //     message: '등록이 완료되었습니다!'
-  //   })
+    res.json({
+      success: true,
+      message: '등록이 완료되었습니다!'
+    })
   });
 });
 

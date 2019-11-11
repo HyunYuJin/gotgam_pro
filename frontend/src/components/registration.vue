@@ -422,9 +422,12 @@ export default {
         fd.append('people', this.regist.peoples);
         fd.append('mood', this.regist.mood);
         fd.append('region_id', this.regist.region_id);
-        fd.append('reg', this.reg);
         fd.append('image', this.files);
         fd.append('dayn', this.regist.dayn);
+        fd.append('reg', JSON.stringify(this.reg));
+        console.log(this.reg)
+        
+        
         //fd.append('image', this.files, this.files.name);
 
         // this.$http.post('/api/regist/step1',
