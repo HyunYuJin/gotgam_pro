@@ -2,9 +2,9 @@
   <div role="tablist">
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block href="#" v-b-toggle.accordion-1 variant="info">Day{{prop_data.day_seq}}</b-button>
+        <b-button block href="#" v-b-toggle="'accordion-' + [prop_data.day_seq]" variant="info">Day{{prop_data.day_seq}}</b-button>
       </b-card-header>
-      <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+      <b-collapse :id="'accordion-' + [prop_data.day_seq]" visible accordion="my-accordion" role="tabpanel">
         <b-card-body>
           <b-card-text>
               <div class="schedule_box" v-bind:key="prop_data.board_id">

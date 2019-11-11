@@ -7,7 +7,7 @@
     <nav class="mynav">
       <ul>
         <li>
-          <a href="">내가 작성한 게시물</a>
+          <router-link :to="{ name: 'myPageUpdate'}">회원정보수정</router-link>
         </li>
       </ul>
     </nav>
@@ -18,7 +18,11 @@
   export default {
     data(){
       return{
-        user_data: ''
+        user_data: '',
+
+        myPageUpdate: {
+				  link: "/myPageUpdate"
+			  },
       };
     },
     created() {
