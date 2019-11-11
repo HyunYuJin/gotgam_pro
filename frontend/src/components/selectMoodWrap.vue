@@ -9,27 +9,27 @@
         <ul class="range-labels">
           <li class="rangeBulletangry dark">
             <p>Angry</p>
-            <i class="em em-angry"><button></button></i>
+            <i class="em em-angry"><button @click="iconClick('angry')"></button></i>
           </li>
           <li class="rangeBulletexpressionless dark">
             <p>Expressionless</p>
-            <i class="em em-expressionless"><button></button></i>
+            <i class="em em-expressionless"><button @click="iconClick('expressionless')"></button></i>
           </li>
           <li class="rangeBulletastonished dark">
             <p>Astonished</p>
-            <i class="em em-astonished"><button></button></i>
+            <i class="em em-astonished"><button @click="iconClick('astonished')"></button></i>
           </li>
           <li class="rangeBulletconfounded dark">
             <p>Confounded</p>
-            <i class="em em-confounded"><button></button></i>
+            <i class="em em-confounded"><button @click="iconClick('confounded')"></button></i>
           </li>
           <li class="rangeBulletokay dark">
             <p>Okey?</p>
-            <i class="em em-face_with_raised_eyebrow"><button></button></i>
+            <i class="em em-face_with_raised_eyebrow"><button @click="iconClick('okay')"></button></i>
           </li>
           <li class="rangeBulletblush dark">
             <p>Blush</p>
-            <i class="em em-blush"><button></button></i>
+            <i class="em em-blush"><button @click="iconClick('blush')"></button></i>
           </li>
         </ul>
 
@@ -44,8 +44,19 @@
 </template>
 
 <script>
-  export default {
+import dataManager from '@/util/data-manager.js';
+
+export default {
+
+  methods: {
+    iconClick(mood) {
+      dataManager.saveData('MOOD', mood);
+      window.location.reload();
+      //console.log(this.$store.getters.mood[0])
+    }
   }
+}
+  
 </script>
 
 <style>

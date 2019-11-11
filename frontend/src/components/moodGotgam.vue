@@ -10,10 +10,10 @@
       <!-- mood_gotgam_body -->
       <div class="mood_gotgam_body">
           <!-- mood_gotgam_inner -->
-          <div class="mood_gotgam_inner">
+          <div class="mood_gotgam_inner" v-for="(list, idx) in lists" v-bind:key="idx">
 
               <!-- mood_gotgam_list -->
-              <router-link :to="GotgamDetail.link">
+              <router-link :to="{ name: 'GotgamDetail', params: { id: list.board_id }}">
                 <div class="mood_gotgam_list">
                     <!-- mood_gotgam_list_inner -->
                     <div class="mood_gotgam_list_inner">
@@ -29,13 +29,13 @@
                         <div class="mood_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <p>인생 첫 남산타워 방문기</p>
+                                <p>{{ list.title }}</p>
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <p>작성자: 강민성</p>
+                                <p>작성자: {{ list.user_id }}</p>
                             </div>
                             <!-- list_content_info end -->
                         </div>
@@ -57,11 +57,30 @@
 
 <script>
 export default {
+    created(){
+        
+        var id = '';
+        if(this.$store.getters.mood[0] == undefined){
+            console.log('und');
+            // 지정한 지역정보가 없을 때
+            id = 'expressionless';
+        }else{
+            console.log(this.$store.getters.mood[0])
+            id = this.$store.getters.mood[0];
+        }
+        this.$http.get(`/api/mood/` + id)
+        .then((res) => {
+            // 곶감 여행기
+            console.log(res.data)
+            this.lists = res.data;
+        });
+    },
     data() {
     	return {
 			GotgamDetail: {
-        		link: "/regiontravel"
-			  }
+                link: "/regiontravel"
+            },
+            lists: []
 		};
 	},
     
