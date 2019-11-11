@@ -2,7 +2,7 @@
   <div>
     <!-- accordion_info_detail -->
     <div class="accordion_info_detail">
-        <AccordionInfoDetailTitle></AccordionInfoDetailTitle>
+        <AccordionInfoDetailTitle v-bind:prop_data="prop_data"></AccordionInfoDetailTitle>
 
         <b-list-group>
           <b-list-group-item href="#">
@@ -13,7 +13,7 @@
               <ul>
                 <li>
                   <dl>
-                    <dd>{{ myboard.traffic }}</dd>
+                    <dd>{{ prop_data.traffic }}</dd>
                   </dl>
                 </li>
               </ul>
@@ -42,7 +42,7 @@
                 </li>
                 <li>
                   <dl>
-                    <dd>{{ myboard.pay }}</dd>
+                    <dd>{{ prop_data.pay }}</dd>
                   </dl>
                 </li>
               </ul>
@@ -59,15 +59,17 @@
     components: {
       AccordionInfoDetailTitle
     },
-
+    props: {
+      prop_data: {}
+    },
     created() {
-      var id = this.$route.params.id;
+      // var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
-        .then((response) => {
-          this.myboard = response.data
-          // console.log(response.data)
-        })
+      // this.$http.get(`/api/regist/${id}`)
+      //   .then((response) => {
+      //     this.myboard = response.data
+      //     // console.log(response.data)
+      //   })
     },
 
     data() {

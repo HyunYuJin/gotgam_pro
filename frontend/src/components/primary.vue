@@ -14,7 +14,7 @@
                 <p>{{ myboard.content }}</p>
 
                 <!-- accordion -->
-                <accordion-wrap></accordion-wrap>
+                <accordion-wrap v-bind:prop_data="day" v-for="day in days" v-bind:key="day.day_seq"></accordion-wrap>
             </div>
         </div>
     </div>
@@ -32,13 +32,22 @@
         created() {
             var id = this.$route.params.id;
             this.$http.get(`/api/regist/board/${id}`)
-                .then((response) => {
-                    this.myboard = response.data
+            .then((response) => {
+                this.myboard = response.data
+            })
+            this.$http.get(`/api/regist/day/${id}`)
+            .then((response) => {
+                this.days = response.data;
+                console.log(this.days);
+                //console.log(this.day)
+                //console.log(response.data)
+                //this.myboard = response.data
             })
         },
         data() {
             return {
-                myboard: {}
+                myboard: {},
+                days: []
             }
         }
 

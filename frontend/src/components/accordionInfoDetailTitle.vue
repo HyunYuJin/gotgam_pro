@@ -5,7 +5,7 @@
         <b-media-body>
           <h5 class="mt-0">이날의 곶감</h5>
           <p>
-            {{myboard.content}}
+            {{prop_data.content}}
           </p>
         </b-media-body>
       </b-media>
@@ -16,20 +16,23 @@
 <script>
 export default {
   created() {
-      var id = this.$route.params.id;
+    // var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
-        .then((response) => {
-          this.myboard = response.data
-          // console.log(response.data)
-        })
-    },
+    // this.$http.get(`/api/regist/${id}`)
+    // .then((response) => {
+    //   this.myboard = response.data
+    //   // console.log(response.data)
+    // })
+  },
+  props: {
+    prop_data: {}
+  },
 
-    data() {
-        return {
-          myboard: {}
+  data() {
+    return {
+      myboard: {}
     }
-    }
+  }
 
 }
 </script>
