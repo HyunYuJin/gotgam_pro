@@ -92,7 +92,7 @@ router.post('/step1', function (req, res) {
         //   pay:
         //   board_id:
         // }
-        connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + reg[i].dayseq + i + '","' + reg[i].daytitle + i + '","' +  reg[i].daycontent + i + '","' +  reg[i].daytraffic + i + '","' +  reg[i].daypay + i + '","' + row[0].idd + '")', function(err, row3) {
+        connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + reg[i].dayseq + '","' + reg[i].daytitle + '","' +  reg[i].daycontent + '","' +  reg[i].daytraffic + '","' +  reg[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
           if (err) throw err;
         })
       }
