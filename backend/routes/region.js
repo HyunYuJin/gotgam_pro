@@ -54,4 +54,15 @@ router.get('/search/:id', function (req, res) {
   })
 });
 
+router.get('/search/region_board/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM region_board WHERE region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+
+    res.send(row)
+    //console.log(row);
+  })
+});
+
 module.exports = router;

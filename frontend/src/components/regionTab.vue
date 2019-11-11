@@ -16,10 +16,10 @@
       <div v-if="currentTab === 'tab1'">
 
         <!-- carousel -->
-        <carousel :auto="3000" :watch-items="list">
-          <carousel-item v-for="(item, index) in list" :key="item.name">
+        <carousel :auto="3000" :watch-items="lists">
+          <carousel-item v-for="item in lists" :key="item.seq">
             <p>
-              {{index + 1}} {{item.url}}
+              {{item.seq}} {{item.name}}
             </p>
           </carousel-item>
         </carousel>
@@ -87,9 +87,29 @@ export default {
       currentTab: "tab4",
 
       auto: 3000,
-
-      list: [{ url: "남산타워" }, { url: "광화문" }, { url: "url3" }]
+      lists: [],
+      //list: [{ url: "남산타워" }, { url: "광화문" }, { url: "url3" }]
     };
+  },
+
+  created () {
+    var id = '';
+    if(this.$store.getters.regionId[0] == undefined){
+      console.log('und');
+      // 지정한 지역정보가 없을 때
+      // 1번 서울을 기본값으로 가져옴
+      id = 1;
+    }else{
+      console.log(this.$store.getters.regionId[0]);
+      id = this.$store.getters.regionId[0];
+    }
+    this.$http.get(`/api/region/search/region_board/` + id)
+    .then((res) => {
+      // 홈
+      // 보드
+      // console.log(res.data);
+      this.lists = res.data;
+    });
   },
 
   methods: {

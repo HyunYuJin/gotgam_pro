@@ -79,25 +79,25 @@ export default {
     created() {
         var id = '';
         if(this.$store.getters.regionId[0] == undefined){
-        console.log('und');
-        // 지정한 지역정보가 없을 때
-        // 1번 서울을 기본값으로 가져옴
-        id = 1;
+            console.log('und');
+            // 지정한 지역정보가 없을 때
+            // 1번 서울을 기본값으로 가져옴
+            id = 1;
         }else{
-        console.log(this.$store.getters.regionId[0]);
-        id = this.$store.getters.regionId[0];
+            console.log(this.$store.getters.regionId[0]);
+            id = this.$store.getters.regionId[0];
         }
         this.$http.get(`/api/region/search/desc/` + id)
         .then((res) => {
-        //alert(response.data) 
-        //dataManager.saveData('REGION_ID', res.data.region_id);
+            //alert(response.data) 
+            //dataManager.saveData('REGION_ID', res.data.region_id);
 
-        // 홈
-        // Best 곶감
-        // rate 순서대로 가져오므로 앞에서 3개를 빼서 사용
-        console.log(res.data);
-    })
-  },
+            // 홈
+            // Best 곶감
+            // rate 순서대로 가져오므로 앞에서 3개를 빼서 사용
+            console.log(res.data);
+        })
+    },
 }
 </script>
 
