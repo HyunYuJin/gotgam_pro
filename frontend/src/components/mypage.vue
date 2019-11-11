@@ -54,9 +54,9 @@ import MyInfo from './myinfo.vue';
         const user = {
           user_id : this.$store.getters.userId[0].name
         }
-        this.$http.post('/api/mypage/',
-          user
-        )
+        const fd = new FormData();
+        fd.append('user_id', this.$store.getters.userId[0].name);
+        this.$http.post('/api/mypage/', fd)
         .then((response) => {
           this.mys = response.data;
           // console.log('mys')

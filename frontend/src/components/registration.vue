@@ -13,7 +13,8 @@
 
                     <!-- main img uploader -->
                     <b-form-group class="mainfile" label="대표이미지:" label-for="file-main" label-cols-sm="2">
-                      <b-form-file id="file-main"></b-form-file>
+                      <!-- <b-form-file id="file-main"></b-form-file> -->
+                      <input type="file" @change="onFileSelected">
                     </b-form-group>
 
                     <!-- main title -->
@@ -294,7 +295,8 @@ export default {
         // 여행일수는 최대 14일까지 입력 가능하다.
         // 0부터 시작되기 때문에 15개
         day : {dayseq: '', daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
-        reg:[]
+        reg:[],
+        files: null
       }
     },
     beforeCreate(){
@@ -311,6 +313,9 @@ export default {
           this.hasImage = true;
           this.image = output;
           console.log(this.image);
+      },
+      onFileSelected(event){
+        this.files = event.target.files[0];
       },
 
       // closeTab() {
@@ -369,19 +374,56 @@ export default {
         // }
         // this.tabs.push(this.tabCounter++)
       },
+      // image(){
+      //   this.regist.user_id = this.$store.getters.userId[0].name
+      //   if(this.regist.mood == null || this.regist.region_id == null){
+      //     window.alert('기분과 지역을 선택해주세요!')
+      //     return;
+      //   }
+      //   let fd = new FormData();
+      //   fd.append('regist', this.regist);
+      //   fd.append('reg', this.reg);
+      //   fd.append('image', this.files, this.files.name);
+
+      //   // this.$http.post('/api/regist/step1',
+      //   // {
+      //   //   regist:this.regist,
+      //   //   reg:this.reg
+      //   // }
+      //   this.$http.post('/api/regist/step1', fd)
+      //   .then(
+      //     (res) => {
+      //       if(res.data.success) {
+      //         alert(res.data.message)
+      //         this.$router.push('/mypage')
+      //       }
+      //       else {
+      //         alert('등록실패')
+      //       }
+      //     },
+      //   )
+      //   .catch(err => {
+      //     alert(err);
+      //   })
+      // },
       save(event) {
         this.regist.user_id = this.$store.getters.userId[0].name
         if(this.regist.mood == null || this.regist.region_id == null){
           window.alert('기분과 지역을 선택해주세요!')
           return;
         }
+        let fd = new FormData();
+        fd.append('regist', this.regist);
+        fd.append('reg', this.reg);
+        //fd.append('dayn', this.dayn);
+        //fd.append('image', this.files, this.files.name);
 
-        this.$http.post('/api/regist/step1',
-        {
-          regist:this.regist,
-          reg:this.reg
-        }
-        )
+        // this.$http.post('/api/regist/step1',
+        // {
+        //   regist:this.regist,
+        //   reg:this.reg
+        // }
+        this.$http.post('/api/regist/step1', fd)
         .then(
           (res) => {
             if(res.data.success) {

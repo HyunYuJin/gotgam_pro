@@ -28,9 +28,9 @@
         };
         //const user_id = this.$store.getters.userId[0].name;
         //console.log(user_id);
-        this.$http.post('/api/mypage/info',
-          user
-        )
+        const fd = new FormData();
+        fd.append('user_id', this.$store.getters.userId[0].name);
+        this.$http.post('/api/mypage/info', fd)
         .then((response) => {
           this.user_data = response.data;
           //console.log(response.data)

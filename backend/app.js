@@ -11,6 +11,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
+const formidable = require('express-formidable');
 
 // routes에 있는 파일을 가져온다.
 // routes는 express.Router()로 등록한 라우터 파일을 가지고 있는 디렉터리, 라우터 관리 담당
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(formidable());
 
 app.use(session({
   secret: '9772dbwls!',

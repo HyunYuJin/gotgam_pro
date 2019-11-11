@@ -38,9 +38,10 @@ import dataManager from '@/util/data-manager.js';
 
     methods: {
       login: function (event) {
-        this.$http.post('/api/users/login1',
-          this.user
-        )
+        const fd = new FormData();
+        fd.append('userid', this.user.userid);
+        fd.append('password', this.user.password);
+        this.$http.post('/api/users/login1', fd)
         .then(
           (res) => { //no error
             if (res.data.success) {

@@ -44,9 +44,12 @@
     // axios로 /api/users/signUp을 호출하여 입력 받은 데이터(this.user)를 user 객체에 저장한다. 
     methods: {
       signUp: function (event) {
-        this.$http.post('/api/users/signUp1',
-            this.user
-          )
+        const fd = new FormData();
+        fd.append('userid', this.user.userid);
+        fd.append('password', this.user.password);
+        fd.append('name', this.user.name);
+        fd.append('age', this.user.age);
+        this.$http.post('/api/users/signUp1',fd)
           .then((res) => {
             // 성공시, /login 페이지로 이동
             if (res.data.success == true) {

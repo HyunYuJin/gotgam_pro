@@ -27,10 +27,10 @@ router.get('/', function (req, res, next) {
 
 router.post('/signUp1', function (req, res) {
   const user = {
-    'user_id': req.body.userid,
-    'password': req.body.password,
-    'name': req.body.name,
-    'age': req.body.age
+    'user_id': req.fields.userid,
+    'password': req.fields.password,
+    'name': req.fields.name,
+    'age': req.fields.age
   };
   connection.query('SELECT user_id FROM users WHERE user_id = "' + user.user_id + '"', function (err, row) {
     if (row[0] == null) { //  동일한 아이디가 없을경우,
@@ -53,9 +53,10 @@ router.post('/signUp1', function (req, res) {
 
 router.post('/login1', function (req, res) {
   const user = {
-    'user_id': req.body.userid,
-    'password': req.body.password
+    'user_id': req.fields.userid,
+    'password': req.fields.password
   };
+  console.log(user);
   connection.query('SELECT user_id, password, name FROM users WHERE user_id = "' + user.user_id + '"', function (err, row) {
     if (row[0] == null) {
       res.json({ // 매칭되는 아이디 없을 경우

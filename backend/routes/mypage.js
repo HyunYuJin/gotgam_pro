@@ -23,7 +23,7 @@ connection.connect(function (err) {
 // 현재 로그인 중인 사용자의 정보를 보여준다.
 router.post('/info', function (req, res) {
   // 비밀번호를 제외한 유저정보를 리턴
-  connection.query('SELECT user_id, name, age FROM users WHERE user_id = "' + req.body.user_id + '"', function (err, row) {
+  connection.query('SELECT user_id, name, age FROM users WHERE user_id = "' + req.fields.user_id + '"', function (err, row) {
     if (err) throw err;
     else {
       res.send(row[0])
@@ -36,7 +36,7 @@ router.post('/', function (req, res) {
   //var id = req.params.id;
   //console.log(id)
   //console.log(req.body.user_id)
-  connection.query('SELECT * FROM boards WHERE boards.user_id = "' + req.body.user_id + '"', function (err, data) {
+  connection.query('SELECT * FROM boards WHERE boards.user_id = "' + req.fields.user_id + '"', function (err, data) {
     if (err) throw err;
     //console.log(data)
     res.send(data);
