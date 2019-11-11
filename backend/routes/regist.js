@@ -48,46 +48,59 @@ router.post('/step1', function (req, res) {
   //   console.log(result);
   // });
 
+  // const board = {
+  //   'title': req.fields.title,
+  //   'content': req.fields.content,
+  //   'user_id': req.fields.user_id,
+  //   'peoples': req.fields.peoples,
+  //   'mood': req.fields.mood,
+  //   'region_id': req.fields.region_id,
+  //   picture: fs.readFileSync(req.files.image.path)
+  // };
   const board = {
-    title: req.fields.regist.title,
-    content: req.fields.regist.content,
-    user_id: req.fields.regist.user_id,
-    peoples: req.fields.regist.peoples,
-    mood: req.fields.regist.mood,
-    region_id: req.fields.regist.region_id
+    title: req.fields.title,
+    content: req.fields.content,
+    user_id: req.fields.user_id,
+    peoples: req.fields.people,
+    mood: req.fields.mood,
+    region_id: req.fields.region_id,
+    picture: fs.readFileSync(req.files.image.path)
   };
-  const dayn = req.fields.regist.dayn;
-  const day = req.fields.reg;
 
+  // const dayn = req.fields.dayn;
+  // //const day = req.fields.reg;
+  // //console.log(board.region_id);
+  console.log(board);
+  // console.log(dayn)
   var query = connection.query('INSERT INTO boards SET ?', board, function(err,
     result) {
-    console.log(result);
+     console.log(result);
 
-    connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
+     connection.query('SELECT LAST_INSERT_ID() as idd', function(err, row) {
       //console.log(row[0].idd)
       //console.log(req.body.regist.dayn)
       //console.log(day[3])
 
-      for (let i = 1; i <= dayn; i++) {
-        console.log(row[0].idd)
-        // const dayI = {
-        //   day_seq:
-        //   title:
-        //   content:
-        //   traffic:
-        //   pay:
-        //   board_id:
-        // }
-        connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + day[i].dayseq + '","' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
-          if (err) throw err;
-        })
-      }
+      // for (let i = 1; i <= dayn; i++) {
+      //   console.log(row[0].idd)
+      //   // const dayI = {
+      //   //   day_seq:
+      //   //   title:
+      //   //   content:
+      //   //   traffic:
+      //   //   pay:
+      //   //   board_id:
+      //   // }
+      //   connection.query('INSERT INTO day (day_seq, title, content, traffic, pay, board_id) VALUES ("' + day[i].dayseq + '","' + day[i].daytitle + '","' + day[i].daycontent + '","' + day[i].daytraffic + '","' + day[i].daypay + '","' + row[0].idd + '")', function(err, row3) {
+      //     if (err) throw err;
+      //   })
+      // }
     })
     
-    res.json({
-      success: true,
-      message: '등록이 완료되었습니다!'
-    })
+  //   res.json({
+  //     success: true,
+  //     message: '등록이 완료되었습니다!'
+  //   })
   });
 });
 

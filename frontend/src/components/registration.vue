@@ -153,7 +153,7 @@
                                 <textarea v-model="reg[i].daytraffic" class="form-control col-10 mx-auto" rows="3" name="" id="traffic"></textarea>
                               </b-col>
                               <!-- day food -->
-                              <b-col cols="11" class="form-group form-inline" id="display-restaurant">
+                              <!-- <b-col cols="11" class="form-group form-inline" id="display-restaurant">
                                 <label class="control-label font-weight-bold" for="restaurant">맛집</label>
                                 <textarea v-model="reg[i].dayfood" class="form-control col-10 mx-auto" rows="3" name=""
                                   id="restaurant"></textarea>
@@ -199,7 +199,7 @@
                                     </b-row>
                                   </div>
                                 </div>
-                              </b-col>
+                              </b-col> -->
                               <!-- day pay -->
                               <b-col cols="11" class="form-group form-inline" id="display-location">
                                 <label class="control-label font-weight-bold" for="location">비용</label>
@@ -296,7 +296,9 @@ export default {
         // 0부터 시작되기 때문에 15개
         day : {dayseq: '', daytitle: '', daycontent: '', daytraffic: '', dayfood: '', daypay: ''},
         reg:[],
-        files: null
+        files: null,
+        day_file: null,
+        day_files: []
       }
     },
     beforeCreate(){
@@ -309,13 +311,14 @@ export default {
       }
     },
     methods: {
-      setImage: function(output) {
+      setImage: function(event) {
           this.hasImage = true;
-          this.image = output;
-          console.log(this.image);
+          this.image = event;
+          console.log(event.target.files[0]);
       },
       onFileSelected(event){
         this.files = event.target.files[0];
+        console.log(this.files)
       },
 
       // closeTab() {
@@ -413,9 +416,15 @@ export default {
           return;
         }
         let fd = new FormData();
-        fd.append('regist', this.regist);
+        fd.append('title', this.regist.title);
+        fd.append('content', this.regist.content);
+        fd.append('user_id', this.regist.user_id);
+        fd.append('people', this.regist.peoples);
+        fd.append('mood', this.regist.mood);
+        fd.append('region_id', this.regist.region_id);
         fd.append('reg', this.reg);
-        //fd.append('dayn', this.dayn);
+        fd.append('image', this.files);
+        fd.append('dayn', this.regist.dayn);
         //fd.append('image', this.files, this.files.name);
 
         // this.$http.post('/api/regist/step1',
