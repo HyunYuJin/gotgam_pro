@@ -115,6 +115,11 @@
     transition: all 3s cubic-bezier(0.25, 1, 0.35, 1) 0s;
   }
 
+  .item-img img {
+    display: inline-block;
+    width: 100%;
+  }
+
   .item-img:before {
     content: '';
     background: rgba(0, 0, 0, 0.4);

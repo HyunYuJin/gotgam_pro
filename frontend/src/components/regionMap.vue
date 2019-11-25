@@ -38,7 +38,7 @@
     data: () => ({
       appKey: config.appKey,
       center: {lat:33.450701, lng:127.570667},
-      level: 3,
+      level: 8,
       mapTypeId: VueDaumMap.MapTypeId.NORMAL,
       libraries: [],
       mapObject: null

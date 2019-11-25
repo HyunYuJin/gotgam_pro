@@ -11,11 +11,13 @@
                 <div class="card_col_cell">
                     <div class="card_inner_cell">
                         <div class="card_hover_cell">
-                            <div class="card_image1"></div>
+                            <div class="card_image1">
+                                <img v-bind:src="list.reg_date">
+                            </div>
                             <div class="card_overlay">&nbsp;</div>
                             <div class="card_content">
                                 <div class="card_text_wrap2">
-                                    <img v-bind:src="list.reg_date">
+                                    <!-- <img v-bind:src="list.reg_date"> -->
                                     <div class="card_text_subtitle">
                                         <p>{{list.user_id}}</p>
                                     </div>
@@ -130,6 +132,7 @@ export default {
     padding: 3.4rem 0;
     border-top: 1px solid #e4e5ec;
     margin: 0 auto;
+    overflow-x: scroll;
 }
 
 .best_card_title h2 {
@@ -177,13 +180,19 @@ export default {
 }
 
 .card_image1 {
-    background: url(../assets/jaebudo.png) no-repeat;
-    padding-top: 130%;
+    /* background: url(../assets/jaebudo.png) no-repeat; */
+    /* padding-top: 130%; */
     display: flex;
     overflow: hidden;
     background-size: cover;
     background-position: 50%;
     position: relative;
+    width: 200px;
+    height: 100%;
+}
+
+.card_image1 img {
+    display: inline-block;
     width: 100%;
     height: 100%;
 }
@@ -213,7 +222,7 @@ export default {
 }
 
 .card_overlay {
-    background: linear-gradient(0deg, #000 2%, transparent 40%);
+    /* background: linear-gradient(0deg, #000 2%, transparent 40%); */
     width: 100%;
     height: 100%;
     top: 0;
