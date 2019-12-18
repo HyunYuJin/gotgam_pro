@@ -6,7 +6,7 @@
 
 <script>
   import VueDaumMap from 'vue-daum-map';
-  import config from '../js/config';
+  // import config from '../js/config';
   export default {
     components: {VueDaumMap},
     data: () => ({

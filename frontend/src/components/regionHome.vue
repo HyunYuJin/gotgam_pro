@@ -50,28 +50,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image4"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>허브 아일랜드</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-=======
->>>>>>> 03fcbbf851bdf1ba6c8d52bc97d4df753578a214
             </div>
 
             <div class="card_col_wrap">
@@ -93,31 +71,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image6"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>제이드 가든</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-=======
             </div> -->
->>>>>>> 03fcbbf851bdf1ba6c8d52bc97d4df753578a214
 
         </div>
     </div>
