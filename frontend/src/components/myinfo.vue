@@ -1,11 +1,13 @@
 <template>
   <div class="user_info_wrap">
-    <div id="userid" class="userId"></div>
-    <div id="username" class="userName"></div>
+    <p class="userfont1"> {{user_data.user_id}} </p>
+    <p class="userName"> {{user_data.name}} </p>
+    <!-- <div id="userid" class="userId"></div>
+    <div id="username" class="userName"></div> -->
     <nav class="mynav">
       <ul>
         <li>
-          <a href="">내가 작성한 게시물</a>
+          <router-link :to="{ name: 'myPageUpdate'}">회원정보수정</router-link>
         </li>
       </ul>
     </nav>
@@ -14,15 +16,36 @@
 
 <script>
   export default {
-    created() {
-      this.$http.post('/api/mypage/info')
-        .then((response) => {
-          var dom1 = document.getElementById('userid');
-          dom1.innerHTML = '<p class="userfont1">' + response.data.userid + '</p>';
+    data(){
+      return{
+        user_data: '',
 
-          var dom2 = document.getElementById('username');
-          dom2.innerHTML = '<p class="userfont2">' + response.data.name + '</p>';
+        myPageUpdate: {
+				  link: "/myPageUpdate"
+			  },
+      };
+    },
+    created() {
+      if(this.$store.getters.userId.length != 0){
+        const user = {
+          user_id : this.$store.getters.userId[0].name
+        };
+        //const user_id = this.$store.getters.userId[0].name;
+        //console.log(user_id);
+        const fd = new FormData();
+        fd.append('user_id', this.$store.getters.userId[0].name);
+        this.$http.post('/api/mypage/info', fd)
+        .then((response) => {
+          this.user_data = response.data;
+          //console.log(response.data)
+          // var dom1 = document.getElementById('userid');
+          // dom1.innerHTML = '<p class="userfont1">' + response.data.user_id + '</p>';
+
+          // var dom2 = document.getElementById('username');
+          // dom2.innerHTML = '<p class="userfont2">' + response.data.name + '</p>';
         })
+      }
+      
     }
   }
 </script>

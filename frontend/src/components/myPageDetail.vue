@@ -10,12 +10,12 @@
           <div class="item-img">
             <!-- <img v-bind:src="movie.poster"> -->
           </div>
-          <div class="item-desc item-desc-single-over" v-bind:key="myboard.id">
-            <h1>{{ myboard.maintitle }}</h1>
+          <div class="item-desc item-desc-single-over" v-bind:key="myboard.board_id">
+            <h1>{{ myboard.title }}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                {{ myboard.name }}
+                {{ myboard.user_id }}
               </li>
             </ul>
           </div>
@@ -102,6 +102,11 @@
     display: block;
     transform: scale(1);
     transition: all 3s cubic-bezier(0.25, 1, 0.35, 1) 0s;
+  }
+
+  .item-img img {
+    display: inline-block;
+    width: 100%;
   }
 
   .item-img:before {

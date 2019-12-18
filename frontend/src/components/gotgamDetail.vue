@@ -8,14 +8,14 @@
         <!-- gotgam_info_background -->
         <div class="gotgam_info_background">
           <div class="item-img">
-            <!-- <img v-bind:src="ourboard.poster"> -->
+            <img v-bind:src="src">
           </div>
-          <div class="item-desc item-desc-single-over" v-bind:key="ourboard.id">
-            <h1>{{ ourboard.maintitle }}</h1>
+          <div class="item-desc item-desc-single-over" v-bind:key="ourboard.board_id">
+            <h1>{{ ourboard.title }}</h1>
             <ul class="post-meta">
               <li class="meta-author">
                 <span class="author-url">By</span>
-                <span>{{ ourboard.userid }}</span>
+                <span>{{ user_data.name }}</span>
               </li>
             </ul>
           </div>
@@ -56,16 +56,28 @@
     created() {
       var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
+      this.$http.get(`/api/regist/board/${id}`)
         .then((response) => {
-          this.ourboard = response.data
-          console.log(response.data)
+          this.ourboard = response.data[0];
+          this.user_data = response.data[1];
+
+          var bytes, blob;
+          if(this.ourboard.picture.data != null){
+            bytes = new Uint8Array(this.ourboard.picture.data);
+            blob = new Blob([bytes], {type:'image/bmp'});
+            console.log(URL.createObjectURL(blob));
+            this.src = URL.createObjectURL(blob);
+          }
+          //console.log(response.data[1]);
+          //console.log(response.data)
         })
     },
 
     data() {
       return {
-        ourboard: {}
+        ourboard: {},
+        user_data: {},
+        src:''
       }
     }
   }
@@ -101,6 +113,11 @@
     display: block;
     transform: scale(1);
     transition: all 3s cubic-bezier(0.25, 1, 0.35, 1) 0s;
+  }
+
+  .item-img img {
+    display: inline-block;
+    width: 100%;
   }
 
   .item-img:before {

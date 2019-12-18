@@ -1,7 +1,7 @@
 <template>
   <div class="section4_contents row">
     <div class="s4_contents_wrap col-12 col-md-6">
-      <svg data-v-9004fbdc="" xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 50 50"
+      <svg data-v-9004fbdc="" xmlns="http://www.w3.org/2000/svg" width="150px" height="50px" viewBox="0 0 50 50"
         data-v-701be175="">
         <g fill="#ff4401">
           <path
@@ -11,7 +11,7 @@
       </svg>
       <div class="s4_contents">
         <p class="s4_normal">
-          Q. 곶감을 선택하게 된 이유? <br> <br>
+          <span class="qu">Q. 곶감을 선택하게 된 이유?</span> <br> <br>
           현재 슬럼프와 잦은 몸살로 인해 의욕을 잃어가던 중 문득 힐링을 받고 싶어 방문하게 됐다. 곶감의 기분에 따른 여행지 선택은 탁월했으며 그 와중에도 소소하게나마 내 감정을 남들과 공유한다는 사실은 무척이나 색다른 경험으로 다가왔다. 사람들이 자신의 기분 따라 가는 지역과 활동 역시 다 제각각이었지만 누군가가 나보다 먼저 이곳에 와서 나와 같은 기분을 느끼고 힐링을 받아갔다는 사실만으로도 큰 위안이 되었던 것 같다.
         </p>
         <p class="s4_bold">
@@ -32,6 +32,11 @@ export default {
 </script>
 
 <style>
+.qu {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
 @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}

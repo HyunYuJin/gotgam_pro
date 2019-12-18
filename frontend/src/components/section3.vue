@@ -205,8 +205,8 @@ export default {
     color: #fff;
 }
 .row{
-    margin-left:0px;
-    margin-right:0px;
+    margin-left:0px !important;
+    margin-right:0px !important;
 
 }
 </style>

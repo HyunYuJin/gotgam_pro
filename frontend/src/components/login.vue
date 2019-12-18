@@ -4,9 +4,9 @@
       <h3>곶감 로그인</h3>
 
       <div class="login">
-        <input v-model="user.userid" class="member_id" name="member_id" placeholder="ID" type="text">
+        <input v-model="user.userid" class="member_id" name="member_id" placeholder="ID" type="text" v-on:keyup.enter="login">
         <br>
-        <input v-model="user.password" class="member_password" name="member_password" placeholder="password"
+        <input v-model="user.password" class="member_password" name="member_password" placeholder="password" v-on:keyup.enter="login"
           type="password">
         <button v-on:click="login" class="btn_login">
           <img src="../assets/btn_login.gif" />
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import dataManager from '@/util/data-manager.js';
+
   export default {
     data: function () {
       return {
@@ -36,23 +38,34 @@
 
     methods: {
       login: function (event) {
-        this.$http.post('/api/users/login1',
-            this.user
-          )
-          .then(
-            (res) => { //no error
-              if (res.data.success) {
-                alert(res.data.name + " 님 " + res.data.message)
-                this.$router.push('/')
-              } else {
-                alert(res.data.message);
-              }
-            },
-          )
-          .catch(err => {
-            alert(err);
-          })
-      }
+        const fd = new FormData();
+        fd.append('userid', this.user.userid);
+        fd.append('password', this.user.password);
+        this.$http.post('/api/users/login1', fd)
+        .then(
+          (res) => { //no error
+            if (res.data.success) {
+              // 쿠키, vuex에 로그인정보 저장
+              dataManager.saveData('USER_ID', res.data);
+              alert(res.data.name + " 님 " + res.data.message)
+              this.$router.push('/')
+            } else {
+              alert(res.data.message);
+            }
+          },
+        )
+        .catch(err => {
+          alert(err);
+        })
+        
+        if(this.$store.getters.userId.length == 0){
+          console.log('로그인 데이터가 없는 상태')
+        }
+        // vuex 샘플
+        // dataManager.saveData('USER_ID', this.user.userid);
+        // this.$store.commit("USER_ID", "user_id 테스트")
+        console.log(this.$store.getters.userId);
+      },
     }
   }
 </script>

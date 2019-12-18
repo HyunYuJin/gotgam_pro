@@ -13,7 +13,7 @@
           <div class="travel_gotgam_inner" v-for="(list, idx) in lists" v-bind:key="idx">
 
               <!-- travel_gotgam_list -->
-              <router-link :to="{ name: 'GotgamDetail', params: { id: list.id }}">
+              <router-link :to="{ name: 'GotgamDetail', params: { id: list.board_id }}">
                 <div class="travel_gotgam_list">
                     <!-- travel_gotgam_list_inner -->
                     <div class="travel_gotgam_list_inner">
@@ -22,6 +22,7 @@
                         <div class="travel_gotgam_list_img">
                             <div class="travel_gotgam_img">
                                 <!-- <img v-bind:src="movie.poster" class="travel_gotgam_img"> -->
+                                <img v-bind:src="list.reg_date" class="travel_gotgam_img">
                             </div>
                         </div>
                         
@@ -29,13 +30,13 @@
                         <div class="travel_gotgam_list_content">
                             <!-- list_content_title -->
                             <div class="list_content_title">
-                                <p>{{ list.maintitle }}</p>
+                                <p>{{ list.title }}</p>
                             </div>
                             <!-- list_content_title end -->
 
                             <!-- list_content_info -->
                             <div class="list_content_info">
-                                <p>작성자: {{ list.userid }}</p>
+                                <p>작성자: {{ list.user_id }}</p>
                             </div>
                             <!-- list_content_info end -->
                         </div>
@@ -58,10 +59,34 @@
 <script>
 export default {
   created () {
-    this.$http.get('/api/regist/')
-    .then((response) => {
-      this.lists = response.data
-    })
+    var id = '';
+    if(this.$store.getters.regionId[0] == undefined){
+        console.log('und');
+        // 지정한 지역정보가 없을 때
+        // 1번 서울을 기본값으로 가져옴
+        id = 1;
+    }else{
+        console.log(this.$store.getters.regionId[0]);
+        id = this.$store.getters.regionId[0];
+    }
+    this.$http.get(`/api/region/search/` + id)
+    .then((res) => {
+        // 홈
+        // 곶감 여행기
+        this.lists = res.data;
+        console.log(this.lists);
+        var bytes, blob;
+        for(var i = 0; i<this.lists.length; i++){
+        var bytes, blob;
+        console.log(this.lists[0])
+        if(this.lists[i].picture != null){
+          bytes = new Uint8Array(this.lists[i].picture.data);
+          blob = new Blob([bytes], {type:'image/bmp'});
+          console.log(URL.createObjectURL(blob));
+          this.lists[i].reg_date = URL.createObjectURL(blob);
+        }
+      }
+    });
   },
   data () {
     return {

@@ -2,14 +2,14 @@
   <div role="tablist">
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block href="#" v-b-toggle.accordion-1 variant="info">Day1</b-button>
+        <b-button block href="#" v-b-toggle="'accordion-' + [prop_data.day_seq]" variant="info">Day{{prop_data.day_seq}}</b-button>
       </b-card-header>
-      <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+      <b-collapse :id="'accordion-' + [prop_data.day_seq]" visible accordion="my-accordion" role="tabpanel">
         <b-card-body>
           <b-card-text>
-              <div class="schedule_box" v-bind:key="myboard.id">
-                <h2>1일차</h2>
-                <p class="desc">{{ myboard.daytitle }}</p>
+              <div class="schedule_box" v-bind:key="prop_data.board_id">
+                <h2>{{prop_data.day_seq}}일차</h2>
+                <!-- <p class="desc">{{ myboard.title }}</p> -->
                 <ul>
                     <li>
                         <a href="#">
@@ -19,13 +19,14 @@
                             </div>
 
                             <div class="info">
-                                <strong class="info_title">{{ myboard.daytitle }}</strong>
-                                <p>{{ myboard.daytitle }}</p>
+                                <strong class="info_title">{{ prop_data.title }}</strong>
+                                <!-- <strong class="info_title">{{ myboard.title }}</strong> -->
+                                <!-- <p>{{ myboard.title }}</p> -->
                             </div>
                         </a>
 
                         <!-- accordion_info_detail -->
-                        <accordion-info-detail></accordion-info-detail>
+                        <accordion-info-detail v-bind:prop_data="prop_data"></accordion-info-detail>
                     </li>
                 </ul>
             </div>
@@ -43,15 +44,18 @@ export default {
     components: {
         AccordionInfoDetail,
     },
-
+    props: {
+      prop_data: {}
+    },
     created() {
-      var id = this.$route.params.id;
+      // console.log(this.test);
+      // var id = this.$route.params.id;
 
-      this.$http.get(`/api/regist/${id}`)
-        .then((response) => {
-          this.myboard = response.data
-          // console.log(response.data)
-        })
+      // this.$http.get(`/api/regist/${id}`)
+      // .then((response) => {
+      //   this.myboard = response.data
+      //   //console.log(response.data)
+      // })
     },
 
     data() {

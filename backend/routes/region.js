@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: 'root',
   password: 'root1234',
-  database: 'test_crud'
+  database: 'gotgam'
 });
 
 // Connect
@@ -20,8 +20,58 @@ connection.connect(function (err) {
   }
 });
 
-router.get('/search', function (req, res) {
-    console.log("지역 경로 타고왔당")
+router.get('/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id + "get")
+
+  connection.query('SELECT * FROM region WHERE region.region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+    
+    res.send(row[0])
+  })
+});
+router.get('/detail/:id', function (req, res) {
+  var id = req.params.id;
+  console.log(id + "get")
+
+  connection.query('SELECT * FROM region_explanation WHERE region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+    
+    res.send(row)
+  })
+});
+
+router.get('/search/desc/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM boards WHERE boards.region_id = "' + [id] + '" ORDER BY rate DESC', function (err, row) {
+    if(err) console.log(err);
+
+    res.send(row)
+    //console.log(row);
+  })
+});
+
+router.get('/search/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM boards WHERE boards.region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+    console.log(row)
+    res.send(row)
+    //console.log(row);
+  })
+});
+
+router.get('/search/region_board/:id', function (req, res) {
+  var id = req.params.id;
+
+  connection.query('SELECT * FROM region_board WHERE region_id = "' + [id] + '"', function (err, row) {
+    if(err) console.log(err);
+
+    res.send(row)
+    //console.log(row);
+  })
 });
 
 module.exports = router;

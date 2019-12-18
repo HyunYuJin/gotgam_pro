@@ -11,6 +11,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
+const formidable = require('express-formidable');
 
 // routes에 있는 파일을 가져온다.
 // routes는 express.Router()로 등록한 라우터 파일을 가지고 있는 디렉터리, 라우터 관리 담당
@@ -20,6 +21,7 @@ var movies = require('./routes/movies');
 var regist = require('./routes/regist');
 var region = require('./routes/region');
 var mypage = require('./routes/mypage');
+var mood = require('./routes/mood');
 
 // 미들웨어를 등록할 app 변수
 var app = express();
@@ -36,6 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(formidable());
 
 app.use(session({
   secret: '9772dbwls!',
@@ -61,6 +64,7 @@ app.use('/api/movies', movies);
 app.use('/api/regist', regist);
 app.use('/api/region', region);
 app.use('/api/mypage', mypage);
+app.use('/api/mood', mood);
 // app.use(require('connect-history-api-fallback')())
 
 // 에러 처리

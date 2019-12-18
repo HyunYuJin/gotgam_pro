@@ -7,50 +7,53 @@
     </div>
     <!-- travel_gotgam_title end -->
 
-    <!-- travel_gotgam_body -->
     <div class="travel_gotgam_body2">
-      <!-- travel_gotgam_inner -->
+      <div class="travel_gotgam_inner">
+        <table>
+          <thead>
+            <tr class="row">
+              <th class="col-2">Index</th>
+              <th class="col-6">게시물 제목</th>
+              <th class="col-2">수정</th>
+              <th class="col-2">삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row" v-for="(my, idx) in mys" v-bind:key="idx">
+              <td class="col-2">{{ idx + 1 }}</td>
+              <td class="col-6">
+                <router-link :to="{ name: 'GotgamDetail', params: { id: my.board_id }}">
+                  <b class="text-info">{{ my.title }}</b>
+                </router-link>
+              </td>
+              <td class="col-2">
+                <b-button class="upBtn">수정</b-button>
+              </td>
+              <td class="col-2">
+                <b-button class="deBtn">삭제</b-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    
+    <!-- <div class="travel_gotgam_body2">
       <div class="travel_gotgam_inner" v-for="(my, idx) in mys" v-bind:key="idx">
-
-        <!-- travel_gotgam_list -->
-        <router-link :to="{ name: 'myPageDetail', params: { id: my.id }}">
+        <router-link :to="{ name: 'GotgamDetail', params: { id: my.board_id }}">
           <div class="travel_gotgam_list">
-            <!-- travel_gotgam_list_inner -->
             <div class="travel_gotgam_list_inner">
-
-              <!-- travel_gotgam_img -->
-              <div class="travel_gotgam_list_img">
-                <div class="travel_gotgam_img">
-                  <!-- <img v-bind:src="movie.poster" class="travel_gotgam_img"> -->
-                </div>
-              </div>
-
-              <!-- travel_gotgam_list_content -->
               <div class="travel_gotgam_list_content">
-                <!-- list_content_title -->
                 <div class="list_content_title">
-                  <p>{{ my.maintitle }}</p>
+                  <p>{{ my.title }}</p>
                 </div>
-                <!-- list_content_title end -->
-
-                <!-- list_content_info -->
-                <div class="list_content_info">
-                  <!-- <p><span>작성자: </span> {{movie.director}}</p> -->
-                </div>
-                <!-- list_content_info end -->
               </div>
-              <!-- travel_gotgam_list_content end -->
-
             </div>
-            <!-- travel_gotgam_list_inner end -->
           </div>
         </router-link>
-        <!-- travel_gotgam_list end -->
-
       </div>
-      <!-- travel_gotgam_inner end -->
-    </div>
-    <!-- travel_gotgam_body end -->
+    </div> -->
   </div>
 </template>
 
@@ -63,16 +66,30 @@ import MyInfo from './myinfo.vue';
     },
 
     created() {
-        this.$http.post('/api/mypage/')
+      if(this.$store.getters.userId.length != 0){
+        const user = {
+          user_id : this.$store.getters.userId[0].name
+        }
+        const fd = new FormData();
+        fd.append('user_id', this.$store.getters.userId[0].name);
+        this.$http.post('/api/mypage/', fd)
         .then((response) => {
-          this.mys = response.data
-          console.log(response.data)
+          this.mys = response.data;
+          // console.log('mys')
+          // console.log(response.data)
         })
+      }
+      // this.$http.post('/api/mypage/')
+      // .then((response) => {
+      //   this.mys = response.data
+      //   console.log(response.data)
+      // })
     },
 
     data() {
       return {
-        mys: [],
+        mys: '',
+
         gotgamdetail: {
           link: "/myPageDetail"
         }
@@ -121,6 +138,7 @@ import MyInfo from './myinfo.vue';
   .travel_gotgam_body2 {
     width: 70%;
     height: 100%;
+    min-height: 500px;
     margin: 0 auto;
     margin-top: 2.2rem;
     float: right;
@@ -128,7 +146,51 @@ import MyInfo from './myinfo.vue';
     border-left: 1px solid #ddd;
   }
 
-  .travel_gotgam_list {
+  .travel_gotgam_inner {
+    width: 100%;
+    margin: 2.5rem 0;
+  }
+
+  .travel_gotgam_inner table {
+    width: 100%;
+    border-top: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .travel_gotgam_inner table thead tr {
+    border-top: 1px solid #ddd;
+  }
+
+  .travel_gotgam_inner table thead tr th {
+    padding: 1.2rem 0.5rem;
+  }
+
+  .travel_gotgam_inner table tbody tr {
+    border-top: 1px solid #ddd;
+  }
+
+  .travel_gotgam_inner table tbody tr td {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .travel_gotgam_inner table thead tr.row {
+    margin: 0;
+    height: 50px !important;
+  }
+
+  .travel_gotgam_inner table tbody tr.row {
+    margin: 0;
+    height: 50px !important;
+  }
+
+  .upBtn, .deBtn {
+    width: 48px !important;
+    height: 34px !important;
+  }
+
+  /* .travel_gotgam_list {
     width: 100%;
     height: 16rem;
     flex: 1;
@@ -154,7 +216,7 @@ import MyInfo from './myinfo.vue';
   .travel_gotgam_img {
     width: 100%;
     height: 100%;
-    /* background: url(../assets/section3_img2.jpg) no-repeat; */
+    background: url(../assets/section3_img2.jpg) no-repeat;
     background-size: cover;
   }
 
@@ -177,5 +239,5 @@ import MyInfo from './myinfo.vue';
     width: 10%;
     box-sizing: border-box;
     border: 1px solid #ddd;
-  }
+  } */
 </style>

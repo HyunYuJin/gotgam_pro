@@ -14,30 +14,45 @@
                         <router-link :to="moodtravel.link">기분별</router-link>
                     </ul>
                 </li>
-				<li><router-link :to="registration.link">Registration</router-link></li>
+				<li>
+					<router-link :to="registration.link">Registration</router-link>
+				</li>
                 <li><router-link :to="about.link">About</router-link></li>
 				<li>
 					<div class="login_bar">
 						<!-- login -->
-						<router-link :to="login.link">Login</router-link>
-
-						<!-- 내정보 dropdown -->
-						<b-nav-item-dropdown
-						id="my-nav-dropdown"
-						text="내정보"
-						toggle-class="nav-link-custom"
-						right
-						>
-						<b-dropdown-item>
-							<router-link class="mypage" :to="mypage.link">My Page</router-link>
-						</b-dropdown-item>
-						<b-dropdown-divider></b-dropdown-divider>
-						<b-dropdown-item>
+						<div v-if="this.$store.getters.userId.length == 0">
+							<router-link :to="login.link">Login</router-link>
+						</div>
+						<div v-else>
 							<button class="logoutbtn" v-on:click="logout">Logout</button>
-						</b-dropdown-item>
-						</b-nav-item-dropdown>
+						</div>
+							<!-- <router-link :to="login.link">Login</router-link> -->
+
+							<!-- 내정보 dropdown -->
+							<!-- <b-nav-item-dropdown
+							id="my-nav-dropdown"
+							text="내정보"
+							toggle-class="nav-link-custom"
+							right
+							>
+							<b-dropdown-item>
+								<router-link class="mypage" :to="mypage.link">My Page</router-link>
+							</b-dropdown-item> -->
+							<!-- <b-dropdown-divider></b-dropdown-divider>
+							<b-dropdown-item>
+								<button class="logoutbtn" v-on:click="logout">Logout</button>
+							</b-dropdown-item> -->
+							<!-- </b-nav-item-dropdown>
+						</div> -->
 					</div>
 				</li>
+				<div v-if="this.$store.getters.userId.length != 0">
+					<li>
+						<router-link class="mypage" :to="mypage.link">My Page</router-link>
+					</li>
+				</div>
+				
             </nav>
         </div>
     </header>
@@ -45,6 +60,7 @@
 
 <script>
 import * as header from '../js/header.js';
+import dataManager from '@/util/data-manager.js';
 
 export default {
 	data() {
@@ -106,9 +122,10 @@ export default {
 			)
 			.then(
 				(res) => { //no error
+					dataManager.clearData();
 					if(res.data.success){
 						alert(res.data.message)
-						this.$router.push('/') 
+						this.$router.push('login') 
 					}
 				}
 			)
@@ -406,20 +423,18 @@ export default {
 		background: transparent;
 		border: none;
 		font-size: 1.15em;
+		padding: 0;
+		border-bottom: 2px solid #fff;
+		transition: 0.15s;
 	}
 
 	.logoutbtn:hover {
 		color: #ff4401;
+		border-bottom: 2px solid #ff4401;
 	}
 
 	.mypage, .mypage:hover {
 		width: 100%;
 		display: inline-block;
-		transition: 0s !important;
-		border-bottom: none !important;
-	}
-
-	.nav-link {
-		padding: 0;
 	}
 </style>

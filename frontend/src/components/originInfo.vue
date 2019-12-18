@@ -3,7 +3,7 @@
       <div class="orgininfo_inner_wrap">
           <!-- .city_name_wrap -->
           <div class="city_name_wrap">
-              <h3>서울특별시 [ Suwon-si , 水原市 ]</h3>
+              <h3>{{region_info.name}}</h3>
               <hr>
           </div>
           <!-- .city_name_wrap end -->
@@ -20,21 +20,9 @@
 
                 <!-- .city_history -->
                 <div class="city_history">
-                    <p>서울의 역사</p>
+                    <p>{{region_info.content_title}}</p>
                     <p>
-                        대한민국의 수도, 서울은 한강 연안 암사동과 미사리 부근에 지금
-                        으로부터 5~6천년 전후로 추정되는 선사시대 주거지를 비롯하여 백제의
-                        수도인 하남 위례성이 위치하였던 고도(古都)로 오랜역사를 지니고 있다.
-
-                        백제시대 이후 통일신라 및 고려시대를 통하여 서울은 늘 중요한 지방도
-                        시였고, 고려말에 이르러서는 삼경(三京)의 하나인 남경(南京)이 되었다.
-                        그러나 서울이 오늘날과 같은 공간적 원형으로써 확고히 정립되고 도시
-                        로 발전하기 시작한 것은 14세기 말 이씨 조선의 수도로 정해진 이후부터
-                        의 일이다. 조선의 도읍은 도시지역이었던 사대문 안 성곽 안과 성저십리
-                        (城底十里)라 불리던 성곽 밖 교외지역으로 이루어 졌으며, 서울은 세계
-                        에서 역사가 가장 오래된 고도(古都)의 하나로 발전할 수 있었다. 가장 오
-                        래된 역사와 눈부신 경제성장과 함께 발전한 서울을 함께 둘러보도록 하
-                        자.
+                        {{region_info.content}}
                     </p>
                 </div>
                 <!-- .city_history end -->
@@ -46,26 +34,22 @@
 
               <!-- .city_info_table_wrap -->
               <div class="city_info_table_wrap">
-                  <table class="table table-borderless">
-                    <tbody>
+                  <table class="table table-borderless" >
+                    <tbody v-for="item in region_detail" :key="item.seq">
                         <tr>
                             <td style="width: 5%;"></td>
-                            <td style="width: 20%;">위치</td>
+                            <td style="width: 20%;">{{item.category}}</td>
                             <td style="width: 75%;">
-                                <p>경기도 중부에 있는 특별시</p>
+                                <dt>{{item.content_title}}</dt>
                                 <p>
-                                    <span>행정구역: </span>
-                                    <span>종로구 · 중구 · 용산구 · 성동구 · 광진구 · 동대문구 · 중랑구 ·
-                                    성북구 · 강북구 · 도봉구 · 노원구 · 은평구 · 서대문구 · 마포구 · 양천구 ·
-                                    강서구 · 구로구 · 금천구 · 영등포구 · 동작구 · 관악구 · 서초구 · 강남구 ·
-                                    송파구 · 강동구</span>
+                                    <span>{{item.content}}</span>
                                 </p>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td></td>
                             <td>면적</td>
-                            <td colspan="2">
+                            <td colspan="2"> 
                                 <p>
                                     <span>605.2</span>
                                     <span> ㎢</span>
@@ -127,7 +111,7 @@
                                     <span> 명</span>
                                 </p>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                   </table>
               </div>
@@ -140,7 +124,39 @@
 
 <script>
 export default {
+    data() {
+        return {
+            region_info : '',
+            region_detail: [],
+            //list: [{ url: "남산타워" }, { url: "광화문" }, { url: "url3" }]
+        };
+    },
 
+    created () {
+        var id = '';
+        if(this.$store.getters.regionId[0] == undefined){
+            console.log('und');
+            // 지정한 지역정보가 없을 때
+            // 1번 서울을 기본값으로 가져옴
+            id = 1;
+        }else{
+            console.log(this.$store.getters.regionId[0]);
+            id = this.$store.getters.regionId[0];
+        }
+
+        this.$http.get(`/api/region/` + id)
+        .then((res) => {
+            this.region_info = res.data;
+        });
+
+        this.$http.get(`/api/region/detail/` + id)
+        .then((res) => {
+            //this.region_info = res.data;
+            this.region_detail = res.data;
+            console.log(this.region_detail);
+            // this.lists = res.data;
+        });
+    },
 }
 </script>
 

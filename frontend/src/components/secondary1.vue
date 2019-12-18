@@ -7,10 +7,10 @@
                   <span>{{ myboard.peoples }}</span>
               </li>
           </ul>
-          <ul>
+          <!-- <ul>
               <li class="side-title">DAY</li>
               <li>{{ myboard.dayn }}일</li>
-          </ul>
+          </ul> -->
           <ul>
               <li class="side-title">Mood</li>
               <li>기쁨</li>
@@ -30,7 +30,9 @@ export default {
 
       this.$http.get(`/api/mypage/${id}`)
         .then((response) => {
-          this.myboard = response.data
+            
+          this.myboard = response.data.board
+          console.log(this.myboard)
         //   console.log(response.data)
         })
     },

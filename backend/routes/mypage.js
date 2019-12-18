@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   port: 3306,
   user: 'root',
   password: 'root1234',
-  database: 'test_crud'
+  database: 'gotgam'
 });
 
 // Connect
@@ -22,39 +22,68 @@ connection.connect(function (err) {
 
 // 현재 로그인 중인 사용자의 정보를 보여준다.
 router.post('/info', function (req, res) {
-  connection.query('SELECT * FROM users WHERE id = "' + req.session.foid + '"', function (err1, row1) {
-    if (err1) throw err1;
+  // 비밀번호를 제외한 유저정보를 리턴
+  connection.query('SELECT user_id, name, age FROM users WHERE user_id = "' + req.fields.user_id + '"', function (err, row) {
+    if (err) throw err;
     else {
-      res.send(row1[0])
+      res.send(row[0])
     }
   });
-
 })
 
 // 현재 로그인 중인 사용자가 작성한 게시물의 리스트를 보여준다.
 router.post('/', function (req, res) {
-  connection.query('SELECT * FROM boards WHERE boards.userid = "' + req.session.foid + '"', function (err, data) {
+  //var id = req.params.id;
+  //console.log(id)
+  //console.log(req.body.user_id)
+  connection.query('SELECT * FROM boards WHERE boards.user_id = "' + req.fields.user_id + '"', function (err, data) {
     if (err) throw err;
-
+    //console.log(data)
     res.send(data);
-
   })
 });
 
+router.post('/update', function (req, res) {
+  const user = {
+    'user_id': req.fields.userid,
+    'password': req.fields.password,
+    'name': req.fields.name,
+    'age': req.fields.age
+  };
+  //var id = req.params.id;
+  //console.log(id)
+  //console.log(req.body.user_id)
+  connection.query('UPDATE users SET password = "' + req.fields.password + '", name = "' + req.fields.name + '", age = "' + req.fields.age + '" WHERE user_id = "' + req.fields.user_id + '"', function (err, data) {
+    if (err) throw err;
+    //console.log(data)
+    res.send(data);
+  })
+});
+
+
+// router.post('/', function (req, res) {
+//   connection.query('SELECT * FROM boards WHERE boards.user_id = "' + req.session.foid + '"', function (err, data) {
+//     if (err) throw err;
+
+//     res.send(data);
+
+//   })
+// });
+
 router.get('/:id', function (req, res) {
   var id = req.params.id;
-
-  connection.query('SELECT * FROM boards WHERE boards.id = "' + [id] + '"', function (err, row) {
+  console.log(id)
+  connection.query('SELECT * FROM boards WHERE boards.board_id = ' + id, function (err, row) {
     if (err) console.log(err);
 
     console.log(row[0])
 
-    connection.query('SELECT * FROM day WHERE day.boardid = "' + [id] + '"', function (err, row1) {
+    connection.query('SELECT * FROM day WHERE day.board_id = ' + id, function (err, row1) {
       if (err) console.log(err);
 
       res.send({
         board: row[0],
-        day: row1
+        day: row1[0]
       })
     })
   })

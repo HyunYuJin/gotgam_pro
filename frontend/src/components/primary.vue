@@ -8,13 +8,14 @@
                         <img v-bind:src="myboard.photo2">
                         <img v-bind:src="myboard.photo3">
                         <img v-bind:src="myboard.photo4"> -->
+                        <img v-bind:src="src">
                     </carousel>
                 </div>
-
-                <p>{{ myboard.maincontent }}</p>
+                
+                <p>{{ myboard.content }}</p>
 
                 <!-- accordion -->
-                <accordion-wrap></accordion-wrap>
+                <accordion-wrap v-bind:prop_data="day" v-for="day in days" v-bind:key="day.day_seq"></accordion-wrap>
             </div>
         </div>
     </div>
@@ -31,14 +32,34 @@
         },
         created() {
             var id = this.$route.params.id;
-            this.$http.get(`/api/regist/${id}`)
-                .then((response) => {
-                    this.myboard = response.data
+            this.$http.get(`/api/regist/board/${id}`)
+            .then((response) => {
+                this.myboard = response.data[0]
+                //console.log(this.myboard)
+                var bytes, blob;
+                if(this.myboard.picture.data != null){
+                    bytes = new Uint8Array(this.myboard.picture.data);
+                    blob = new Blob([bytes], {type:'image/bmp'});
+                    console.log(URL.createObjectURL(blob));
+                    this.src = URL.createObjectURL(blob);
+                }
+            })
+            this.$http.get(`/api/regist/day/${id}`)
+            .then((response) => {
+                this.days = response.data;
+                
+                
+                
+                //console.log(this.day)
+                //console.log(response.data)
+                //this.myboard = response.data
             })
         },
         data() {
             return {
-                myboard: {}
+                myboard: {},
+                days: [],
+                src: ''
             }
         }
 
