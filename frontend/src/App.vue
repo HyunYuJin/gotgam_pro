@@ -2,9 +2,7 @@
   <div id="app">
     <div class="wrapper">
         <Header></Header>
-        <div class="container1">
-            <router-view />
-        </div>
+        <router-view />
         <Footer></Footer>
     </div>
   </div>
@@ -27,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -43,31 +41,16 @@ export default {
     min-height: 100%;
 }
 
-.container1 {
-    width: 100%;
-    /* min-height: 100vh; footer 하단 고정 */
-    padding-bottom: 250px;
-    min-height: 100%;
-    height: 100%;
-}
-
 .footer_wrap_menu{
     padding: 3.4rem 0;
 }
 
 @media (max-width: 768px) {
-    .container1 {
-        width: 100%;
-        /* min-height: 100vh; footer 하단 고정 */
-        padding-bottom: 315px;
-        min-height: 100%;
-        height: 100%;
-    }
-    .footer_wrap_menu_intro{
+    .footer_wrap_menu_intro {
         text-align: center;
     }
-    .footer_wrap_menu
-    {
+
+    .footer_wrap_menu {
         padding: 2rem 0;
     }
 }
