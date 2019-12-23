@@ -12,19 +12,8 @@ import myPageUpdate from '@/components/myPageUpdate.vue';
 
 export default [
     {
-        path: '/index',
-        name: 'index',
-        component: Index
-    },
-    {
-        path: '/show',
-        name: 'show',
-        component: Show
-    },
-
-    {
         path: '/',
-        name: 'MainPage',
+        name: 'App',
         component: MainPage
     },
     
