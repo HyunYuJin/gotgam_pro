@@ -1,5 +1,3 @@
-import Index from '../components/IndexPage'
-import Show from '../components/ShowPage'
 import MainPage from '../components/container.vue';
 import Login from '@/components/login.vue';
 import RegionTravel from '@/components/regionTravel.vue';

@@ -7,7 +7,7 @@
 
 <script>
 import Reset from './css/reset.css';
-import Index from './components/index';
+import Index from './pages/index';
 
 export default {
   name: 'App',
