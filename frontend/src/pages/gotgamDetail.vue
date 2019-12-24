@@ -44,8 +44,9 @@
 </template>
 
 <script>
-  import Primary from './primary.vue';
-  import Secondary from './secondary.vue';
+
+  import Primary from '../components/primary.vue';
+  import Secondary from '../components/secondary.vue';
 
   export default {
     components: {
