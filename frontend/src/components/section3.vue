@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .section3_wrap {
     padding: 3.4rem 0;
     display: flex;
