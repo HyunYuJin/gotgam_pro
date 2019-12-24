@@ -255,14 +255,6 @@ button {
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-.tabs {
-  position: relative;
-  margin: 0 auto;
-}
-
-=======
->>>>>>> 719af4876a9e3e85f3fb09d609a50ade176824af
 .tabs__item {
     display: inline-block;
     margin: 0;
