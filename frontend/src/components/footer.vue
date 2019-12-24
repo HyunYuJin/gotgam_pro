@@ -69,7 +69,7 @@ export default {
 <style>
 .footer {
     position: absolute;
-    bottom: 0;
+    /* bottom: 0; */
     width: 100%;
     background:rgba(230, 230, 230, 0.517);
     display: flex;
