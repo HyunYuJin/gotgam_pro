@@ -33,7 +33,28 @@
           <!-- primary end -->
 
           <!-- secondary -->
-          <Secondary></Secondary>
+          <div class="secondary tour-details-sidebar">
+              <div class="tour-side-details">
+                  <ul>
+                      <li class="side-title">Person</li>
+                      <li>
+                          <span>{{ myboard.peoples }}</span>
+                      </li>
+                  </ul>
+                  <ul>
+                      <li class="side-title">DAY</li>
+                      <li>{{ myboard.dayn }}일</li>
+                  </ul>
+                  <ul>
+                      <li class="side-title">Mood</li>
+                      <li>기쁨</li>
+                  </ul>
+                  <ul>
+                      <li class="side-title">WEATHER</li>
+                      <li>맑음</li>
+                  </ul>
+              </div>
+          </div>
         </div>
       </div>
       <!-- gotgam_info_body end -->
@@ -46,12 +67,10 @@
 <script>
 
   import Primary from '../components/primary.vue';
-  import Secondary from '../components/secondary.vue';
 
   export default {
     components: {
-      Primary,
-      Secondary
+      Primary
     },
 
     created() {
@@ -59,6 +78,7 @@
 
       this.$http.get(`/api/regist/board/${id}`)
         .then((response) => {
+          this.myboard = response.data[0]
           this.ourboard = response.data[0];
           this.user_data = response.data[1];
 
@@ -78,6 +98,7 @@
       return {
         ourboard: {},
         user_data: {},
+        myboard: {},
         src:''
       }
     }
@@ -178,4 +199,41 @@
     display: table;
     clear: both;
   }
+
+  .secondary {
+    float: left;
+    margin: 15px auto;
+    color: #323c46;
+}
+
+.tour-details-sidebar .tour-side-details {
+    padding: 15px 30px;
+}
+
+.tour-side-details {
+    border: 1px solid #eeeaea;
+}
+
+.secondary.tour-details-sidebar ul {
+    padding: 15px 0;
+    margin: 0;
+    border-bottom: 1px solid #eeeaea;
+}
+
+.tour-details-sidebar ul:last-child {
+    border-bottom: none;
+}
+
+.tour-details-sidebar li.side-title, .side-title {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #323c46;
+}
+
+.person-side {
+    float: right;
+    display: flex;
+}
 </style>
