@@ -32,9 +32,6 @@
                 <div class="primary content-area col-lg-8 col-md-8 col-12 pull-right">
                     <div class="pri_main">
                         <div class="content-wrapper">
-                            <div class="calousel_wrapper">
-                                <img v-bind:src="src">
-                            </div>
 
                             <p>{{ myboard.content }}</p>
 
@@ -90,7 +87,7 @@ export default {
 
         this.$http.get(`/api/regist/board/${id}`)
             .then((response) => {
-                this.myboard = response.data[0]
+                this.myboard = response.data[0];
                 this.ourboard = response.data[0];
                 this.user_data = response.data[1];
 
