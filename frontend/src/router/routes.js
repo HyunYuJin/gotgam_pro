@@ -4,12 +4,12 @@ import RegionTravel from '@/pages/regionTravel.vue';
 import GotgamDetail from '@/pages/gotgamDetail.vue';
 import MoodTravel from '@/pages/moodTravel.vue';
 import myPage from '@/pages/mypage.vue';
+import Login from '@/pages/login.vue';
+import SignUp from '@/pages/SignUp.vue';
 
 // components
 import Registration from '@/components/registration.vue';
-import Login from '@/components/login.vue';
 import About from '@/components/about.vue';
-import SignUp from '@/components/SignUp.vue';
 import myPageDetail from '@/components/myPageDetail.vue';
 import myPageUpdate from '@/components/myPageUpdate.vue';
 

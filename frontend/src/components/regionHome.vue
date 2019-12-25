@@ -30,49 +30,6 @@
                     </div>
                 </div>
             </div>
-<!-- 
-            <div class="card_col_wrap">
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image2"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>파주 출판단지</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card_col_wrap">
-                <div class="card_col_cell">
-                    <div class="card_inner_cell">
-                        <div class="card_hover_cell">
-                            <div class="card_image3"></div>
-                            <div class="card_overlay">&nbsp;</div>
-                            <div class="card_content">
-                                <div class="card_text_wrap">
-                                    <div class="card_text_subtitle">
-                                        <p>현유진</p>
-                                    </div>
-                                    <div class="card_text_title">
-                                        <h4>소금산 출렁다리</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
     </div>
   </div>
