@@ -2,9 +2,9 @@
 import MainPage from '@/pages/container.vue';
 import RegionTravel from '@/pages/regionTravel.vue';
 import GotgamDetail from '@/pages/gotgamDetail.vue';
+import MoodTravel from '@/pages/moodTravel.vue';
 
 // components
-import MoodTravel from '@/components/moodTravel.vue';
 import Registration from '@/components/registration.vue';
 import Login from '@/components/login.vue';
 import About from '@/components/about.vue';

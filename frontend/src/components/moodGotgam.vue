@@ -1,19 +1,19 @@
 <template>
-  <!-- mood_gotgam_wrap -->
-  <div class="mood_gotgam_wrap">
-      <!-- travel_gotgom_title -->
-      <div class="mood_gotgam_title">
-          <h2>곶감 여행기</h2>
-      </div>
-      <!-- mood_gotgam_title end -->
+<!-- mood_gotgam_wrap -->
+<div class="mood_gotgam_wrap">
+    <!-- travel_gotgom_title -->
+    <div class="mood_gotgam_title">
+        <h2>곶감 여행기</h2>
+    </div>
+    <!-- mood_gotgam_title end -->
 
-      <!-- mood_gotgam_body -->
-      <div class="mood_gotgam_body">
-          <!-- mood_gotgam_inner -->
-          <div class="mood_gotgam_inner" v-for="(list, idx) in lists" v-bind:key="idx">
+    <!-- mood_gotgam_body -->
+    <div class="mood_gotgam_body">
+        <!-- mood_gotgam_inner -->
+        <div class="mood_gotgam_inner" v-for="(list, idx) in lists" v-bind:key="idx">
 
-              <!-- mood_gotgam_list -->
-              <router-link :to="{ name: 'GotgamDetail', params: { id: list.board_id }}">
+            <!-- mood_gotgam_list -->
+            <router-link :to="{ name: 'GotgamDetail', params: { id: list.board_id }}">
                 <div class="mood_gotgam_list">
                     <!-- mood_gotgam_list_inner -->
                     <div class="mood_gotgam_list_inner">
@@ -24,7 +24,7 @@
                                 <img class="mood_gotgam_img" v-bind:src="list.reg_date">
                             </div>
                         </div>
-                        
+
                         <!-- mood_gotgam_list_content -->
                         <div class="mood_gotgam_list_content">
                             <!-- list_content_title -->
@@ -44,58 +44,59 @@
                     </div>
                     <!-- mood_gotgam_list_inner end -->
                 </div>
-              </router-link>
-              <!-- mood_gotgam_list end -->
+            </router-link>
+            <!-- mood_gotgam_list end -->
 
-            </div>
-            <!-- mood_gotgam_inner end -->
         </div>
-        <!-- mood_gotgam_body end -->
-  </div>
-  <!-- mood_gotgam_wrap end -->
+        <!-- mood_gotgam_inner end -->
+    </div>
+    <!-- mood_gotgam_body end -->
+</div>
+<!-- mood_gotgam_wrap end -->
 </template>
 
 <script>
 export default {
-    created(){
-        
+    created() {
         var id = '';
-        if(this.$store.getters.mood[0] == undefined){
+        if (this.$store.getters.mood[0] == undefined) {
             console.log('und');
             // 지정한 지역정보가 없을 때
             id = 'expressionless';
-        }else{
+        } else {
             console.log(this.$store.getters.mood[0])
             id = this.$store.getters.mood[0];
         }
         this.$http.get(`/api/mood/` + id)
-        .then((res) => {
-            // 곶감 여행기
-            console.log(res.data)
-            this.lists = res.data;
+            .then((res) => {
+                // 곶감 여행기
+                console.log(res.data)
+                this.lists = res.data;
 
-            var bytes, blob;
-            for(var i = 0; i<this.lists.length; i++){
                 var bytes, blob;
-                console.log(this.lists[0])
-                if(this.lists[i].picture != null){
-                bytes = new Uint8Array(this.lists[i].picture.data);
-                blob = new Blob([bytes], {type:'image/bmp'});
-                console.log(URL.createObjectURL(blob));
-                this.lists[i].reg_date = URL.createObjectURL(blob);
+                for (var i = 0; i < this.lists.length; i++) {
+                    var bytes, blob;
+                    console.log(this.lists[0])
+                    if (this.lists[i].picture != null) {
+                        bytes = new Uint8Array(this.lists[i].picture.data);
+                        blob = new Blob([bytes], {
+                            type: 'image/bmp'
+                        });
+                        console.log(URL.createObjectURL(blob));
+                        this.lists[i].reg_date = URL.createObjectURL(blob);
+                    }
                 }
-            }
-        });
+            });
     },
     data() {
-    	return {
-			GotgamDetail: {
+        return {
+            GotgamDetail: {
                 link: "/regiontravel"
             },
             lists: []
-		};
-	},
-    
+        };
+    },
+
 }
 </script>
 
@@ -163,7 +164,7 @@ a:hover {
     padding-right: 3rem;
 }
 
-.mood_gotgam_list_content > div {
+.mood_gotgam_list_content>div {
     margin: 1.2rem 0;
 }
 
