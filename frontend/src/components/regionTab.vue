@@ -294,15 +294,6 @@ button {
     margin-right: 0;
 }
 
-.tabs__active-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background-color: #ff4401;
-    transition: transform 0.4s ease, width 0.4s ease;
-}
-
 /* content7 */
 
 .content7 {
