@@ -3,13 +3,13 @@ import MainPage from '@/pages/container.vue';
 import RegionTravel from '@/pages/regionTravel.vue';
 import GotgamDetail from '@/pages/gotgamDetail.vue';
 import MoodTravel from '@/pages/moodTravel.vue';
+import myPage from '@/pages/mypage.vue';
 
 // components
 import Registration from '@/components/registration.vue';
 import Login from '@/components/login.vue';
 import About from '@/components/about.vue';
 import SignUp from '@/components/SignUp.vue';
-import myPage from '@/components/mypage.vue';
 import myPageDetail from '@/components/myPageDetail.vue';
 import myPageUpdate from '@/components/myPageUpdate.vue';
 
