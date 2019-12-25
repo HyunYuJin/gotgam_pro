@@ -9,24 +9,83 @@
           <b-card-text>
               <div class="schedule_box" v-bind:key="prop_data.board_id">
                 <h2>{{prop_data.day_seq}}일차</h2>
-                <!-- <p class="desc">{{ myboard.title }}</p> -->
                 <ul>
                     <li>
                         <a href="#">
                             <div class="thumb">
-                                <img src="../assets/suwon_img1.jpeg">
+                                <img v-bind:src="src">
                                 <div class="border"></div>
                             </div>
 
                             <div class="info">
                                 <strong class="info_title">{{ prop_data.title }}</strong>
-                                <!-- <strong class="info_title">{{ myboard.title }}</strong> -->
-                                <!-- <p>{{ myboard.title }}</p> -->
                             </div>
                         </a>
 
                         <!-- accordion_info_detail -->
-                        <accordion-info-detail v-bind:prop_data="prop_data"></accordion-info-detail>
+                        <div v-bind:prop_data="prop_data">
+    <!-- accordion_info_detail -->
+    <div class="accordion_info_detail">
+        <div v-bind:prop_data="prop_data" class="accordion_info_detail_title">
+            <b-card>
+                <b-media>
+                    <b-media-body>
+                        <h5 class="mt-0">이날의 곶감</h5>
+                        <p>
+                            {{prop_data.content}}
+                        </p>
+                    </b-media-body>
+                </b-media>
+            </b-card>
+        </div>
+
+        <b-list-group>
+            <b-list-group-item href="#">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">교통수단</h5>
+                </div>
+                <p class="mb-1">
+                    <ul>
+                        <li>
+                            <dl>
+                                <dd>{{ prop_data.traffic }}</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </p>
+                <small>자가용이 있으면 주차시설이 잘 되어있기 때문에 추천드립니다.</small>
+            </b-list-group-item>
+            <b-list-group-item href="#">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">맛집</h5>
+                    <!-- <strong class="text-muted">존앤진피자</strong> -->
+                </div>
+                <!-- <p class="mb-1">{{ myboard.dayfood }}</p> -->
+            </b-list-group-item>
+            <b-list-group-item href="#foobar">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">비용</h5>
+                    <small class="text-muted">₩23000</small>
+                </div>
+                <p class="mb-1">
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>교통비</dt>
+                                <dd>₩5000</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dd>{{ prop_data.pay }}</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </p>
+            </b-list-group-item>
+        </b-list-group>
+    </div>
+</div>
                     </li>
                 </ul>
             </div>
@@ -38,29 +97,19 @@
 </template>
 
 <script>
-import AccordionInfoDetail from './accordionInfoDetail.vue';
 
 export default {
-    components: {
-        AccordionInfoDetail,
-    },
     props: {
       prop_data: {}
     },
     created() {
-      // console.log(this.test);
-      // var id = this.$route.params.id;
 
-      // this.$http.get(`/api/regist/${id}`)
-      // .then((response) => {
-      //   this.myboard = response.data
-      //   //console.log(response.data)
-      // })
     },
 
     data() {
         return {
-          myboard: {}
+          myboard: {},
+          src: ''
     }
 }
 }

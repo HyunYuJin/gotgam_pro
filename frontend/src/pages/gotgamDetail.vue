@@ -46,7 +46,7 @@
                 <!-- primary end -->
 
                 <!-- secondary -->
-                <div class="secondary tour-details-sidebar">
+                <div class="secondary col-lg-4 col-md-4 col-12 tour-details-sidebar">
                     <div class="tour-side-details">
                         <ul>
                             <li class="side-title">Person</li>
